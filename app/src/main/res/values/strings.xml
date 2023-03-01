@@ -16,4 +16,8 @@
     <string name="title_notifications">Notifications</string>
     <string name="my_recipe_book">My Recipe Book</string>
     <string name="My_Cook_Book">my cook book</string>
+    <string name="sign_in">sign_in</string>
+    <string name="full_name">full name</string>
+    <string name="email_address">Email address</string>
+    <string name="password">password</string>
 </resources>
