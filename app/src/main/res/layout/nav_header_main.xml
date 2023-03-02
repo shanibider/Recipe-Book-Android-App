@@ -13,23 +13,35 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/userimage"
+        android:layout_width="95dp"
+        android:layout_height="90dp"
         android:contentDescription="@string/nav_header_desc"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@mipmap/ic_launcher_round" />
+        android:paddingTop="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="3dp"
+        app:srcCompat="@drawable/user1" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="@string/nav_header_title"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:text="Hello user"
+        android:textSize="17sp"
+        android:textColor="@color/black"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textStyle="bold"
+        android:layout_marginLeft="11dp"
+   />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/email"
+        android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/nav_header_subtitle" />
+        android:text="mypersonalrecipebook@gmail.com"
+        android:textStyle="bold"
+
+
+
+        />
 </LinearLayout>

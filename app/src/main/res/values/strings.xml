@@ -20,4 +20,13 @@
     <string name="full_name">full name</string>
     <string name="email_address">Email address</string>
     <string name="password">password</string>
+    <string name="favourites">Favourites</string>
+    <string name="preferences">Preferences</string>
+    <string name="my_recipes">my_recipes</string>
+    <string name="Favourites" />
+    <string name="MyRecipes" />
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="profile">profile</string>
+    <string name="Profile">Profile</string>
 </resources>
