@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/categoryView"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="4dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="4dp"
+    app:circularflow_radiusInDP="30dp">
+
+   <LinearLayout
+       android:layout_width="150dp"
+       android:layout_height="150dp"
+       android:orientation="horizontal"
+      android:paddingBottom="20dp"
+      >
+
+
+      <ImageView
+          android:id="@+id/breakfast_img"
+          android:layout_width="150dp"
+          android:layout_height="150dp"
+          android:foregroundGravity="center"
+          android:scaleType="centerCrop"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          android:src="@drawable/breakfast" />
+
+   </LinearLayout>
+
+   <TextView
+       android:id="@+id/breakfast_title"
+       android:layout_width="74dp"
+       android:layout_height="22dp"
+       android:layout_marginTop="140dp"
+       android:text="Breakfast"
+       android:textAlignment="center"
+       android:textColor="@color/darkgray"
+       android:textSize="13dp"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="@+id/breakfast_img"
+       app:layout_constraintTop_toBottomOf="@+id/breakfast_img" />
+
+
+</androidx.cardview.widget.CardView>
