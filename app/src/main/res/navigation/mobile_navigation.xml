@@ -24,7 +24,7 @@
         tools:layout="@layout/fragment_my_recipes" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.myrecipebook.ProfileFragment"
+        android:name="com.example.myrecipebook.ui.ProfileFragment"
         android:label="@string/profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

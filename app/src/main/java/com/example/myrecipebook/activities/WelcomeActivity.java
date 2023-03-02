@@ -1,4 +1,4 @@
-package com.example.myrecipebook;
+package com.example.myrecipebook.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.example.myrecipebook.R;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -21,6 +23,6 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     public void register(View view) {
-        startActivity(new Intent(WelcomeActivity.this,RegisterActivity.class));
+        startActivity(new Intent(WelcomeActivity.this, RegisterActivity.class));
     }
 }
