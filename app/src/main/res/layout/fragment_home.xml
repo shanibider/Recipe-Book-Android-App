@@ -53,9 +53,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/searchbox" />
 
-
+    <!-- 1.Adding recyclerView -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/home_items_rec"
+        android:id="@+id/home_items_recList"
         android:layout_width="398dp"
         android:layout_height="528dp"
         android:layout_margin="6dp"

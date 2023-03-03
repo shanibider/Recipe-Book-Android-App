@@ -15,7 +15,10 @@ import com.example.myrecipebook.models.HomeItemModel;
 
 import java.util.List;
 
-/***Adapter***/
+
+//ADAPTER + VIEWHOLDER
+
+//5.ADAPTER (manage all the viewholders)
 public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.ViewHolder> {
 
    Context contxt;
@@ -28,21 +31,21 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.ViewHo
 
     @NonNull
     @Override
-    //create one line of view
+    //create a new list row object= new view holder object (one line of view)
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        //inflater create view object from xml file (and we return it)
-        //takes row from home_item.xml
+        //inflater create view object from xml file (home_item.xml)
+        //then wrap it in view older object
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.home_item, parent, false));
     }
 
-    //Bind data to line
+    //set the view holder properties according to the object is displayed (Bind data to line)
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.imageView.setImageResource(list.get(position).getImage());
         holder.name.setText(list.get(position).getName());
     }
 
-    //How much items in list
+    //number of objects to display in the list
     @Override
     public int getItemCount() {
         return list.size();
@@ -52,10 +55,11 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.ViewHo
 
 
 
-    /***ViewHolder***/
-    //hold view of one line and save references to his elements
+    //VIEWHOLDER
+    //hold object of view of one line and save references to his elements (image & text)
     public class ViewHolder extends RecyclerView.ViewHolder {
 
+        //references to the views for each data item
         ImageView imageView;
         TextView name;
 

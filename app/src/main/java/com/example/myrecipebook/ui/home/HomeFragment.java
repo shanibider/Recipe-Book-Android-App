@@ -20,23 +20,30 @@ import com.example.myrecipebook.models.HomeItemModel;
 import java.util.ArrayList;
 import java.util.List;
 
+
+//ATTACHING ADAPTER TO RECYCLERVIEW
+
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
 
-    RecyclerView homeItemRec;
+    //reference to RecyclerView
+    RecyclerView homeItemRecList;
+    //List
     List<HomeItemModel> HomeModelList;
+    //Adapter (from HomeItemAdapter.java)
     HomeItemAdapter homeItemAdapter;
-    //(from HomeItemAdapter.java)
 
 
+    //6.Attach the Adapter
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        homeItemRec = root.findViewById(R.id.home_items_rec);
+        //attaching the reference (of RecyclerView) to the Recyclerview in the layout
+        homeItemRecList = root.findViewById(R.id.home_items_recList);
 
         HomeModelList = new ArrayList<>();
 
@@ -48,15 +55,17 @@ public class HomeFragment extends Fragment {
         HomeModelList.add(new HomeItemModel(R.drawable.cake, "cake"));
         HomeModelList.add(new HomeItemModel(R.drawable.snacks, "snacks"));
 
+        //6.specify an adapter
         homeItemAdapter = new HomeItemAdapter(getActivity(),HomeModelList);
-        homeItemRec.setAdapter(homeItemAdapter);
-        homeItemRec.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
-        homeItemRec.setHasFixedSize(true);
-        homeItemRec.setNestedScrollingEnabled(false);
+        //6.Bind the adapter to the list
+        homeItemRecList.setAdapter(homeItemAdapter);
+        //2.use a linear layout manager
+        homeItemRecList.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
+        homeItemRecList.setHasFixedSize(true);
+        homeItemRecList.setNestedScrollingEnabled(false);
 
 
 
-        homeItemRec.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false ));
         return root;
     }
 
