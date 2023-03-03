@@ -4,68 +4,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="30dp"
     tools:context=".ui.home.HomeFragment">
-
 
     <TextView
         android:id="@+id/recipes"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginRight="250dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:text="Recipes"
         android:textColor="@color/darkgray"
         android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/searchbox"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/searchbox"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/searchbox"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="40dp"
-            android:background="@drawable/search_bg"
-            android:drawableRight="@drawable/ic_baseline_search_24"
-            android:drawablePadding="9dp"
-            android:fontFamily="sans-serif"
-            android:hint="Search Recipes"
-            android:padding="10dp"
-            android:textColor="@color/darkgray"
-            android:textColorHint="@color/darkgray"
-            android:textSize="13sp"
+    <EditText
+        android:id="@+id/searchbox"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/search_bg"
+        android:drawableRight="@drawable/ic_baseline_search_24"
+        android:drawablePadding="9dp"
+        android:fontFamily="sans-serif"
+        android:hint="Search Recipes"
+        android:padding="10dp"
+        android:textColor="@color/darkgray"
+        android:textColorHint="@color/darkgray"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toTopOf="@+id/category_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recipes" />
 
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
 
-        <TextView
-            android:id="@+id/category_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Categories"
-            android:textColor="@color/darkgray"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchbox" />
+    <TextView
+        android:id="@+id/category_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+
+        android:text="Categories"
+        android:textColor="@color/darkgray"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/home_items_recList"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchbox" />
+
+
 
     <!-- 1.Adding recyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/home_items_recList"
-        android:layout_width="398dp"
-        android:layout_height="528dp"
-        android:layout_margin="6dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/category_title"
-        app:layout_constraintVertical_bias="0.615" />
-
+        app:layout_constraintTop_toBottomOf="@+id/category_title" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+

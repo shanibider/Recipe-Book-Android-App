@@ -18,6 +18,7 @@ import com.example.myrecipebook.databinding.FragmentHomeBinding;
 import com.example.myrecipebook.models.HomeItemModel;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -45,14 +46,13 @@ public class HomeFragment extends Fragment {
         //attaching the reference (of RecyclerView) to the Recyclerview in the layout
         homeItemRecList = root.findViewById(R.id.home_items_recList);
 
-        HomeModelList = new ArrayList<>();
+
+        HomeModelList = new LinkedList<>();
 
         HomeModelList.add(new HomeItemModel(R.drawable.breakfast, "breakfast"));
         HomeModelList.add(new HomeItemModel(R.drawable.lunch, "lunch"));
         HomeModelList.add(new HomeItemModel(R.drawable.dinner, "dinner"));
-        HomeModelList.add(new HomeItemModel(R.drawable.salad, "salad"));
         HomeModelList.add(new HomeItemModel(R.drawable.dessert, "dessert"));
-        HomeModelList.add(new HomeItemModel(R.drawable.cake, "cake"));
         HomeModelList.add(new HomeItemModel(R.drawable.snacks, "snacks"));
 
         //6.specify an adapter
@@ -60,7 +60,7 @@ public class HomeFragment extends Fragment {
         //6.Bind the adapter to the list
         homeItemRecList.setAdapter(homeItemAdapter);
         //2.use a linear layout manager
-        homeItemRecList.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
+        homeItemRecList.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
         homeItemRecList.setHasFixedSize(true);
         homeItemRecList.setNestedScrollingEnabled(false);
 
