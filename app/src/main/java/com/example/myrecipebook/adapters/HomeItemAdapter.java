@@ -15,7 +15,6 @@ import com.example.myrecipebook.models.HomeItemModel;
 
 import java.util.List;
 
-
 //ADAPTER + VIEWHOLDER
 
 //5.ADAPTER (manage all the viewholders)
@@ -32,6 +31,7 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.ViewHo
     @NonNull
     @Override
     //create a new list row object= new view holder object (one line of view)
+    //inside we inflate the view of itemView and return new ViewHolder object containing this layout
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //inflater create view object from xml file (home_item.xml)
         //then wrap it in view older object
@@ -66,8 +66,8 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.ViewHo
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            imageView= itemView.findViewById(R.id.breakfast_img);
-            name= itemView.findViewById(R.id.breakfast_title);
+            imageView= itemView.findViewById(R.id.category_img);
+            name= itemView.findViewById(R.id.category_title);
 
         }
     }

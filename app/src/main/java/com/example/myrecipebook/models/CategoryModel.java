@@ -1,14 +1,17 @@
 package com.example.myrecipebook.models;
 
-//Data (in Home Screen)
-public class HomeItemModel {
+//Data (in Category Screen)
+public class CategoryModel {
     int image;
     String name;
+    String detail;
 
-    public HomeItemModel(int image, String name) {
+    public CategoryModel(int image, String name, String detail) {
         this.image = image;
         this.name = name;
+        this.detail= detail;
     }
+
 
     public int getImage() {
         return image;
@@ -25,4 +28,17 @@ public class HomeItemModel {
     public void setName(String name) {
         this.name = name;
     }
+
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
+
+
+
+
 }

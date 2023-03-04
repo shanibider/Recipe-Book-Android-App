@@ -40,10 +40,11 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+        //inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        //attaching the reference (of RecyclerView) to the Recyclerview in the layout
+        //attaching the variable 'homeItemRecList' (of RecyclerView type) to the Recyclerview in the layout
         homeItemRecList = root.findViewById(R.id.home_items_recList);
 
 
@@ -57,7 +58,7 @@ public class HomeFragment extends Fragment {
 
         //6.specify an adapter
         homeItemAdapter = new HomeItemAdapter(getActivity(),HomeModelList);
-        //6.Bind the adapter to the list
+        //6.Bind the adapter to the RecyclerView reference
         homeItemRecList.setAdapter(homeItemAdapter);
         //2.use a linear layout manager
         homeItemRecList.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
