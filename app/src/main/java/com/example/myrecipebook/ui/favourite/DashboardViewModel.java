@@ -1,4 +1,4 @@
-package com.example.myrecipebook.ui.dashboard;
+package com.example.myrecipebook.ui.favourite;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

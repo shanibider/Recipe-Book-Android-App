@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_favourites"
-        android:name="com.example.myrecipebook.ui.gallery.FavouritesFragment"
+        android:id="@+id/nav_categories"
+        android:name="com.example.myrecipebook.ui.categories.CategoryFragment"
         android:label="Favourites"
-        tools:layout="@layout/fragment_favourites" />
+        tools:layout="@layout/fragment_category" />
 
     <fragment
         android:id="@+id/nav_my_recipes"

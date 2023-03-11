@@ -13,8 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="70dp"
         android:layout_marginLeft="10dp"
-        android:text="Oat pancakes"
-        android:textSize="20sp"
+        android:text="oat pancakes"
+        android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="@color/darkgray"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -33,43 +33,29 @@
         android:layout_marginLeft="10dp"
         android:textColor="@color/darkgray"
         android:text="10 min"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/category_recipe_img"
         app:layout_constraintTop_toBottomOf="@+id/category_recipe_name"
         app:layout_constraintVertical_bias="1.0" />
 
-    <ImageButton
+
+    <ImageView
         android:id="@+id/category_recipe_img"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="10dp"
-        android:clickable="true"
+        android:foregroundGravity="center"
         android:scaleType="centerCrop"
         android:src="@drawable/oatpancake"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="240dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/category_recipe_btn"
-        android:onClick="clickrecipe"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_margin="10dp"
-        android:padding="14dp"
-        android:background="@drawable/oatpancake"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
