@@ -1,5 +1,6 @@
 package com.example.myrecipebook.activities;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,28 +25,24 @@ public class DetailRecipeActivity extends AppCompatActivity {
 
         @SuppressLint("MissingInflatedId")
         protected void onCreate (Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_detailrecipe);
-
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.fragment_detailrecipe);
+            Intent intent = getIntent();
+            int position = intent.getExtras().getInt("number");
 
             recyclerView = (RecyclerView) findViewById(R.id.recipes_recList);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(DetailRecipeActivity.this));
+            recyclerView.setLayoutManager(new LinearLayoutManager(DetailRecipeActivity.this));
 
-        detailModelList = new ArrayList<>();
+            detailModelList = new ArrayList<>();
 
-        detailModelList.add(new DetailRecipeModel(R.drawable.oatpancake, "Oats pancakes", "10 min", "40 gram oats, 1 banana, 1 egg, cinnamon, syrup mapel", "mix all ingredients together until smooth. fry on oily nd heated pan, enjoy."));
-        detailModelList.add(new DetailRecipeModel(R.drawable.oatpancake, "Oatmeal", "5 min", "40 gram oats, cacao powder, cinnamon, syrup mapel, peanut butter, peanuts", "mix all ingredients together, and add water until all covered up. cook in the micro for 40 sec, spread peanut butter and peanuts on top, enjoy."));
-
-
-        detailRecipeAdapter = new DetailRecipeAdapter(DetailRecipeActivity.this, detailModelList);
-        recyclerView.setAdapter(detailRecipeAdapter);
-        detailRecipeAdapter.notifyDataSetChanged();
+            detailModelList.add(new DetailRecipeModel(R.drawable.oatpancake, "Oats pancakes", "10 min", "40 gram oats, 1 banana, 1 egg, cinnamon, syrup mapel", "mix all ingredients together until smooth. fry on oily nd heated pan, enjoy."));
+            detailModelList.add(new DetailRecipeModel(R.drawable.oatmeal, "Oatmeal", "5 min", "40 gram oats, cacao powder, cinnamon, syrup mapel, peanut butter, peanuts", "mix all ingredients together, and add water until all covered up. cook in the micro for 40 sec, spread peanut butter and peanuts on top, enjoy."));
 
 
-
-
-
-    }
+            detailRecipeAdapter = new DetailRecipeAdapter(DetailRecipeActivity.this, detailModelList, position);
+            recyclerView.setAdapter(detailRecipeAdapter);
+            detailRecipeAdapter.notifyDataSetChanged();
+        }
 }
 

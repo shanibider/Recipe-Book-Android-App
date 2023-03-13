@@ -25,11 +25,13 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
 
     Context context;
     List<DetailRecipeModel> list;
+    int position;
 
     //CTOR
-    public DetailRecipeAdapter(Context context, List<DetailRecipeModel> list) {
+    public DetailRecipeAdapter(Context context, List<DetailRecipeModel> list, int position) {
         this.context = context;
         this.list = list;
+        this.position = position;
     }
 
     @NonNull
@@ -41,15 +43,13 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        System.out.println(position);
+        System.out.println(this.position);
 
-        holder.imageView.setImageResource(list.get(position).getImage());
-        holder.name.setText(list.get(position).getName());
-        holder.detail.setText(list.get(position).getDetail());
-        holder.ingredients.setText(list.get(position).getIngredients());
-        holder.instruction.setText(list.get(position).getInstruction());
-
-
+        holder.imageView.setImageResource(list.get(this.position).getImage());
+        holder.name.setText(list.get(this.position).getName());
+        holder.detail.setText(list.get(this.position).getDetail());
+        holder.ingredients.setText(list.get(this.position).getIngredients());
+        holder.instruction.setText(list.get(this.position).getInstruction());
 
     }
 

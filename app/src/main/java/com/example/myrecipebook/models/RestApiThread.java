@@ -37,19 +37,16 @@ public class RestApiThread extends Thread {
     @Override
     public void run() {
         System.out.println("RestApiThread run test");
-        List<RecipeModel> recipeModelsList = new ArrayList<>();
-        for(String food:foods) {
-            recipeModelsList.add(generateRecipeModel(food));
-            try {
-                sleep(10000); // Sleep for 10 seconds
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        System.out.println(recipeModelsList.size());
-
-        String connectionString = "mongodb+srv://OmerA:Aa123123@CookCluster.mongodb.net/MyCookBook?retryWrites=true&w=majority";
-
+//        List<RecipeModel> recipeModelsList = new ArrayList<>();
+//        for(String food:foods) {
+//            recipeModelsList.add(generateRecipeModel(food));
+//            try {
+//                sleep(10000); // Sleep for 10 seconds
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        System.out.println(recipeModelsList.size());
     }
 
     public RecipeModel generateRecipeModel (String food){
