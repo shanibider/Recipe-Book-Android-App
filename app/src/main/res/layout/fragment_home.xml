@@ -13,7 +13,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:text="Recipes"
+        android:text="All Recipes"
         android:textColor="@color/darkgray"
         android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/searchbox"
@@ -66,6 +66,18 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/category_title" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="40dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    android:src="@drawable/ic_upload"
+    android:onClick="btn_uploadActivity"
+        >
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
 
 
