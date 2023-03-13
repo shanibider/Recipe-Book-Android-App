@@ -1,5 +1,6 @@
 package com.example.myrecipebook.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myrecipebook.R;
+import com.example.myrecipebook.Upload_Recipe;
 import com.example.myrecipebook.adapters.HomeItemAdapter;
 import com.example.myrecipebook.databinding.FragmentHomeBinding;
 import com.example.myrecipebook.models.HomeItemModel;
@@ -65,8 +67,6 @@ public class HomeFragment extends Fragment {
         homeItemRecList.setHasFixedSize(true);
         homeItemRecList.setNestedScrollingEnabled(false);
 
-
-
         return root;
     }
 
@@ -74,5 +74,14 @@ public class HomeFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+
+//upload new recipe
+    public void btn_uploadActivity(View view) {
+
+    startActivity(new Intent(getContext(), Upload_Recipe.class));
+
+
     }
 }

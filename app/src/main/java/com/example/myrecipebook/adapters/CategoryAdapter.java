@@ -48,6 +48,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.out.println(holder.getAdapterPosition());
                 Intent intent = new Intent(context, DetailRecipeActivity.class);
                 intent.putExtra("Image", categoryList.get(holder.getAdapterPosition()).getImage());
                 intent.putExtra("Name", categoryList.get(holder.getAdapterPosition()).getName());
