@@ -10,6 +10,7 @@ public class CategoryModel {
         this.image = image;
         this.name = name;
         this.detail= detail;
+
     }
 
 
@@ -37,6 +38,8 @@ public class CategoryModel {
     public void setDetail(String detail) {
         this.detail = detail;
     }
+
+
 
 
 
