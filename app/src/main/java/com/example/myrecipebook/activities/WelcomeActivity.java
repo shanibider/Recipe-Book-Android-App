@@ -9,6 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.myrecipebook.R;
+import com.example.myrecipebook.models.RestApiThread;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -20,6 +21,8 @@ public class WelcomeActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_welcome);
+        RestApiThread restApiThread = new RestApiThread();
+        restApiThread.start();
     }
 
     public void register(View view) {
