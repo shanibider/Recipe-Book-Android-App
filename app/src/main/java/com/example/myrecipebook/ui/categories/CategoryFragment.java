@@ -1,5 +1,4 @@
 package com.example.myrecipebook.ui.categories;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,18 +19,16 @@ import java.util.List;
 
 public class CategoryFragment extends Fragment {
 
-
     RecyclerView recyclerView;
     List<CategoryModel> categoryModelList;
     CategoryAdapter categoryAdapter;
-    ImageButton imageButton;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+        View root = inflater.inflate(R.layout.fragment_category, container, false);
 
-        View root  = inflater.inflate(R.layout.fragment_category, container, false);
 
         recyclerView = root.findViewById(R.id.category_recipes_recList);
 
@@ -48,11 +45,16 @@ public class CategoryFragment extends Fragment {
 
         categoryAdapter= new CategoryAdapter(getContext(), categoryModelList);
         recyclerView.setAdapter(categoryAdapter);
+
         categoryAdapter.notifyDataSetChanged();
-
-
 
         return root;
     }
+
+
+
+
+
+
 
 }

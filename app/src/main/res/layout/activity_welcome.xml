@@ -15,7 +15,6 @@
         android:layout_marginTop="100dp"
         android:layout_marginEnd="174dp"
         android:src="@drawable/cookbooklogo"
-        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
@@ -29,7 +28,7 @@
         android:foreground="@drawable/foreground_design"
         android:scaleType="centerCrop"
         android:src="@drawable/open1"
-        app:layout_constraintBottom_toTopOf="@+id/button" />
+        />
 
 
     <TextView
@@ -64,7 +63,9 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/register_button"
+        android:onClick="register"
+
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_bg_design"
@@ -72,7 +73,6 @@
         android:text="Get Started"
         android:textAllCaps="false"
         android:textStyle="bold"
-        android:onClick="register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,18 +80,30 @@
         app:layout_constraintVertical_bias=".7"
         app:layout_constraintWidth_percent=".8" />
 
-    <TextView
-        android:layout_width="match_parent"
+
+
+
+
+
+
+    <Button
+        android:id="@+id/login_button"
+        android:onClick="login"
+
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="sign in"
+        android:background="@drawable/btn_bg_design"
         android:textAlignment="center"
         android:textColor="#707070"
-        android:textSize="16sp"
+        android:textAllCaps="false"
+        android:textSize="15sp"
         android:textStyle="bold"
+        android:textColorLink="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button"
+        app:layout_constraintTop_toBottomOf="@id/register_button"
 
         />
 

@@ -1,38 +1,37 @@
-
 package com.example.myrecipebook.adapters;
-
-//ADAPTER + VIEWHOLDER
-
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myrecipebook.R;
+import com.example.myrecipebook.activities.DetailRecipeActivity;
 import com.example.myrecipebook.models.CategoryModel;
 
 import java.util.List;
+
+//ADAPTER + VIEWHOLDER
 
 //5.ADAPTER class (manage all the viewHolders)
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
 
     Context context;
-    List<CategoryModel> list;
+    List<CategoryModel> categoryList;
 
     //CTOR
-    public CategoryAdapter(Context context, List<CategoryModel> list) {
+    public CategoryAdapter(Context context, List<CategoryModel> categoryList) {
         this.context = context;
-        this.list = list;
+        this.categoryList = categoryList;
     }
 
-    @NonNull
-    @Override
+     @Override
     //return viewHolder that contain view *object*, that create from match xml file, using inflater
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.category_item, parent, false ));
@@ -42,24 +41,26 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     //(bind the items with each item of the oneCategoryList list which than will be shown in recycler view)
     @Override
     public void onBindViewHolder(@NonNull CategoryAdapter.ViewHolder holder, int position) {
-        holder.imageView.setImageResource(list.get(position).getImage());
-        holder.name.setText(list.get(position).getName());
-        holder.detail.setText(list.get(position).getDetail());
+        holder.imageView.setImageResource(categoryList.get(position).getImage());
+        holder.name.setText(categoryList.get(position).getName());
+        holder.detail.setText(categoryList.get(position).getDetail());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(context, DetailRecipeActivity.class);
+                intent.putExtra("Image", categoryList.get(holder.getAdapterPosition()).getImage());
+                intent.putExtra("Name", categoryList.get(holder.getAdapterPosition()).getName());
+                intent.putExtra("Detail", categoryList.get(holder.getAdapterPosition()).getDetail());
+                context.startActivity(intent);
             }
         });
-
-
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return categoryList.size();
     }
-
 
 
 
@@ -74,6 +75,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         // ImageView imageView;
         TextView name, detail;
         ImageView imageView;
+        CardView cardView;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -82,7 +84,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
             imageView = itemView.findViewById(R.id.category_recipe_img);
             name = itemView.findViewById(R.id.category_recipe_name);
             detail =  itemView.findViewById(R.id.category_recipe_detail);
-
+            cardView = itemView.findViewById(R.id.myCardView);
         }
     }
 }

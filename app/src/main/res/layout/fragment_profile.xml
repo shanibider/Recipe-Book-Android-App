@@ -1,14 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ProfileFragment">
+    tools:context=".ui.slideshow.ProfileFragment">
+
+
+
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/Profile" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/userimage"
+        android:layout_width="95dp"
+        android:layout_height="90dp"
+        android:contentDescription="@string/nav_header_desc"
+        android:paddingTop="8dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/user1" />
+
+
+    <TextView
+        android:id="@+id/profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="400dp"
+        android:fontFamily="monospace"
+        android:text="@string/Profile"
+        android:textAlignment="center"
+        android:textColor="#2c2c2c"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/hello"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="550dp"
+        android:layout_marginLeft="15dp"
+        android:padding="10dp"
+        android:text="Hello"
+        android:textColor="#707070"
+        android:textSize="20sp"
+        android:textStyle="bold"
+
+        app:layout_constraintTop_toBottomOf="@+id/profile" />
+
+
+    <Button
+        android:id="@+id/food_pref"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:onClick="foodPref"
+        android:text="My food prefrences"
+        android:textSize="11dp"
+        android:layout_marginRight="130dp"
+        android:layout_marginBottom="450dp"
+        android:textAlignment="textStart"
+        android:textColor="@color/darkgray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hello"
+        app:layout_constraintVertical_bias="0.501" />
+
+    <Button
+        android:id="@+id/my_recipes"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:onClick="myRecipes"
+        android:text="My Recipes"
+        android:textSize="11dp"
+        android:layout_marginRight="130dp"
+        android:layout_marginBottom="350dp"
+        android:textAlignment="textStart"
+        android:textColor="@color/darkgray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hello"
+        app:layout_constraintVertical_bias="0.501" />
+
+    <Button
+        android:id="@+id/my_favourites"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:onClick="favourites"
+        android:text="Favourites"
+        android:textSize="11dp"
+        android:layout_marginRight="130dp"
+        android:layout_marginBottom="250dp"
+        android:textAlignment="textStart"
+        android:textColor="@color/darkgray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hello"
+        app:layout_constraintVertical_bias="0.501" />
+
+
+    <Button
+        android:id="@+id/find_map"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:onClick="marketsNearMe"
+        android:text="Find supermarket near me"
+        android:textSize="11dp"
+        android:textAlignment="textStart"
+        android:layout_marginRight="130dp"
+        android:layout_marginBottom="150dp"
+        android:textColor="@color/darkgray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hello"
+        app:layout_constraintVertical_bias="0.501" />
+
+
+
+    <Button
+        android:id="@+id/edit_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="editProfile"
+        android:text="Edit Profile"
+        android:textSize="10dp"
+        android:layout_marginTop="100dp"
+        android:textColor="@color/darkgray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/find_map"
+        app:layout_constraintVertical_bias="0.501" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
