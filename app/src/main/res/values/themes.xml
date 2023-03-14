@@ -22,4 +22,5 @@
     <style name="Theme.MyRecipeBook.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.MyRecipeBook.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

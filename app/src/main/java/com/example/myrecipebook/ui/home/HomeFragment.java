@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -62,14 +63,14 @@ public class HomeFragment extends Fragment {
         homeItemAdapter = new HomeItemAdapter(getActivity(),HomeModelList);
         //6.Bind the adapter to the RecyclerView reference
         homeItemRecList.setAdapter(homeItemAdapter);
-        //2.use a linear layout manager
-        homeItemRecList.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
+        //2.use a layout manager
+        homeItemRecList.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
+        //homeItemRecList.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
         homeItemRecList.setHasFixedSize(true);
         homeItemRecList.setNestedScrollingEnabled(false);
 
         return root;
     }
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -77,11 +78,15 @@ public class HomeFragment extends Fragment {
     }
 
 
-//upload new recipe
+    //Upload new recipe
     public void btn_uploadActivity(View view) {
-
-    startActivity(new Intent(getContext(), Upload_Recipe.class));
-
+    startActivity(new Intent(getActivity(), Upload_Recipe.class));
 
     }
+
+
+
+
+
+
 }

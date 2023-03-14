@@ -4,6 +4,7 @@ package com.example.myrecipebook.adapters;
 //ADAPTER + VIEWHOLDER
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +13,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myrecipebook.R;
+import com.example.myrecipebook.activities.DetailRecipeActivity;
 import com.example.myrecipebook.models.CategoryModel;
 import com.example.myrecipebook.models.DetailRecipeModel;
 
@@ -41,17 +44,17 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        System.out.println(position);
+        System.out.println("position:" + position);
 
         holder.imageView.setImageResource(list.get(position).getImage());
         holder.name.setText(list.get(position).getName());
         holder.detail.setText(list.get(position).getDetail());
         holder.ingredients.setText(list.get(position).getIngredients());
         holder.instruction.setText(list.get(position).getInstruction());
-
-
-
     }
+
+
+
 
     @Override
     public int getItemCount() {
@@ -73,6 +76,7 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
         ImageView imageView;
 
 
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -81,6 +85,10 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
             detail =  itemView.findViewById(R.id.recipe_detail);
             ingredients =  itemView.findViewById(R.id.recipe_ingredients);
             instruction = itemView.findViewById(R.id.recipe_instruction);
+
         }
     }
 }
+
+
+

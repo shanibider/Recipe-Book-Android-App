@@ -7,6 +7,7 @@ import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +18,7 @@ import com.example.myrecipebook.models.CategoryModel;
 import java.util.ArrayList;
 import java.util.List;
 
+//List of recipes on one category
 public class CategoryFragment extends Fragment {
 
     RecyclerView recyclerView;
@@ -32,7 +34,8 @@ public class CategoryFragment extends Fragment {
 
         recyclerView = root.findViewById(R.id.category_recipes_recList);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+       recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         categoryModelList = new ArrayList<>();
 
@@ -41,7 +44,6 @@ public class CategoryFragment extends Fragment {
         categoryModelList.add(new CategoryModel(R.drawable.shake, "Fruit shake", "6 min"));
         categoryModelList.add(new CategoryModel(R.drawable.bowl, "Smoothie bowl", "5 min"));
         categoryModelList.add(new CategoryModel(R.drawable.crepe, "Oats crepe", "15 min"));
-
 
         categoryAdapter= new CategoryAdapter(getContext(), categoryModelList);
         recyclerView.setAdapter(categoryAdapter);

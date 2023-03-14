@@ -1,6 +1,7 @@
 package com.example.myrecipebook.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,10 +9,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myrecipebook.R;
 import com.example.myrecipebook.models.HomeItemModel;
+import com.example.myrecipebook.ui.categories.CategoryFragment;
+import com.example.myrecipebook.ui.home.HomeFragment;
 
 import java.util.List;
 
@@ -20,11 +25,11 @@ import java.util.List;
 //5.ADAPTER (manage all the viewholders)
 public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.ViewHolder> {
 
-   Context contxt;
+   Context context;
    List<HomeItemModel> list;
 
-    public HomeItemAdapter(Context contxt, List<HomeItemModel> list) {
-        this.contxt = contxt;
+    public HomeItemAdapter(Context context, List<HomeItemModel> list) {
+        this.context = context;
         this.list = list;
     }
 
@@ -43,7 +48,18 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.imageView.setImageResource(list.get(position).getImage());
         holder.name.setText(list.get(position).getName());
+
+        //not workingggg
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+               // Intent intent = new Intent(context, CategoryFragment.class);
+                //context.startActivity(intent);
+            }
+        });
     }
+
 
     //number of objects to display in the list
     @Override
@@ -62,13 +78,19 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.ViewHo
         //references to the views for each data item
         ImageView imageView;
         TextView name;
+        CardView cardView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imageView= itemView.findViewById(R.id.category_img);
             name= itemView.findViewById(R.id.category_title);
+            cardView = itemView.findViewById(R.id.homeCard);
+
 
         }
     }
 }
+
+
+
