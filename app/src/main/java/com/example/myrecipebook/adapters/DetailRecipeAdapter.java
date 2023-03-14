@@ -4,7 +4,6 @@ package com.example.myrecipebook.adapters;
 //ADAPTER + VIEWHOLDER
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myrecipebook.R;
-import com.example.myrecipebook.activities.DetailRecipeActivity;
 import com.example.myrecipebook.models.CategoryModel;
 import com.example.myrecipebook.models.DetailRecipeModel;
 
@@ -28,11 +25,13 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
 
     Context context;
     List<DetailRecipeModel> list;
+    int position;
 
     //CTOR
-    public DetailRecipeAdapter(Context context, List<DetailRecipeModel> list) {
+    public DetailRecipeAdapter(Context context, List<DetailRecipeModel> list, int position) {
         this.context = context;
         this.list = list;
+        this.position = position;
     }
 
     @NonNull
@@ -44,17 +43,15 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        System.out.println("position:" + position);
+        System.out.println(this.position);
 
-        holder.imageView.setImageResource(list.get(position).getImage());
-        holder.name.setText(list.get(position).getName());
-        holder.detail.setText(list.get(position).getDetail());
-        holder.ingredients.setText(list.get(position).getIngredients());
-        holder.instruction.setText(list.get(position).getInstruction());
+        holder.imageView.setImageResource(list.get(this.position).getImage());
+        holder.name.setText(list.get(this.position).getName());
+        holder.detail.setText(list.get(this.position).getDetail());
+        holder.ingredients.setText(list.get(this.position).getIngredients());
+        holder.instruction.setText(list.get(this.position).getInstruction());
+
     }
-
-
-
 
     @Override
     public int getItemCount() {
@@ -76,7 +73,6 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
         ImageView imageView;
 
 
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -85,10 +81,6 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
             detail =  itemView.findViewById(R.id.recipe_detail);
             ingredients =  itemView.findViewById(R.id.recipe_ingredients);
             instruction = itemView.findViewById(R.id.recipe_instruction);
-
         }
     }
 }
-
-
-

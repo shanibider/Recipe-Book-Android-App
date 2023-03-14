@@ -57,6 +57,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
                 intent.putExtra("Image", categoryList.get(holder.getAdapterPosition()).getImage());
                 intent.putExtra("Name", categoryList.get(holder.getAdapterPosition()).getName());
                 intent.putExtra("Detail", categoryList.get(holder.getAdapterPosition()).getDetail());
+                intent.putExtra("number", holder.getAdapterPosition());
                 context.startActivity(intent);
 
             }
