@@ -68,13 +68,14 @@
         app:layout_constraintTop_toBottomOf="@+id/category_title" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:id="@+id/btn_uploadActivity"
+    android:onClick="btn_uploadActivity"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="40dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     android:src="@drawable/ic_upload"
-    android:onClick="btn_uploadActivity"
         >
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>

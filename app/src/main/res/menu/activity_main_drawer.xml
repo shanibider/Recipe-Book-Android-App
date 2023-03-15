@@ -24,5 +24,11 @@
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_baseline_account_circle_24"
             android:title="Profile" />
+
+        <item
+            android:id="@+id/nav_uploadRecipe"
+            android:icon="@drawable/ic_baseline_account_circle_24"
+            android:title="Upload Recipe" />
+
     </group>
 </menu>

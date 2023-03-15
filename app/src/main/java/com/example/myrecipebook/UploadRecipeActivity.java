@@ -9,19 +9,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.ProgressBar;
 
 import com.example.myrecipebook.databinding.ActivityMainBinding;
 
-public class Upload_Recipe extends AppCompatActivity {
+public class UploadRecipeActivity extends AppCompatActivity {
 
     ImageView recipeImage;
     Uri uri;
     Button uploadPhoto;
+
+    ImageView uploadImage;
+    EditText uploadRecipeName, uploadRecipePreparation, uploadRecipeIngredients, uploadRecipeInstructions;
+    ProgressBar progressBar;
+    ImageView uploadRecipeImage;
+    Uri imageUri;
 
     ActivityMainBinding binding;
     ActivityResultLauncher<Intent> activityResultLauncher;
@@ -32,8 +38,8 @@ public class Upload_Recipe extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_recipe);
 
-        recipeImage = (ImageView) findViewById(R.id.iv_foodImage);
-        uploadPhoto =  findViewById(R.id.upload_photo);
+        recipeImage = (ImageView) findViewById(R.id.upload_recipe_image);
+        uploadPhoto =  findViewById(R.id.upload_image);
 
         activityResultLauncher= registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
             @Override
