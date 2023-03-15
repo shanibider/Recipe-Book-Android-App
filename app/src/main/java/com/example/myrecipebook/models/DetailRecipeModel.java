@@ -1,18 +1,24 @@
 package com.example.myrecipebook.models;
 
-public class DetailRecipeModel {
-    int image;
-    String name;
-    String detail;
-    String ingredients;
-    String instruction;
+import java.util.List;
 
-    public DetailRecipeModel(int image, String name, String detail, String ingredients, String instruction) {
+public class DetailRecipeModel {
+    public String name;
+    public int image;
+    public List<String> category;
+    public List<String> healthLabels;
+    public String ingredients;
+    public String instruction;
+    public String totalTime;
+
+    public DetailRecipeModel(int image, String name, String totalTime, String ingredients, String instruction, List<String> category, List<String> healthLabels) {
         this.image = image;
         this.name = name;
-        this.detail = detail;
+        this.totalTime = totalTime;
         this.ingredients = ingredients;
         this.instruction = instruction;
+        this.category=category;
+        this.healthLabels=healthLabels;
     }
 
     public int getImage() {
@@ -32,11 +38,11 @@ public class DetailRecipeModel {
     }
 
     public String getDetail() {
-        return detail;
+        return totalTime;
     }
 
     public void setDetail(String detail) {
-        this.detail = detail;
+        this.totalTime = detail;
     }
 
     public String getIngredients() {

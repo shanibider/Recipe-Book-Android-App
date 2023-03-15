@@ -1,6 +1,22 @@
 package com.example.myrecipebook.models;
 
+import static android.content.ContentValues.TAG;
+
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
 import com.example.myrecipebook.R;
+import com.example.myrecipebook.databinding.DetailrecipeItemBinding;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -13,19 +29,20 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class RestApiThread extends Thread {
 
-    public final String[] foods;
-    public final int numRecipes;
-    public final String API_ID = "2fbb9e5c";
-    public final String API_KEY = "e1fb0aa48ef28311b465ca5ff535a63d";
+    public String[] foods;
+    public String API_ID = "2fbb9e5c";
+    public String API_KEY = "e1fb0aa48ef28311b465ca5ff535a63d";
+    public int[] images;
     public List<String> mealCategories;
 
 
     public RestApiThread() {
-        numRecipes = 7;
         foods = new String[]{"pancakes","toast","granola","omelette","waffles","chicken", "hummus","curry","quinoa","hamburger","steak","salmon","bolognese","kebab","cake","pie","ice-cream"};
+        images = new int[] {R.drawable.pancakes,R.drawable.toast,R.drawable.granola,R.drawable.omlette,R.drawable.waffles,R.drawable.chicken,R.drawable.hummus,R.drawable.curry,R.drawable.quinoa,R.drawable.hamburger,R.drawable.steak,R.drawable.salmon,R.drawable.bolognese,R.drawable.kebab,R.drawable.cake,R.drawable.pie,R.drawable.icecream};
         mealCategories = new ArrayList<>();
         mealCategories.add("Vegetarian");
         mealCategories.add("Vegan");
@@ -37,20 +54,78 @@ public class RestApiThread extends Thread {
     @Override
     public void run() {
         System.out.println("RestApiThread run test");
-//        List<RecipeModel> recipeModelsList = new ArrayList<>();
-//        for(String food:foods) {
-//            recipeModelsList.add(generateRecipeModel(food));
+        final AtomicBoolean flag = new AtomicBoolean(false);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference recipeRef = database.getReference("Recipes");
+
+        recipeRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (!snapshot.hasChildren()) {
+                    System.out.println("Don't have children");
+                    flag.set(true);
+                } else {
+                    System.out.println("Have children");
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                System.out.println(error);
+            }
+        });
+
+        try {
+            sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if (flag.get()) {
+            for(int i=0;i<foods.length;i++) {
+                DetailRecipeModel detailRecipeModel = generateRecipeModel(i);
+                DatabaseReference recipeChildRef = recipeRef.child(detailRecipeModel.name);
+                recipeChildRef.setValue(detailRecipeModel);
+                try {
+                    sleep(10000); // Sleep for 10 seconds
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            System.out.println("finished uploading to firebase db");
+        }
+//            List<DetailRecipeModel> list = new ArrayList<>();
+//            recipeRef.addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                    System.out.println("children count "+dataSnapshot.getChildrenCount());
+//                    for (DataSnapshot recipeSnapshot : dataSnapshot.getChildren()) {
+//                        String recipeName = recipeSnapshot.child("name").getValue(String.class);
+//                        int recipeImage = recipeSnapshot.child("image").getValue(Integer.class);
+//                        String recipeTotalTime = recipeSnapshot.child("totalTime").getValue(String.class);
+//                        String recipeIngredients = recipeSnapshot.child("ingredients").getValue(String.class);
+//                        String recipeInstruction = recipeSnapshot.child("instruction").getValue(String.class);
+//                        List<String> recipeCategory = recipeSnapshot.child("category").getValue(new GenericTypeIndicator<List<String>>() {});
+//                        List<String> recipeHealthLabels = recipeSnapshot.child("healthLabels").getValue(new GenericTypeIndicator<List<String>>() {});
+//                        DetailRecipeModel recipeModel = new DetailRecipeModel(recipeImage, recipeName, recipeTotalTime, recipeIngredients, recipeInstruction, recipeCategory, recipeHealthLabels);
+//                        list.add(recipeModel);
+//                    }
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError databaseError) {
+//                    System.out.println(databaseError);
+//                }
+//            });
 //            try {
-//                sleep(10000); // Sleep for 10 seconds
+//                sleep(5000);
 //            } catch (InterruptedException e) {
 //                e.printStackTrace();
 //            }
-//        }
-//        System.out.println(recipeModelsList.size());
+//            System.out.println("list size " +list.size());
     }
 
-    public RecipeModel generateRecipeModel (String food){
+    public DetailRecipeModel generateRecipeModel (int i){
         try {
+            String food = foods[i];
             String url = "https://api.edamam.com/search?q=" + food +"&app_id=" + API_ID + "&app_key=" + API_KEY;
 
             URL requestUrl = new URL(url);
@@ -75,7 +150,7 @@ public class RestApiThread extends Thread {
                 JSONObject hit = hits.getJSONObject(0);
 
                 JSONObject recipe = hit.getJSONObject("recipe");
-                String my_image = recipe.getString("image");
+                int my_image = images[i];
                 System.out.println(my_image);
 
                 List<String> my_healthLabels = new ArrayList<>();
@@ -88,9 +163,9 @@ public class RestApiThread extends Thread {
                 System.out.println(my_healthLabels);
 
                 JSONArray ingredientLines = recipe.getJSONArray("ingredientLines");
-                List<String> my_ingredientLines = new ArrayList<>();
+                String my_ingredientLines = "";
                 for(int j=0;j<ingredientLines.length();j++){
-                    my_ingredientLines.add(ingredientLines.getString(j));
+                    my_ingredientLines +=ingredientLines.getString(j);
                 }
                 System.out.println(my_ingredientLines);
 
@@ -112,13 +187,14 @@ public class RestApiThread extends Thread {
                 }
                 System.out.println(my_mealType);
 
-                int my_totalTime = recipe.optInt("totalTime",-1);
-                if (my_totalTime > 0) {
-                    System.out.println("Total time: " + my_totalTime + " minutes");
+                int int_totalTime = recipe.optInt("totalTime",-1);
+                if (int_totalTime > 0) {
+                    System.out.println("Total time: " + int_totalTime + " minutes");
                 } else {
-                    my_totalTime = -1;
+                    int_totalTime = -1;
                     System.out.println("Total time not available");
                 }
+                String my_totalTime = Integer.toString(int_totalTime) + " min";
 
                 String my_recipeUrl = recipe.optString("url", "");
                 if (!my_recipeUrl.isEmpty()) {
@@ -126,9 +202,8 @@ public class RestApiThread extends Thread {
                 } else {
                     System.out.println("Recipe URL not available");
                 }
-                System.out.println(my_recipeUrl);
-                RecipeModel rm = new RecipeModel(my_q,my_image,my_mealType,my_healthLabels,my_ingredientLines,my_totalTime,my_recipeUrl);
-                return rm;
+                DetailRecipeModel drm = new DetailRecipeModel(my_image,my_q,my_totalTime,my_ingredientLines,my_recipeUrl,my_mealType,my_healthLabels);
+                return drm;
             } else {
                 System.out.println("Error: " + responseCode);
             }
