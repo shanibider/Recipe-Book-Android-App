@@ -79,7 +79,7 @@
         />
 
     <Button
-        android:id="@+id/upload_image"
+        android:id="@+id/btn_upload_image"
         android:layout_width="200dp"
         android:layout_height="60dp"
         android:gravity="center"
@@ -94,7 +94,7 @@
 
 
     <Button
-        android:id="@+id/upload_recipe"
+        android:id="@+id/btn_upload_recipe"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:text="upload recipe"
