@@ -4,8 +4,17 @@ import static android.content.ContentValues.TAG;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import com.example.myrecipebook.R;
+import com.example.myrecipebook.databinding.DetailrecipeItemBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -20,6 +29,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class RestApiThread extends Thread {
 
@@ -44,22 +54,73 @@ public class RestApiThread extends Thread {
     @Override
     public void run() {
         System.out.println("RestApiThread run test");
-        DetailRecipeModel temp = new DetailRecipeModel(2131165456, "oat","10 min","1 milk 1 oat","mix it and eat it",null,null);
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        final AtomicBoolean flag = new AtomicBoolean(false);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference recipeRef = database.getReference("Recipes");
 
-
-        List<DetailRecipeModel> recipeModelsList = new ArrayList<>();
-        for(int i=0;i<foods.length;i++) {
-            recipeModelsList.add(generateRecipeModel(i));
-            try {
-                sleep(10000); // Sleep for 10 seconds
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        recipeRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (!snapshot.hasChildren()) {
+                    System.out.println("Don't have children");
+                    flag.set(true);
+                } else {
+                    System.out.println("Have children");
+                }
             }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                System.out.println(error);
+            }
+        });
+
+        try {
+            sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        System.out.println(recipeModelsList.size());
-//        int i=0;
-//        i++;
+        if (flag.get()) {
+            for(int i=0;i<foods.length;i++) {
+                DetailRecipeModel detailRecipeModel = generateRecipeModel(i);
+                DatabaseReference recipeChildRef = recipeRef.child(detailRecipeModel.name);
+                recipeChildRef.setValue(detailRecipeModel);
+                try {
+                    sleep(10000); // Sleep for 10 seconds
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            System.out.println("finished uploading to firebase db");
+        }
+//            List<DetailRecipeModel> list = new ArrayList<>();
+//            recipeRef.addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                    System.out.println("children count "+dataSnapshot.getChildrenCount());
+//                    for (DataSnapshot recipeSnapshot : dataSnapshot.getChildren()) {
+//                        String recipeName = recipeSnapshot.child("name").getValue(String.class);
+//                        int recipeImage = recipeSnapshot.child("image").getValue(Integer.class);
+//                        String recipeTotalTime = recipeSnapshot.child("totalTime").getValue(String.class);
+//                        String recipeIngredients = recipeSnapshot.child("ingredients").getValue(String.class);
+//                        String recipeInstruction = recipeSnapshot.child("instruction").getValue(String.class);
+//                        List<String> recipeCategory = recipeSnapshot.child("category").getValue(new GenericTypeIndicator<List<String>>() {});
+//                        List<String> recipeHealthLabels = recipeSnapshot.child("healthLabels").getValue(new GenericTypeIndicator<List<String>>() {});
+//                        DetailRecipeModel recipeModel = new DetailRecipeModel(recipeImage, recipeName, recipeTotalTime, recipeIngredients, recipeInstruction, recipeCategory, recipeHealthLabels);
+//                        list.add(recipeModel);
+//                    }
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError databaseError) {
+//                    System.out.println(databaseError);
+//                }
+//            });
+//            try {
+//                sleep(5000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//            System.out.println("list size " +list.size());
     }
 
     public DetailRecipeModel generateRecipeModel (int i){
