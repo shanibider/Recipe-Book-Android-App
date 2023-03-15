@@ -9,7 +9,9 @@
         android:id="@+id/nav_home"
         android:name="com.example.myrecipebook.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+
+    </fragment>
 
     <fragment
         android:id="@+id/nav_categories"
@@ -26,5 +28,15 @@
         android:id="@+id/nav_profile"
         android:name="com.example.myrecipebook.ui.slideshow.ProfileFragment"
         android:label="@string/profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/activity_profile" />
+    <activity
+        android:id="@+id/nav_allRecipes"
+        android:name="com.example.myrecipebook.activities.DetailRecipeActivity"
+        android:label="fragment_detailrecipe"
+        tools:layout="@layout/fragment_detailrecipe" />
+    <activity
+        android:id="@+id/nav_uploadRecipe"
+        android:name="com.example.myrecipebook.UploadRecipeActivity"
+        android:label="activity_upload_recipe"
+        tools:layout="@layout/activity_upload_recipe" />
 </navigation>

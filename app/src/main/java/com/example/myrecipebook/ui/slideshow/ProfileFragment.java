@@ -17,7 +17,7 @@ public class ProfileFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         //inflate the layout for this fragment
-        View root  = inflater.inflate(R.layout.fragment_profile, container, false);
+        View root  = inflater.inflate(R.layout.activity_profile, container, false);
 
 
 

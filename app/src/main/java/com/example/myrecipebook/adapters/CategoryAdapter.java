@@ -45,16 +45,21 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         holder.name.setText(categoryList.get(position).getName());
         holder.detail.setText(categoryList.get(position).getDetail());
 
+
+//this connect between recipe card (in category) and his own recipe detail
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println(holder.getAdapterPosition());
+                System.out.println("Adapter position:" + holder.getAdapterPosition());
+
                 Intent intent = new Intent(context, DetailRecipeActivity.class);
+               //here i need to put what i have in detailrecipe
                 intent.putExtra("Image", categoryList.get(holder.getAdapterPosition()).getImage());
                 intent.putExtra("Name", categoryList.get(holder.getAdapterPosition()).getName());
                 intent.putExtra("Detail", categoryList.get(holder.getAdapterPosition()).getDetail());
                 intent.putExtra("number", holder.getAdapterPosition());
                 context.startActivity(intent);
+
             }
         });
     }
@@ -90,3 +95,5 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         }
     }
 }
+
+

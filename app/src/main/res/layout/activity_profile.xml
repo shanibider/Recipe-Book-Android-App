@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.slideshow.ProfileFragment">
+    tools:context=".activities.ProfileActivity">
 
 
 
@@ -13,13 +13,13 @@
     <!-- TODO: Update blank fragment layout -->
 
     <ImageView
-        android:id="@+id/userimage"
-        android:layout_width="95dp"
-        android:layout_height="90dp"
+        android:id="@+id/user_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:contentDescription="@string/nav_header_desc"
         android:paddingTop="8dp"
-        android:layout_marginTop="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/profile"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/titleName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -27,33 +27,101 @@
 
 
     <TextView
-        android:id="@+id/profile"
+        android:id="@+id/titleName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="400dp"
+        android:layout_marginBottom="450dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="monospace"
-        android:text="@string/Profile"
+        android:text="PRofile"
         android:textAlignment="center"
         android:textColor="#2c2c2c"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="27sp"
+        app:layout_constraintTop_toBottomOf="@+id/user_image"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+         />
 
     <TextView
-        android:id="@+id/hello"
+        android:id="@+id/titleHello"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="550dp"
         android:layout_marginLeft="15dp"
-        android:padding="10dp"
+        android:layout_marginTop="20dp"
         android:text="Hello"
         android:textColor="#707070"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/titleName" />
 
-        app:layout_constraintTop_toBottomOf="@+id/profile" />
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="240dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/email"
+            android:layout_weight="1"
+            android:text="Email"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/profileEmail"
+            android:text="email"
+            android:layout_weight="1"
+            android:textAlignment="viewEnd"
+            android:textSize="18sp"/>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="280dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/password"
+        android:layout_weight="1"
+        android:text="Password"
+        android:textStyle="bold"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/profilePassword"
+        android:text="password"
+        android:layout_weight="1"
+        android:textAlignment="viewEnd"
+        android:textSize="18sp"/>
+    </LinearLayout>
+
+
+
 
 
     <Button
@@ -63,14 +131,13 @@
         android:onClick="foodPref"
         android:text="My food prefrences"
         android:textSize="11dp"
-        android:layout_marginRight="130dp"
-        android:layout_marginBottom="450dp"
-        android:textAlignment="textStart"
+        android:layout_marginTop="150dp"
         android:textColor="@color/darkgray"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center"
+        app:cornerRadius = "10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hello"
+        app:layout_constraintTop_toBottomOf="@+id/titleHello"
         app:layout_constraintVertical_bias="0.501" />
 
     <Button
@@ -80,14 +147,13 @@
         android:onClick="myRecipes"
         android:text="My Recipes"
         android:textSize="11dp"
-        android:layout_marginRight="130dp"
-        android:layout_marginBottom="350dp"
-        android:textAlignment="textStart"
+        android:layout_marginTop="200dp"
+        android:gravity="center"
+        app:cornerRadius = "10dp"
         android:textColor="@color/darkgray"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hello"
+        app:layout_constraintTop_toBottomOf="@+id/titleHello"
         app:layout_constraintVertical_bias="0.501" />
 
     <Button
@@ -97,16 +163,14 @@
         android:onClick="favourites"
         android:text="Favourites"
         android:textSize="11dp"
-        android:layout_marginRight="130dp"
-        android:layout_marginBottom="250dp"
-        android:textAlignment="textStart"
+        android:layout_marginTop="250dp"
+        android:gravity="center"
+        app:cornerRadius = "10dp"
         android:textColor="@color/darkgray"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hello"
+        app:layout_constraintTop_toBottomOf="@+id/titleHello"
         app:layout_constraintVertical_bias="0.501" />
-
 
     <Button
         android:id="@+id/find_map"
@@ -115,26 +179,25 @@
         android:onClick="marketsNearMe"
         android:text="Find supermarket near me"
         android:textSize="11dp"
-        android:textAlignment="textStart"
-        android:layout_marginRight="130dp"
-        android:layout_marginBottom="150dp"
+        android:gravity="center"
+        android:layout_marginTop="300dp"
         android:textColor="@color/darkgray"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:cornerRadius = "10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hello"
+        app:layout_constraintTop_toBottomOf="@+id/titleHello"
         app:layout_constraintVertical_bias="0.501" />
-
 
 
     <Button
         android:id="@+id/edit_profile"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:onClick="editProfile"
         android:text="Edit Profile"
         android:textSize="10dp"
-        android:layout_marginTop="100dp"
+        app:cornerRadius = "10dp"
+        android:layout_marginTop="20dp"
         android:textColor="@color/darkgray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

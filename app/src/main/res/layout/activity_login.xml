@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="500dp"
         android:fontFamily="monospace"
@@ -23,7 +23,7 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="500dp"
         android:padding="14dp"
@@ -33,19 +33,22 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/login_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:backgroundTint="#CCCCCC"
         android:drawableLeft="@drawable/ic_baseline_email_24"
         android:drawablePadding="13dp"
-        android:hint="@string/email_address"
+        android:hint="@string/email"
+        android:inputType="text"
+        android:minHeight="48dp"
         android:textColorHint="#707070"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,25 +56,26 @@
         app:layout_constraintWidth_percent=".8" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/login_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#CCCCCC"
         android:drawableLeft="@drawable/ic_baseline_password_24"
         android:drawablePadding="13dp"
         android:hint="@string/password"
+        android:inputType="numberPassword"
+        android:minHeight="48dp"
         android:textColorHint="#707070"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2"
+        app:layout_constraintTop_toBottomOf="@+id/login_email"
         app:layout_constraintWidth_percent=".8" />
 
     <Button
-        android:onClick="mainActivity"
-        android:id="@+id/button"
+        android:id="@+id/login_button"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="200dp"
         android:background="@drawable/btn_bg_design"
         android:padding="14dp"
         android:text="Login"
@@ -79,13 +83,24 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.886"
+        app:layout_constraintVertical_bias="0.667"
         app:layout_constraintWidth_percent=".8" />
 
-
+    <TextView
+        android:id="@+id/login_not_yet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Not yet register? Sign Up"
+        android:gravity="center"
+        android:padding="8dp"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_button" />
 
 
 
