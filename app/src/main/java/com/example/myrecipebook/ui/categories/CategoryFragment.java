@@ -55,8 +55,9 @@ public class CategoryFragment extends Fragment {
                 for (DataSnapshot recipeSnapshot : dataSnapshot.getChildren()) {
                     String recipeName = recipeSnapshot.child("name").getValue(String.class);
                     int recipeImage = recipeSnapshot.child("image").getValue(Integer.class);
-                    String recipeTotalTime = recipeSnapshot.child("totalTime").getValue(String.class);
-                    String recipeIngredients = recipeSnapshot.child("ingredients").getValue(String.class);
+                    String recipeTotalTime = "";
+                    if (recipeSnapshot.child("totalTime").getValue(String.class).charAt(0) != '-')
+                        recipeTotalTime = recipeSnapshot.child("totalTime").getValue(String.class);                    String recipeIngredients = recipeSnapshot.child("ingredients").getValue(String.class);
                     String recipeInstruction = recipeSnapshot.child("instruction").getValue(String.class);
                     List<String> recipeCategory = recipeSnapshot.child("category").getValue(new GenericTypeIndicator<List<String>>() {});
                     List<String> recipeHealthLabels = recipeSnapshot.child("healthLabels").getValue(new GenericTypeIndicator<List<String>>() {});
