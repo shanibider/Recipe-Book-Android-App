@@ -91,7 +91,7 @@ public class HomeFragment extends Fragment {
 
     //Upload new recipe
     public void btn_uploadActivity(View view) {
-    startActivity(new Intent(getActivity(), UploadRecipeActivity.class));
+        startActivity(new Intent(getActivity(), UploadRecipeActivity.class));
     }
 
 

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myrecipebook.R;
 import com.example.myrecipebook.activities.DetailRecipeActivity;
 import com.example.myrecipebook.models.CategoryModel;
+import com.example.myrecipebook.models.DetailRecipeModel;
 
 import java.util.List;
 
@@ -23,15 +24,15 @@ import java.util.List;
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
 
     Context context;
-    List<CategoryModel> categoryList;
+    List<DetailRecipeModel> categoryList;
 
     //CTOR
-    public CategoryAdapter(Context context, List<CategoryModel> categoryList) {
+    public CategoryAdapter(Context context, List<DetailRecipeModel> categoryList) {
         this.context = context;
         this.categoryList = categoryList;
     }
 
-     @Override
+    @Override
     //return viewHolder that contain view *object*, that create from match xml file, using inflater
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.category_item, parent, false ));
@@ -43,7 +44,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     public void onBindViewHolder(@NonNull CategoryAdapter.ViewHolder holder, int position) {
         holder.imageView.setImageResource(categoryList.get(position).getImage());
         holder.name.setText(categoryList.get(position).getName());
-        holder.detail.setText(categoryList.get(position).getDetail());
+        holder.detail.setText(categoryList.get(position).getTotalTime());
 
 
 //this connect between recipe card (in category) and his own recipe detail
@@ -56,7 +57,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
                //here i need to put what i have in detailrecipe
                 intent.putExtra("Image", categoryList.get(holder.getAdapterPosition()).getImage());
                 intent.putExtra("Name", categoryList.get(holder.getAdapterPosition()).getName());
-                intent.putExtra("Detail", categoryList.get(holder.getAdapterPosition()).getDetail());
+                intent.putExtra("totalTime", categoryList.get(holder.getAdapterPosition()).getTotalTime());
                 intent.putExtra("number", holder.getAdapterPosition());
                 context.startActivity(intent);
 

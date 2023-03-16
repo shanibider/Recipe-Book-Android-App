@@ -37,7 +37,7 @@ public class DetailRecipeModel {
         this.name = name;
     }
 
-    public String getDetail() {
+    public String getTotalTime() {
         return totalTime;
     }
 

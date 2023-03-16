@@ -1,4 +1,6 @@
 package com.example.myrecipebook.ui.categories;
+import static java.lang.Thread.sleep;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myrecipebook.R;
 import com.example.myrecipebook.adapters.CategoryAdapter;
 import com.example.myrecipebook.models.CategoryModel;
+import com.example.myrecipebook.models.DetailRecipeModel;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +31,7 @@ import java.util.List;
 public class CategoryFragment extends Fragment {
 
     RecyclerView recyclerView;
-    List<CategoryModel> categoryModelList;
+    List<DetailRecipeModel> recipeList;
     CategoryAdapter categoryAdapter;
 
 
@@ -33,30 +42,44 @@ public class CategoryFragment extends Fragment {
 
 
         recyclerView = root.findViewById(R.id.category_recipes_recList);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        recipeList = new ArrayList<>();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference recipeRef = database.getReference("Recipes");
+        recipeRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                recipeList.clear();
+                System.out.println("children count "+dataSnapshot.getChildrenCount());
+                for (DataSnapshot recipeSnapshot : dataSnapshot.getChildren()) {
+                    String recipeName = recipeSnapshot.child("name").getValue(String.class);
+                    int recipeImage = recipeSnapshot.child("image").getValue(Integer.class);
+                    String recipeTotalTime = recipeSnapshot.child("totalTime").getValue(String.class);
+                    String recipeIngredients = recipeSnapshot.child("ingredients").getValue(String.class);
+                    String recipeInstruction = recipeSnapshot.child("instruction").getValue(String.class);
+                    List<String> recipeCategory = recipeSnapshot.child("category").getValue(new GenericTypeIndicator<List<String>>() {});
+                    List<String> recipeHealthLabels = recipeSnapshot.child("healthLabels").getValue(new GenericTypeIndicator<List<String>>() {});
+                    DetailRecipeModel recipeModel = new DetailRecipeModel(recipeImage, recipeName, recipeTotalTime, recipeIngredients, recipeInstruction, recipeCategory, recipeHealthLabels);
+                    recipeList.add(recipeModel);
+                }
+                categoryAdapter.notifyDataSetChanged(); // update the adapter with the new data
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                System.out.println(databaseError);
+            }
+        });
+        System.out.println("list size " +recipeList.size());
 
 
-       recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        categoryModelList = new ArrayList<>();
-
-        categoryModelList.add(new CategoryModel(R.drawable.oatpancake, "Oats pancakes", "10 min"));
-        categoryModelList.add(new CategoryModel(R.drawable.oatmeal, "Oatmeal", "7 min"));
-        categoryModelList.add(new CategoryModel(R.drawable.shake, "Fruit shake", "6 min"));
-        categoryModelList.add(new CategoryModel(R.drawable.bowl, "Smoothie bowl", "5 min"));
-        categoryModelList.add(new CategoryModel(R.drawable.crepe, "Oats crepe", "15 min"));
-
-        categoryAdapter= new CategoryAdapter(getContext(), categoryModelList);
+        categoryAdapter= new CategoryAdapter(getContext(), recipeList);
         recyclerView.setAdapter(categoryAdapter);
 
         categoryAdapter.notifyDataSetChanged();
 
         return root;
     }
-
-
-
-
-
-
-
 }
