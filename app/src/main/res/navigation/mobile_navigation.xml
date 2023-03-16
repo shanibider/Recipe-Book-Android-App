@@ -20,23 +20,26 @@
         tools:layout="@layout/fragment_category" />
 
     <fragment
-        android:id="@+id/nav_my_recipes"
-        android:name="com.example.myrecipebook.ui.slideshow.MyRecipeFragment"
-        android:label="My Recipes"
-        tools:layout="@layout/fragment_my_recipes" />
-    <fragment
         android:id="@+id/nav_profile"
         android:name="com.example.myrecipebook.ui.slideshow.ProfileFragment"
         android:label="@string/profile"
         tools:layout="@layout/activity_profile" />
+
+
+
     <activity
-        android:id="@+id/nav_allRecipes"
-        android:name="com.example.myrecipebook.activities.DetailRecipeActivity"
-        android:label="fragment_detailrecipe"
-        tools:layout="@layout/fragment_detailrecipe" />
+        android:id="@+id/nav_uploadActivity"
+        android:name="com.example.myrecipebook.activities.UploadActivity"
+        android:label="activity_upload"
+        tools:layout="@layout/activity_upload" />
     <activity
-        android:id="@+id/nav_uploadRecipe"
-        android:name="com.example.myrecipebook.UploadRecipeActivity"
-        android:label="activity_upload_recipe"
-        tools:layout="@layout/activity_upload_recipe" />
+        android:id="@+id/nav_detailActivity"
+        android:name="com.example.myrecipebook.activities.DetailActivity"
+        android:label="activity_detail"
+        tools:layout="@layout/activity_detail" />
+    <activity
+        android:id="@+id/nav_my_recipes"
+        android:name="com.example.myrecipebook.activities.MainnActivity"
+        android:label="activity_mainn"
+        tools:layout="@layout/activity_mainn" />
 </navigation>

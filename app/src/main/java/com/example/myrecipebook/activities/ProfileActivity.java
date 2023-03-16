@@ -20,7 +20,6 @@ import com.google.firebase.database.ValueEventListener;
 
 //not working well
 
-
 public class ProfileActivity extends AppCompatActivity {
 
     TextView profileEmail, profilePassword;

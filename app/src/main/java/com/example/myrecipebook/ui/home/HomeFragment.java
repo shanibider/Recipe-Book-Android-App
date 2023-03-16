@@ -12,7 +12,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myrecipebook.R;
-import com.example.myrecipebook.UploadRecipeActivity;
+import com.example.myrecipebook.activities.MainnActivity;
+import com.example.myrecipebook.activities.UploadActivity;
 import com.example.myrecipebook.adapters.HomeItemAdapter;
 import com.example.myrecipebook.databinding.FragmentHomeBinding;
 import com.example.myrecipebook.models.HomeItemModel;
@@ -34,7 +35,6 @@ public class HomeFragment extends Fragment {
     //Adapter (from HomeItemAdapter.java)
     HomeItemAdapter homeItemAdapter;
 
-
     FloatingActionButton fab;
 
     //6.Attach the Adapter
@@ -48,17 +48,16 @@ public class HomeFragment extends Fragment {
         //attaching the variable 'homeItemRecList' (of RecyclerView type) to the Recyclerview in the layout
         homeItemRecList = root.findViewById(R.id.home_items_recList);
 
-        fab= root.findViewById(R.id.btn_uploadActivity);
+        fab = root.findViewById(R.id.fab1);
 
+        //Upload new recipe button
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), UploadRecipeActivity.class);
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), UploadActivity.class);
                 startActivity(intent);
-
             }
         });
-
 
         HomeModelList = new LinkedList<>();
 
@@ -89,28 +88,6 @@ public class HomeFragment extends Fragment {
     }
 
 
-    //Upload new recipe
-    public void btn_uploadActivity(View view) {
-    startActivity(new Intent(getActivity(), UploadRecipeActivity.class));
-    }
-
-
-
 }
 
-
-
-
-
-
-
-    /*
-    holder.cardView.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(context, CategoryFragment.class);
-            context.startActivity(intent);
-        }
-    });
-*/
 
