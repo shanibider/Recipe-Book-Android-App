@@ -9,11 +9,7 @@
     app:cardCornerRadius="9dp"
     app:cardElevation="5dp">
 
-
    <!--4.XML implementation of Card Layout (single row in list)-->
-
-
-
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/constraintlayout1"
@@ -38,7 +34,6 @@
           android:layout_width="match_parent"
           android:layout_height="110dp"
           app:layout_constraintBottom_toBottomOf="parent"
-
           >
 
          <TextView
