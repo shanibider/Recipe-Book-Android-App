@@ -29,6 +29,10 @@
             android:id="@+id/nav_uploadRecipe"
             android:icon="@drawable/ic_baseline_account_circle_24"
             android:title="Upload Recipe" />
+        <item
+            android:id="@+id/nav_map"
+            android:icon="@drawable/ic_baseline_map_24"
+            android:title="Store Maps"/>
 
     </group>
 </menu>

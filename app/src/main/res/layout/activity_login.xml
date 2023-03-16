@@ -63,7 +63,7 @@
         android:drawableLeft="@drawable/ic_baseline_password_24"
         android:drawablePadding="13dp"
         android:hint="@string/password"
-        android:inputType="numberPassword"
+        android:inputType="textWebPassword"
         android:minHeight="48dp"
         android:textColorHint="#707070"
         app:layout_constraintEnd_toEndOf="parent"

@@ -39,4 +39,9 @@
         android:name="com.example.myrecipebook.UploadRecipeActivity"
         android:label="activity_upload_recipe"
         tools:layout="@layout/activity_upload_recipe" />
+    <activity
+        android:id="@+id/nav_map"
+        android:name="com.example.myrecipebook.activities.MapActivity"
+        android:label="activity_map"
+        tools:layout="@layout/activity_map"/>
 </navigation>

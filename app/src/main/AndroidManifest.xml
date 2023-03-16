@@ -76,9 +76,21 @@
                 android:name="android.app.lib_name"
                 android:value="" />
 
-
-
         </activity>
+
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAP8Fp-6ZuODfpmYc2eWwg08ZLHQ9hZKIM"/>
+
+        <activity
+            android:name=".activities.MapActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
     </application>
 
 </manifest>
