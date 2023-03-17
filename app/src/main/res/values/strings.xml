@@ -32,4 +32,12 @@
     <string name="name">Name</string>
     <string name="user_name">User Name</string>
     <string name="email">email</string>
+
+    <string-array name="spinner_cate">
+        <item>All</item>
+        <item>Breakfast</item>
+        <item>Lunch</item>
+        <item>Dinner</item>
+        <item>Dessert</item>
+    </string-array>
 </resources>

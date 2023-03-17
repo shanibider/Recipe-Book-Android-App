@@ -67,6 +67,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         return categoryList.size();
     }
 
+    public void updateList(List<DetailRecipeModel> newList) {
+        categoryList = newList;
+        notifyDataSetChanged();
+    }
+
     //ViewHolder inner class
 //hold object of view of one line and save references to his elements
     public class ViewHolder extends RecyclerView.ViewHolder {

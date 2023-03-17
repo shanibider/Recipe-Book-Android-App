@@ -37,15 +37,12 @@ public class HomeFragment extends Fragment {
 
     FloatingActionButton fab;
 
-    //6.Attach the Adapter
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-       //inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        //attaching the variable 'homeItemRecList' (of RecyclerView type) to the Recyclerview in the layout
         homeItemRecList = root.findViewById(R.id.home_items_recList);
 
         fab= root.findViewById(R.id.btn_uploadActivity);
@@ -55,7 +52,6 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), UploadRecipeActivity.class);
                 startActivity(intent);
-
             }
         });
 
