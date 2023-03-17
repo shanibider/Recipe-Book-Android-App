@@ -38,7 +38,7 @@ public class CategoryFragment extends Fragment implements AdapterView.OnItemSele
     RecyclerView recyclerView;
     List<DetailRecipeModel> dataRecipeList;
     CategoryAdapter categoryAdapter;
-
+    boolean flag;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -52,7 +52,7 @@ public class CategoryFragment extends Fragment implements AdapterView.OnItemSele
 
         recyclerView = root.findViewById(R.id.category_recipes_recList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
+        flag = false;
         dataRecipeList = new ArrayList<>();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference recipeRef = database.getReference("Recipes");
@@ -74,7 +74,9 @@ public class CategoryFragment extends Fragment implements AdapterView.OnItemSele
                     DetailRecipeModel recipeModel = new DetailRecipeModel(recipeImage, recipeName, recipeTotalTime, recipeIngredients, recipeInstruction, recipeCategory, recipeHealthLabels);
                     dataRecipeList.add(recipeModel);
                 }
-                filterList("All");
+                System.out.println(spinner.getSelectedItem().toString());
+                filterList(spinner.getSelectedItem().toString());
+                flag = true;
                 categoryAdapter.notifyDataSetChanged(); // update the adapter with the new data
             }
 
