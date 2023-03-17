@@ -81,11 +81,6 @@
         app:layout_constraintWidth_percent=".8" />
 
 
-
-
-
-
-
     <Button
         android:id="@+id/welcome_login_button"
         android:onClick="login"

@@ -2,30 +2,45 @@ package com.example.myrecipebook;
 
 public class DataClass {
 
-    private String imageURL, caption;
+    //for upload data
+    private String dataTitle;
+    private String dataDesc;
+    private String dataLang;
+    private String dataImage;
+    private String key;
 
-    public DataClass(){
-
+    public String getKey() {
+        return key;
     }
 
-    public DataClass(String imageURL, String caption) {
-        this.imageURL = imageURL;
-        this.caption = caption;
+    public void setKey(String key) {
+        this.key = key;
     }
 
-    public String getImageURL() {
-        return imageURL;
+    public String getDataTitle() {
+        return dataTitle;
     }
 
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
+    public String getDataDesc() {
+        return dataDesc;
     }
 
-    public String getCaption() {
-        return caption;
+    public String getDataLang() {
+        return dataLang;
     }
 
-    public void setCaption(String caption) {
-        this.caption = caption;
+    public String getDataImage() {
+        return dataImage;
     }
+
+    public DataClass(String dataTitle, String dataDesc, String dataLang, String dataImage) {
+        this.dataTitle = dataTitle;
+        this.dataDesc = dataDesc;
+        this.dataLang = dataLang;
+        this.dataImage = dataImage;
+    }
+
+    public DataClass() {
+    }
+
 }
