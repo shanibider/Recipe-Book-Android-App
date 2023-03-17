@@ -88,9 +88,6 @@ public class HomeFragment extends Fragment {
     public void btn_uploadActivity(View view) {
         startActivity(new Intent(getActivity(), UploadRecipeActivity.class));
     }
-
-
-
 }
 
 
