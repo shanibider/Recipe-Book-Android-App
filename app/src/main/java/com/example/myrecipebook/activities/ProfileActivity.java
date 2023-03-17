@@ -2,6 +2,7 @@ package com.example.myrecipebook.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -41,23 +42,19 @@ public class ProfileActivity extends AppCompatActivity {
 
         showAllUserData();
 
-
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 passUserData();
             }
         });
-
     }
-
 
 
     public void showAllUserData(){
 
         //creates a new Intent object to pull the Intent that started the current activity
         Intent intent = getIntent();
-
         //pull a string value associated with the key "name" from the Intent object. This key-value pair was passed from the previous activity to this activity using the putExtra() method
         String nameUser = intent.getStringExtra("name");
         String usernameUser = intent.getStringExtra("username");
@@ -71,7 +68,6 @@ public class ProfileActivity extends AppCompatActivity {
         profilePassword.setText(passwordUser);
         titleHello.setText(nameUser);
     }
-
 
 
 
@@ -92,11 +88,9 @@ public class ProfileActivity extends AppCompatActivity {
                     String nameFromDB = snapshot.child(userUsername).child("name").getValue(String.class);
                     String emailFromDB = snapshot.child(userUsername).child("email").getValue(String.class);
                     String usernameFromDB = snapshot.child(userUsername).child("username").getValue(String.class);
-
                     String passwordFromDB = snapshot.child(userUsername).child("password").getValue(String.class);
 
                     Intent intent = new Intent(ProfileActivity.this, EditProfileActivity.class);
-
                     intent.putExtra("name", nameFromDB);
                     intent.putExtra("email", emailFromDB);
                     intent.putExtra("username", usernameFromDB);

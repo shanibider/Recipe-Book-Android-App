@@ -12,21 +12,26 @@ import com.example.myrecipebook.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 public class EditProfileActivity extends AppCompatActivity {
+
     EditText editName, editEmail, editUsername, editPassword;
     Button saveButton;
     String nameUser, emailUser, usernameUser, passwordUser;
     DatabaseReference reference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_edit_profile);
 
         reference = FirebaseDatabase.getInstance().getReference("users");
+
         editName = findViewById(R.id.editName);
         editEmail = findViewById(R.id.editEmail);
         editUsername = findViewById(R.id.editUsername);
         editPassword = findViewById(R.id.editPassword);
         saveButton = findViewById(R.id.saveButton);
+
         showData();
 
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +45,7 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
     }
+
     private boolean isNameChanged() {
         if (!nameUser.equals(editName.getText().toString())){
             reference.child(usernameUser).child("name").setValue(editName.getText().toString());
@@ -67,12 +73,17 @@ public class EditProfileActivity extends AppCompatActivity {
             return false;
         }
     }
+
+
+
     public void showData(){
+
         Intent intent = getIntent();
         nameUser = intent.getStringExtra("name");
         emailUser = intent.getStringExtra("email");
         usernameUser = intent.getStringExtra("username");
         passwordUser = intent.getStringExtra("password");
+
         editName.setText(nameUser);
         editEmail.setText(emailUser);
         editUsername.setText(usernameUser);
