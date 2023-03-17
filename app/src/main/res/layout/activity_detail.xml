@@ -24,7 +24,7 @@
         android:id="@+id/detailImage"
         android:padding="8dp"
         android:layout_gravity="center"
-        android:src="@drawable/ic_baseline_upload"
+        android:src="@drawable/add_photo"
         android:scaleType="fitXY"
 
 
@@ -82,10 +82,10 @@
             android:id="@+id/deleteButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_list_alt_24"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="220dp"
-            />
+            android:layout_marginTop="20dp"
+            android:minHeight="48dp"
+            android:src="@drawable/ic_baseline_list_alt_24" />
 
     </RelativeLayout>
 

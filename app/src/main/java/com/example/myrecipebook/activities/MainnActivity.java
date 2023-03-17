@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myrecipebook.DataClass1;
+import com.example.myrecipebook.DataClass;
 import com.example.myrecipebook.R;
 import com.example.myrecipebook.adapters.MyRecipesAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,17 +28,22 @@ public class MainnActivity extends AppCompatActivity {
 
     FloatingActionButton fab;
     RecyclerView recyclerView;
-    List<DataClass1> dataList;
+    List<DataClass> dataList;
     DatabaseReference databaseReference;
     ValueEventListener eventListener;
+
+    MyRecipesAdapter myRecipesAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainn);
 
-        //reference to recycleView
+        //References
         recyclerView = findViewById(R.id.myRecipesRecyclerView);
+
+
+
         fab = findViewById(R.id.fab1);
 
         //Upload new recipe button
@@ -48,7 +54,6 @@ public class MainnActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
         //layout
         GridLayoutManager gridLayoutManager = new GridLayoutManager(MainnActivity.this, 1);
@@ -75,8 +80,8 @@ public class MainnActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 dataList.clear();
-                for (DataSnapshot itemSnapshot: snapshot.getChildren()){
-                    DataClass1 dataClass = itemSnapshot.getValue(DataClass1.class);
+                for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
+                    DataClass dataClass = itemSnapshot.getValue(DataClass.class);
                     dataClass.setKey(itemSnapshot.getKey());
                     dataList.add(dataClass);
                 }
@@ -92,5 +97,6 @@ public class MainnActivity extends AppCompatActivity {
 
 
 
-    }
-}
+    } //onCreate closing tag
+
+  }

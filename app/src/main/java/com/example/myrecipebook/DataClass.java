@@ -1,6 +1,6 @@
 package com.example.myrecipebook;
 
-public class DataClass1 {
+public class DataClass {
 
     //for upload data
     private String dataTitle;
@@ -33,14 +33,14 @@ public class DataClass1 {
         return dataImage;
     }
 
-    public DataClass1(String dataTitle, String dataDesc, String dataLang, String dataImage) {
+    public DataClass(String dataTitle, String dataDesc, String dataLang, String dataImage) {
         this.dataTitle = dataTitle;
         this.dataDesc = dataDesc;
         this.dataLang = dataLang;
         this.dataImage = dataImage;
     }
 
-    public DataClass1() {
+    public DataClass() {
     }
 
 }
