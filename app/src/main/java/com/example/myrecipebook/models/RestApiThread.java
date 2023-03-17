@@ -92,35 +92,6 @@ public class RestApiThread extends Thread {
             }
             System.out.println("finished uploading to firebase db");
         }
-//            List<DetailRecipeModel> list = new ArrayList<>();
-//            recipeRef.addValueEventListener(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                    System.out.println("children count "+dataSnapshot.getChildrenCount());
-//                    for (DataSnapshot recipeSnapshot : dataSnapshot.getChildren()) {
-//                        String recipeName = recipeSnapshot.child("name").getValue(String.class);
-//                        int recipeImage = recipeSnapshot.child("image").getValue(Integer.class);
-//                        String recipeTotalTime = recipeSnapshot.child("totalTime").getValue(String.class);
-//                        String recipeIngredients = recipeSnapshot.child("ingredients").getValue(String.class);
-//                        String recipeInstruction = recipeSnapshot.child("instruction").getValue(String.class);
-//                        List<String> recipeCategory = recipeSnapshot.child("category").getValue(new GenericTypeIndicator<List<String>>() {});
-//                        List<String> recipeHealthLabels = recipeSnapshot.child("healthLabels").getValue(new GenericTypeIndicator<List<String>>() {});
-//                        DetailRecipeModel recipeModel = new DetailRecipeModel(recipeImage, recipeName, recipeTotalTime, recipeIngredients, recipeInstruction, recipeCategory, recipeHealthLabels);
-//                        list.add(recipeModel);
-//                    }
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError databaseError) {
-//                    System.out.println(databaseError);
-//                }
-//            });
-//            try {
-//                sleep(5000);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//            System.out.println("list size " +list.size());
     }
 
     public DetailRecipeModel generateRecipeModel (int i){

@@ -1,8 +1,9 @@
 package com.example.myrecipebook.models;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class DetailRecipeModel {
+public class DetailRecipeModel implements Serializable {
     public String name;
     public int image;
     public List<String> category;
@@ -21,43 +22,31 @@ public class DetailRecipeModel {
         this.healthLabels=healthLabels;
     }
 
-    public int getImage() {
-        return image;
-    }
-
-    public void setImage(int image) {
-        this.image = image;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public int getImage() {
+        return image;
     }
 
-    public String getDetail() {
-        return totalTime;
+    public List<String> getCategory() {
+        return category;
     }
 
-    public void setDetail(String detail) {
-        this.totalTime = detail;
+    public List<String> getHealthLabels() {
+        return healthLabels;
     }
 
     public String getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(String ingredients) {
-        this.ingredients = ingredients;
-    }
-
     public String getInstruction() {
         return instruction;
     }
 
-    public void setInstruction(String instruction) {
-        this.instruction = instruction;
+    public String getTotalTime() {
+        return totalTime;
     }
 }
