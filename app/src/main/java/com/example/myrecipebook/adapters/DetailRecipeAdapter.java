@@ -58,11 +58,6 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
         return list.size();
     }
 
-
-
-
-
-
     //ViewHolder inner class
 //hold object of view of one line and save references to his elements
     public class ViewHolder extends RecyclerView.ViewHolder {

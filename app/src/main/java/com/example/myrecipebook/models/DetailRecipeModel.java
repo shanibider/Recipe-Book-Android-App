@@ -1,8 +1,9 @@
 package com.example.myrecipebook.models;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class DetailRecipeModel {
+public class DetailRecipeModel implements Serializable {
     public String name;
     public int image;
     public List<String> category;

@@ -16,6 +16,7 @@ import com.example.myrecipebook.activities.DetailRecipeActivity;
 import com.example.myrecipebook.models.CategoryModel;
 import com.example.myrecipebook.models.DetailRecipeModel;
 
+import java.io.Serializable;
 import java.util.List;
 
 //ADAPTER + VIEWHOLDER
@@ -51,14 +52,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("Adapter position:" + holder.getAdapterPosition());
 
                 Intent intent = new Intent(context, DetailRecipeActivity.class);
-               //here i need to put what i have in detailrecipe
-                intent.putExtra("Image", categoryList.get(holder.getAdapterPosition()).getImage());
-                intent.putExtra("Name", categoryList.get(holder.getAdapterPosition()).getName());
-                intent.putExtra("totalTime", categoryList.get(holder.getAdapterPosition()).getTotalTime());
                 intent.putExtra("number", holder.getAdapterPosition());
+                intent.putExtra("recipeList", (Serializable) categoryList);
                 context.startActivity(intent);
 
             }
