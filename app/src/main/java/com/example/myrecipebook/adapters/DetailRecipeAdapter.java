@@ -47,7 +47,7 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
 
         holder.imageView.setImageResource(list.get(this.position).getImage());
         holder.name.setText(list.get(this.position).getName());
-        holder.detail.setText(list.get(this.position).getDetail());
+        holder.detail.setText(list.get(this.position).getTotalTime());
         holder.ingredients.setText(list.get(this.position).getIngredients());
         holder.instruction.setText(list.get(this.position).getInstruction());
 
@@ -57,11 +57,6 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
     public int getItemCount() {
         return list.size();
     }
-
-
-
-
-
 
     //ViewHolder inner class
 //hold object of view of one line and save references to his elements
