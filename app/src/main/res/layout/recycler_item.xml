@@ -25,8 +25,7 @@
     android:id="@+id/recImage"
     android:layout_marginStart="20dp"
     android:padding="8dp"
-    android:scaleType="centerCrop"
-    android:src="@drawable/ic_baseline_upload"
+    android:src="@drawable/add_photo"
     app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
   />
 

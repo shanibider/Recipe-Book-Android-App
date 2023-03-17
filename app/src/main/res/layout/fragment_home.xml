@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.home.HomeFragment"
+    android:id="@+id/home">
 
     <TextView
         android:id="@+id/recipes"
@@ -16,29 +17,9 @@
         android:text="All Recipes"
         android:textColor="@color/darkgray"
         android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/searchbox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/searchbox"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/search_bg"
-        android:drawableRight="@drawable/ic_baseline_search_24"
-        android:drawablePadding="9dp"
-        android:fontFamily="sans-serif"
-        android:hint="Search Recipes"
-        android:padding="10dp"
-        android:textColor="@color/darkgray"
-        android:textColorHint="@color/darkgray"
-        android:textSize="13sp"
-        app:layout_constraintBottom_toTopOf="@+id/category_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recipes" />
-
 
 
     <TextView
@@ -46,14 +27,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-
         android:text="Categories"
         android:textColor="@color/darkgray"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/home_items_recList"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchbox" />
-
+        app:layout_constraintTop_toBottomOf="@+id/recipes" />
 
 
     <!-- 1.Adding recyclerView -->
@@ -61,6 +40,7 @@
         android:id="@+id/home_items_recList"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_below="@+id/category_title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

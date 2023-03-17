@@ -12,10 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myrecipebook.DataClass1;
+import com.example.myrecipebook.DataClass;
 import com.example.myrecipebook.R;
 import com.example.myrecipebook.activities.DetailActivity;
-import com.example.myrecipebook.activities.MainnActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,9 +23,9 @@ import java.util.List;
 public class MyRecipesAdapter extends RecyclerView.Adapter<MyRecipesAdapter.ViewHolder> {
 
     Context context;
-    List<DataClass1> dataList;
+    List<DataClass> dataList;
 
-    public MyRecipesAdapter(Context context, List<DataClass1> dataList) {
+    public MyRecipesAdapter(Context context, List<DataClass> dataList) {
         this.context = context;
         this.dataList = dataList;
     }
@@ -61,6 +60,13 @@ public class MyRecipesAdapter extends RecyclerView.Adapter<MyRecipesAdapter.View
     @Override
     public int getItemCount() {
         return dataList.size();
+    }
+
+
+
+    public void searchDataList(ArrayList<DataClass> searchList){
+        dataList = searchList;
+        notifyDataSetChanged();
     }
 
 

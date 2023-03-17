@@ -37,7 +37,7 @@
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_baseline_upload"
+                android:src="@drawable/add_photo"
                 android:id="@+id/uploadImage"
                 android:layout_marginTop="10dp"
                 android:scaleType="centerCrop"
