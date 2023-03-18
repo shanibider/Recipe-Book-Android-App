@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myrecipebook.R;
-import com.example.myrecipebook.UploadRecipeActivity;
+import com.example.myrecipebook.activities.UploadActivity;
 import com.example.myrecipebook.adapters.HomeItemAdapter;
 import com.example.myrecipebook.databinding.FragmentHomeBinding;
 import com.example.myrecipebook.models.HomeItemModel;
@@ -40,25 +40,25 @@ public class HomeFragment extends Fragment {
 
         homeItemRecList = root.findViewById(R.id.home_items_recList);
 
-        fab= root.findViewById(R.id.btn_uploadActivity);
+        fab = root.findViewById(R.id.fab1);
 
+        //Upload new recipe button
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), UploadRecipeActivity.class);
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), UploadActivity.class);
                 startActivity(intent);
-
             }
         });
 
 
         HomeModelList = new LinkedList<>();
 
-        HomeModelList.add(new HomeItemModel(R.drawable.breakfast, "breakfast"));
-        HomeModelList.add(new HomeItemModel(R.drawable.lunch, "lunch"));
-        HomeModelList.add(new HomeItemModel(R.drawable.dinner, "dinner"));
-        HomeModelList.add(new HomeItemModel(R.drawable.dessert, "dessert"));
-        HomeModelList.add(new HomeItemModel(R.drawable.snacks, "snacks"));
+        HomeModelList.add(new HomeItemModel(R.drawable.breakfast, "Breakfast"));
+        HomeModelList.add(new HomeItemModel(R.drawable.lunch, "Lunch"));
+        HomeModelList.add(new HomeItemModel(R.drawable.dinner, "Dinner"));
+        HomeModelList.add(new HomeItemModel(R.drawable.dessert, "Dessert"));
+        HomeModelList.add(new HomeItemModel(R.drawable.snacks, "Snacks"));
 
         homeItemAdapter = new HomeItemAdapter(getActivity(),HomeModelList);
         homeItemRecList.setAdapter(homeItemAdapter);
