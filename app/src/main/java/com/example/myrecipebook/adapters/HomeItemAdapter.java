@@ -2,6 +2,7 @@ package com.example.myrecipebook.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.ViewHo
    Context context;
    List<HomeItemModel> list;
 
+
     public HomeItemAdapter(Context context, List<HomeItemModel> list) {
         this.context = context;
         this.list = list;
@@ -46,21 +48,25 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.ViewHo
     //set the view holder properties according to the object is displayed (Bind data to line)
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        int itemPosition = position;
         holder.imageView.setImageResource(list.get(position).getImage());
         holder.name.setText(list.get(position).getName());
 
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("categoryName", list.get(itemPosition).getName());
+                Navigation.findNavController(v).navigate(R.id.nav_categories, bundle);
+            }
+        });
     }
-
 
     //number of objects to display in the list
     @Override
     public int getItemCount() {
         return list.size();
     }
-
-
-
-
 
     //VIEWHOLDER
     //hold object of view of one line and save references to his elements (image & text)
@@ -77,8 +83,6 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.ViewHo
             imageView= itemView.findViewById(R.id.category_img);
             name= itemView.findViewById(R.id.category_title);
             cardView = itemView.findViewById(R.id.homeCard);
-
-
         }
     }
 }

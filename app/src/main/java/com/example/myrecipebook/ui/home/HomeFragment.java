@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myrecipebook.R;
-import com.example.myrecipebook.activities.MainnActivity;
 import com.example.myrecipebook.activities.UploadActivity;
 import com.example.myrecipebook.adapters.HomeItemAdapter;
 import com.example.myrecipebook.databinding.FragmentHomeBinding;
@@ -27,12 +26,8 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
-
-    //reference to RecyclerView
     RecyclerView homeItemRecList;
-    //List
     List<HomeItemModel> HomeModelList;
-    //Adapter (from HomeItemAdapter.java)
     HomeItemAdapter homeItemAdapter;
 
     FloatingActionButton fab;
@@ -56,24 +51,20 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
         HomeModelList = new LinkedList<>();
 
-        HomeModelList.add(new HomeItemModel(R.drawable.breakfast, "breakfast"));
-        HomeModelList.add(new HomeItemModel(R.drawable.lunch, "lunch"));
-        HomeModelList.add(new HomeItemModel(R.drawable.dinner, "dinner"));
-        HomeModelList.add(new HomeItemModel(R.drawable.dessert, "dessert"));
-        HomeModelList.add(new HomeItemModel(R.drawable.snacks, "snacks"));
+        HomeModelList.add(new HomeItemModel(R.drawable.breakfast, "Breakfast"));
+        HomeModelList.add(new HomeItemModel(R.drawable.lunch, "Lunch"));
+        HomeModelList.add(new HomeItemModel(R.drawable.dinner, "Dinner"));
+        HomeModelList.add(new HomeItemModel(R.drawable.dessert, "Dessert"));
+        HomeModelList.add(new HomeItemModel(R.drawable.snacks, "Snacks"));
 
-        //6.specify an adapter
         homeItemAdapter = new HomeItemAdapter(getActivity(),HomeModelList);
-        //6.Bind the adapter to the RecyclerView reference
         homeItemRecList.setAdapter(homeItemAdapter);
-        //2.use a layout manager
         homeItemRecList.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
-        //homeItemRecList.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
         homeItemRecList.setHasFixedSize(true);
         homeItemRecList.setNestedScrollingEnabled(false);
-
         return root;
     }
 
@@ -82,11 +73,4 @@ public class HomeFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-    //Upload new recipe
-    public void btn_uploadActivity(View view) {
-//        startActivity(new Intent(getActivity(), UploadRecipeActivity.class));
-    }
-
 }
-
-

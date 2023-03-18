@@ -53,6 +53,9 @@ public class DetailActivity extends AppCompatActivity {
         }
 
 
+
+
+
 /*
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override

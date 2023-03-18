@@ -47,7 +47,6 @@
                 android:value="" />
 
          </activity>
-
         <activity
             android:name=".activities.ProfileActivity"
             android:exported="true">
@@ -55,8 +54,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
-
         <activity
             android:name=".activities.EditProfileActivity"
             android:exported="true">
@@ -65,15 +62,6 @@
                 android:value="" />
 
         </activity>
-
-        <activity
-            android:name=".activities.DetailRecipeActivity"
-            android:exported="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-
         <activity
             android:name=".activities.DetailActivity"
             android:exported="true">
@@ -81,7 +69,13 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
+        <activity
+            android:name=".activities.DetailRecipeActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".activities.UploadActivity"
             android:exported="true">
@@ -89,7 +83,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".activities.MainnActivity"
             android:exported="true">
@@ -98,7 +91,6 @@
                 android:value="" />
 
         </activity>
-
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -112,6 +104,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
 
 
@@ -122,4 +115,5 @@
             android:value="AIzaSyAP8Fp-6ZuODfpmYc2eWwg08ZLHQ9hZKIM"/>
 
     </application>
+
 </manifest>

@@ -24,7 +24,7 @@
         android:id="@+id/detailImage"
         android:padding="8dp"
         android:layout_gravity="center"
-        android:src="@drawable/add_photo"
+        android:src="@drawable/upload_image1"
         android:scaleType="fitXY"
 
 
