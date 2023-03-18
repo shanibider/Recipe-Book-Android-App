@@ -29,6 +29,14 @@
         android:name="com.example.myrecipebook.ui.slideshow.ProfileFragment"
         android:label="@string/profile"
         tools:layout="@layout/activity_profile" />
+
+    <fragment
+        android:id="@+id/nav_map"
+        android:name="com.example.myrecipebook.ui.map.MapFragment"
+        android:label="@string/menu_map"
+        tools:layout="@layout/activity_map">
+    </fragment>
+
     <activity
         android:id="@+id/nav_allRecipes"
         android:name="com.example.myrecipebook.activities.DetailRecipeActivity"
