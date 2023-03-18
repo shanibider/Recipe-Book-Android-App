@@ -17,7 +17,7 @@ public class MyRecipeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
 
-        View root = inflater.inflate(R.layout.activity_mainn, container, false);
+        View root = inflater.inflate(R.layout.activity_my_recipes, container, false);
 
 
 

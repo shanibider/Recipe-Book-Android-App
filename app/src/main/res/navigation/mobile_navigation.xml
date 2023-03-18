@@ -23,7 +23,7 @@
         android:id="@+id/nav_my_recipes"
         android:name="com.example.myrecipebook.ui.slideshow.MyRecipeFragment"
         android:label="My Recipes"
-        tools:layout="@layout/fragment_my_recipes" />
+        tools:layout="@layout/activity_my_recipes" />
     <fragment
         android:id="@+id/nav_profile"
         android:name="com.example.myrecipebook.ui.slideshow.ProfileFragment"
@@ -44,9 +44,9 @@
         tools:layout="@layout/fragment_detailrecipe" />
     <activity
         android:id="@+id/nav_uploadRecipe"
-        android:name="com.example.myrecipebook.UploadRecipeActivity"
+        android:name="com.example.myrecipebook.activities.UploadActivity"
         android:label="activity_upload_recipe"
-        tools:layout="@layout/activity_upload_recipe" />
+        tools:layout="@layout/activity_upload" />
     <action
         android:id="@+id/action_homeFragment_to_categoryFragment"
         app:destination="@id/nav_categories"
