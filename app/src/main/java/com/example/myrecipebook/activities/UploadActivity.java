@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
@@ -29,7 +30,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 //work well
 public class UploadActivity extends AppCompatActivity {
@@ -39,6 +42,8 @@ public class UploadActivity extends AppCompatActivity {
     String imageURL;
     NumberPicker uploadTotalTime;
     Uri uri;
+    private CheckBox breakfastCheckBox, lunchCheckBox, dinnerCheckBox, dessertCheckBox;
+    private CheckBox veganCB, vegetarianCB, kosherCB, glutenCB, dairyCB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,15 +90,45 @@ public class UploadActivity extends AppCompatActivity {
         });
 
         //Save data button
-//        saveButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                saveData();
-//            }
-//        });
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveData();
+            }
+        });
     }
 
+    public void saveData() {
+        List<String> category = new ArrayList<>();
+        breakfastCheckBox = findViewById(R.id.breakfast_checkbox);
+        lunchCheckBox = findViewById(R.id.lunch_checkbox);
+        dinnerCheckBox = findViewById(R.id.dinner_checkbox);
+        dessertCheckBox = findViewById(R.id.dessert_checkbox);
 
+        if (breakfastCheckBox.isChecked()) {
+            category.add("breakfast");
+        }
+        if (lunchCheckBox.isChecked()) {
+            category.add("lunch");
+        }
+        if (dinnerCheckBox.isChecked()) {
+            category.add("dinner");
+        }
+        if (dessertCheckBox.isChecked()) {
+            category.add("dessert");
+        }
+        List<String> healthLabels = new ArrayList<>();
+        veganCB = findViewById(R.id.vegan_checkbox);
+        vegetarianCB = findViewById(R.id.vegetarian_checkbox);
+        kosherCB = findViewById(R.id.kosher_checkbox);
+        glutenCB = findViewById(R.id.gluten_checkbox);
+        dairyCB = findViewById(R.id.dairy_checkbox);
+        if (vegetarianCB.isChecked()) healthLabels.add("Vegetarian");
+        if (veganCB.isChecked()) healthLabels.add("Vegan");
+        if (kosherCB.isChecked()) healthLabels.add("Kosher");
+        if (glutenCB.isChecked()) healthLabels.add("Gluten-Free");
+        if (dairyCB.isChecked()) healthLabels.add("Dairy-Free");
+    }
 
 //    public void saveData() {
 //        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Android Images")
