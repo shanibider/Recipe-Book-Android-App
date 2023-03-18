@@ -17,7 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.myrecipebook.DataClass1;
+import com.example.myrecipebook.DataClass;
 import com.example.myrecipebook.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -123,7 +123,7 @@ public class UploadActivity extends AppCompatActivity {
         String title = uploadTopic.getText().toString();
         String desc = uploadDesc.getText().toString();
         String lang = uploadLang.getText().toString();
-        DataClass1 dataClass = new DataClass1(title, desc, lang, imageURL);
+        DataClass dataClass = new DataClass(title, desc, lang, imageURL);
         //We are changing the child from title to currentDate,
         // because we will be updating title as well and it may affect child value.
         String currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());

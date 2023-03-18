@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/login"
     tools:context=".activities.LoginActivity">
 
     <TextView
@@ -39,14 +40,14 @@
 
 
     <EditText
-        android:id="@+id/login_email"
+        android:id="@+id/login_userName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:backgroundTint="#CCCCCC"
-        android:drawableLeft="@drawable/ic_baseline_email_24"
+        android:drawableLeft="@drawable/ic_baseline_account_circle_24"
         android:drawablePadding="13dp"
-        android:hint="@string/email"
+        android:hint="user name"
         android:inputType="text"
         android:minHeight="48dp"
         android:textColorHint="#707070"
@@ -68,7 +69,7 @@
         android:textColorHint="#707070"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_email"
+        app:layout_constraintTop_toBottomOf="@+id/login_userName"
         app:layout_constraintWidth_percent=".8" />
 
     <Button

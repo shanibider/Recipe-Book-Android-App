@@ -8,16 +8,13 @@
     tools:context=".activities.MainnActivity"
     >
 
-
-
-
     <TextView
         android:id="@+id/Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="20dp"
         android:text="My Recipes"
         android:textStyle="bold"
         android:textColor="@color/darkgray"
@@ -27,14 +24,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/myRecipesRecyclerView"
         android:scrollbars="vertical"
-        android:layout_marginTop="50dp"
-
+        android:layout_below="@+id/Title"
         />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -51,8 +46,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
-
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
-
 
 </RelativeLayout>
