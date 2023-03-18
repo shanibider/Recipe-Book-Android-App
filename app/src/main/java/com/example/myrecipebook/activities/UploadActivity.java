@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.NumberPicker;
 import android.widget.Toast;
 
 import com.example.myrecipebook.DataClass;
@@ -34,8 +35,9 @@ import java.util.Calendar;
 public class UploadActivity extends AppCompatActivity {
     ImageView uploadImage;
     Button saveButton;
-    EditText uploadTopic, uploadDesc, uploadLang;
+    EditText uploadTopic, uploadIngre, uploadLang;
     String imageURL;
+    NumberPicker uploadTotalTime;
     Uri uri;
 
     @Override
@@ -45,9 +47,13 @@ public class UploadActivity extends AppCompatActivity {
         setContentView(R.layout.activity_upload);
 
         uploadImage = findViewById(R.id.uploadImage);
-        uploadDesc = findViewById(R.id.uploadDesc);
+        //uploadDesc = findViewById(R.id.uploadDesc);
         uploadTopic = findViewById(R.id.uploadTopic);
-        uploadLang = findViewById(R.id.uploadLang);
+        //uploadLang = findViewById(R.id.uploadLang);
+        uploadIngre = findViewById(R.id.upload_ingredients);
+        uploadTotalTime = findViewById(R.id.uploadTotalTime);
+        uploadTotalTime.setMinValue(0);
+        uploadTotalTime.setMaxValue(200);
         saveButton = findViewById(R.id.saveButton);
 
 
@@ -79,73 +85,73 @@ public class UploadActivity extends AppCompatActivity {
         });
 
         //Save data button
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saveData();
-            }
-        });
+//        saveButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                saveData();
+//            }
+//        });
     }
 
 
 
-    public void saveData() {
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Android Images")
-                .child(uri.getLastPathSegment());
-        AlertDialog.Builder builder = new AlertDialog.Builder(UploadActivity.this);
-        builder.setCancelable(false);
-        builder.setView(R.layout.progress_layout);
-        AlertDialog dialog = builder.create();
-        dialog.show();
-        storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//    public void saveData() {
+//        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Android Images")
+//                .child(uri.getLastPathSegment());
+//        AlertDialog.Builder builder = new AlertDialog.Builder(UploadActivity.this);
+//        builder.setCancelable(false);
+//        builder.setView(R.layout.progress_layout);
+//        AlertDialog dialog = builder.create();
+//        dialog.show();
+//        storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//
+//            @Override
+//            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+//                while (!uriTask.isComplete());
+//                Uri urlImage = uriTask.getResult();
+//                imageURL = urlImage.toString();
+//                uploadData();
+//                dialog.dismiss();
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//                dialog.dismiss();
+//            }
+//        });
+//    }
 
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
-                while (!uriTask.isComplete());
-                Uri urlImage = uriTask.getResult();
-                imageURL = urlImage.toString();
-                uploadData();
-                dialog.dismiss();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                dialog.dismiss();
-            }
-        });
-    }
 
 
-
-    public void uploadData() {
-        String title = uploadTopic.getText().toString();
-        String desc = uploadDesc.getText().toString();
-        String lang = uploadLang.getText().toString();
-        DataClass dataClass = new DataClass(title, desc, lang, imageURL);
-
-        //We are changing the child from title to currentDate,
-        // because we will be updating title as well and it may affect child value.
-        String currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
-
-        FirebaseDatabase.getInstance().getReference("My Recipes").child(currentDate)
-                .setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
-
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
-                            Toast.makeText(UploadActivity.this, "Saved", Toast.LENGTH_SHORT).show();
-                            finish();
-
-                        }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(UploadActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
+//    public void uploadData() {
+//        String title = uploadTopic.getText().toString();
+//        String desc = uploadDesc.getText().toString();
+//        String lang = uploadLang.getText().toString();
+//        DataClass dataClass = new DataClass(title, desc, lang, imageURL);
+//
+//        //We are changing the child from title to currentDate,
+//        // because we will be updating title as well and it may affect child value.
+//        String currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
+//
+//        FirebaseDatabase.getInstance().getReference("My Recipes").child(currentDate)
+//                .setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
+//
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        if (task.isSuccessful()){
+//                            Toast.makeText(UploadActivity.this, "Saved", Toast.LENGTH_SHORT).show();
+//                            finish();
+//
+//                        }
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Toast.makeText(UploadActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//    }
 }
