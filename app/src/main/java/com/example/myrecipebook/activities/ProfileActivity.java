@@ -2,6 +2,7 @@ package com.example.myrecipebook.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -20,25 +21,26 @@ import com.google.firebase.database.ValueEventListener;
 
 //not working well
 
-
 public class ProfileActivity extends AppCompatActivity {
 
-    TextView profileEmail, profilePassword;
-    TextView titleName, titleHello;
+    TextView profileName, profileUsername ,profileEmail, profilePassword;
+    TextView titleHello;
     Button editProfile, foodPref, myRecipes, myFavourites, findMap;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_profile);
 
+        profileName = findViewById(R.id.profileName);
+        profileUsername = findViewById(R.id.profileUsername);
         profileEmail = findViewById(R.id.profileEmail);
         profilePassword = findViewById(R.id.profilePassword);
-        titleName = findViewById(R.id.titleName);
         titleHello = findViewById(R.id.titleHello);
+        editProfile = findViewById(R.id.edit_profile);
 
-
-        showUserData();
+        showAllUserData();
 
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,47 +48,57 @@ public class ProfileActivity extends AppCompatActivity {
                 passUserData();
             }
         });
-
     }
 
 
-    public void showUserData() {
-        //
-        Intent intent = getIntent();
+    public void showAllUserData(){
 
+        //creates a new Intent object to pull the Intent that started the current activity
+        Intent intent = getIntent();
+        //pull a string value associated with the key "name" from the Intent object. This key-value pair was passed from the previous activity to this activity using the putExtra() method
+        String nameUser = intent.getStringExtra("name");
+        String usernameUser = intent.getStringExtra("username");
         String emailUser = intent.getStringExtra("email");
         String passwordUser = intent.getStringExtra("password");
 
+        //sets the pulled email address to a TextView object named profileEmail
+        profileName.setText(nameUser);
+        profileUsername.setText(usernameUser);
         profileEmail.setText(emailUser);
         profilePassword.setText(passwordUser);
+        titleHello.setText(nameUser);
     }
 
+
+
     public void passUserData(){
-        String userUserEmail = profileEmail.getText().toString().trim();
+
+        String userUsername = profileUsername.getText().toString().trim();
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-        Query checkUserDatabase = reference.orderByChild("email").equalTo(userUserEmail);
+
+        Query checkUserDatabase = reference.orderByChild("username").equalTo(userUsername);
 
         checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
 
-                    String nameFromDB = snapshot.child(userUserEmail).child("name").getValue(String.class);
-                    String emailFromDB = snapshot.child(userUserEmail).child("email").getValue(String.class);
-                    String usernameFromDB = snapshot.child(userUserEmail).child("username").getValue(String.class);
-                    String passwordFromDB = snapshot.child(userUserEmail).child("password").getValue(String.class);
+                if (snapshot.exists()){
+                    String nameFromDB = snapshot.child(userUsername).child("name").getValue(String.class);
+                    String emailFromDB = snapshot.child(userUsername).child("email").getValue(String.class);
+                    String usernameFromDB = snapshot.child(userUsername).child("username").getValue(String.class);
+                    String passwordFromDB = snapshot.child(userUsername).child("password").getValue(String.class);
 
                     Intent intent = new Intent(ProfileActivity.this, EditProfileActivity.class);
-
                     intent.putExtra("name", nameFromDB);
                     intent.putExtra("email", emailFromDB);
                     intent.putExtra("username", usernameFromDB);
                     intent.putExtra("password", passwordFromDB);
-
                     startActivity(intent);
                 }
             }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -94,6 +106,8 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
 
 

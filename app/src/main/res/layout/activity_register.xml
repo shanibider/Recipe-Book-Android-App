@@ -56,7 +56,7 @@
 
 
     <EditText
-        android:id="@+id/register_userName"
+        android:id="@+id/register_username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -84,7 +84,7 @@
         android:textColorHint="#707070"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_userName"
+        app:layout_constraintTop_toBottomOf="@+id/register_username"
         app:layout_constraintWidth_percent=".8" />
 
     <EditText

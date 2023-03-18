@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".activities.DetailRecipeActivity"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
+    tools:context=".activities.DetailRecipeActivity"
     >
 
-<!-- need to fix the deisgn -->
+    <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="20dp">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:padding="20dp"
+            >
         <ImageView
             android:id="@+id/recipe_img"
             android:layout_width="match_parent"
@@ -24,8 +39,6 @@
             app:layout_constraintVertical_bias="0.0" />
 
 
-
-
     <TextView
         android:id="@+id/recipe_name"
         android:layout_width="match_parent"
@@ -36,9 +49,7 @@
         android:textColor="@color/darkgray"
         android:textSize="23sp"
         android:textStyle="bold"
-
         />
-
 
     <TextView
         android:id="@+id/recipe_detail"
@@ -66,9 +77,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recipe_detail" />
 
-
-
-    <TextView
+   <TextView
         android:id="@+id/recipe_ingredients"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -83,7 +92,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="parent"
     />
-
 
 
     <TextView
@@ -101,7 +109,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recipe_ingredients" />
 
-
     <TextView
         android:id="@+id/recipe_instruction"
         android:layout_width="wrap_content"
@@ -118,5 +125,7 @@
         app:layout_constraintTop_toBottomOf="@+id/recipe_instructionHeader" />
 
 
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+</ScrollView>

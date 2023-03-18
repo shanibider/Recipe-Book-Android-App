@@ -47,24 +47,24 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), UploadRecipeActivity.class);
                 startActivity(intent);
+
             }
         });
 
 
         HomeModelList = new LinkedList<>();
 
-        HomeModelList.add(new HomeItemModel(R.drawable.breakfast, "Breakfast"));
-        HomeModelList.add(new HomeItemModel(R.drawable.lunch, "Lunch"));
-        HomeModelList.add(new HomeItemModel(R.drawable.dinner, "Dinner"));
-        HomeModelList.add(new HomeItemModel(R.drawable.dessert, "Dessert"));
-        HomeModelList.add(new HomeItemModel(R.drawable.snacks, "Snacks"));
+        HomeModelList.add(new HomeItemModel(R.drawable.breakfast, "breakfast"));
+        HomeModelList.add(new HomeItemModel(R.drawable.lunch, "lunch"));
+        HomeModelList.add(new HomeItemModel(R.drawable.dinner, "dinner"));
+        HomeModelList.add(new HomeItemModel(R.drawable.dessert, "dessert"));
+        HomeModelList.add(new HomeItemModel(R.drawable.snacks, "snacks"));
 
         homeItemAdapter = new HomeItemAdapter(getActivity(),HomeModelList);
         homeItemRecList.setAdapter(homeItemAdapter);
         homeItemRecList.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
         homeItemRecList.setHasFixedSize(true);
         homeItemRecList.setNestedScrollingEnabled(false);
-
         return root;
     }
 
@@ -73,11 +73,4 @@ public class HomeFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-
-
-    //Upload new recipe
-    public void btn_uploadActivity(View view) {
-        startActivity(new Intent(getActivity(), UploadRecipeActivity.class));
-    }
 }
-
