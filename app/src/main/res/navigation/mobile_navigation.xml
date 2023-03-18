@@ -39,4 +39,9 @@
         android:name="com.example.myrecipebook.UploadRecipeActivity"
         android:label="activity_upload_recipe"
         tools:layout="@layout/activity_upload_recipe" />
+    <action
+        android:id="@+id/action_homeFragment_to_categoryFragment"
+        app:destination="@id/nav_categories"
+        app:popUpTo="@id/nav_home"
+        app:popUpToInclusive="true"/>
 </navigation>

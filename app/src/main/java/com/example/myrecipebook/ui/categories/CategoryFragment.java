@@ -38,12 +38,15 @@ public class CategoryFragment extends Fragment implements AdapterView.OnItemSele
     RecyclerView recyclerView;
     List<DetailRecipeModel> dataRecipeList;
     CategoryAdapter categoryAdapter;
-    boolean flag;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_category, container, false);
-
+        Bundle bundle = getArguments();
+        String categoryName = "All";
+        if (bundle != null) {
+            categoryName = bundle.getString("categoryName");
+        }
         Spinner spinner = root.findViewById(R.id.spinner_category);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(), R.array.spinner_cate, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -52,7 +55,6 @@ public class CategoryFragment extends Fragment implements AdapterView.OnItemSele
 
         recyclerView = root.findViewById(R.id.category_recipes_recList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        flag = false;
         dataRecipeList = new ArrayList<>();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference recipeRef = database.getReference("Recipes");
@@ -74,9 +76,8 @@ public class CategoryFragment extends Fragment implements AdapterView.OnItemSele
                     DetailRecipeModel recipeModel = new DetailRecipeModel(recipeImage, recipeName, recipeTotalTime, recipeIngredients, recipeInstruction, recipeCategory, recipeHealthLabels);
                     dataRecipeList.add(recipeModel);
                 }
-                System.out.println(spinner.getSelectedItem().toString());
                 filterList(spinner.getSelectedItem().toString());
-                flag = true;
+
                 categoryAdapter.notifyDataSetChanged(); // update the adapter with the new data
             }
 
@@ -85,13 +86,11 @@ public class CategoryFragment extends Fragment implements AdapterView.OnItemSele
                 System.out.println(databaseError);
             }
         });
-        System.out.println("list size " + dataRecipeList.size());
-
-        categoryAdapter= new CategoryAdapter(getContext(), dataRecipeList);
+                categoryAdapter= new CategoryAdapter(getContext(), dataRecipeList);
         recyclerView.setAdapter(categoryAdapter);
-
+        int index = adapter.getPosition(categoryName);
+        spinner.setSelection(index);
         categoryAdapter.notifyDataSetChanged();
-
         return root;
     }
 

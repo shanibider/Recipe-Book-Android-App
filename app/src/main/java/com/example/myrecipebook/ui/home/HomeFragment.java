@@ -26,14 +26,9 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
-
-    //reference to RecyclerView
     RecyclerView homeItemRecList;
-    //List
     List<HomeItemModel> HomeModelList;
-    //Adapter (from HomeItemAdapter.java)
     HomeItemAdapter homeItemAdapter;
-
 
     FloatingActionButton fab;
 
@@ -58,19 +53,15 @@ public class HomeFragment extends Fragment {
 
         HomeModelList = new LinkedList<>();
 
-        HomeModelList.add(new HomeItemModel(R.drawable.breakfast, "breakfast"));
-        HomeModelList.add(new HomeItemModel(R.drawable.lunch, "lunch"));
-        HomeModelList.add(new HomeItemModel(R.drawable.dinner, "dinner"));
-        HomeModelList.add(new HomeItemModel(R.drawable.dessert, "dessert"));
-        HomeModelList.add(new HomeItemModel(R.drawable.snacks, "snacks"));
+        HomeModelList.add(new HomeItemModel(R.drawable.breakfast, "Breakfast"));
+        HomeModelList.add(new HomeItemModel(R.drawable.lunch, "Lunch"));
+        HomeModelList.add(new HomeItemModel(R.drawable.dinner, "Dinner"));
+        HomeModelList.add(new HomeItemModel(R.drawable.dessert, "Dessert"));
+        HomeModelList.add(new HomeItemModel(R.drawable.snacks, "Snacks"));
 
-        //6.specify an adapter
         homeItemAdapter = new HomeItemAdapter(getActivity(),HomeModelList);
-        //6.Bind the adapter to the RecyclerView reference
         homeItemRecList.setAdapter(homeItemAdapter);
-        //2.use a layout manager
         homeItemRecList.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
-        //homeItemRecList.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
         homeItemRecList.setHasFixedSize(true);
         homeItemRecList.setNestedScrollingEnabled(false);
 
@@ -89,20 +80,4 @@ public class HomeFragment extends Fragment {
         startActivity(new Intent(getActivity(), UploadRecipeActivity.class));
     }
 }
-
-
-
-
-
-
-
-    /*
-    holder.cardView.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(context, CategoryFragment.class);
-            context.startActivity(intent);
-        }
-    });
-*/
 
