@@ -1,8 +1,14 @@
 package com.example.myrecipebook;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 
+import com.example.myrecipebook.activities.LoginActivity;
+import com.example.myrecipebook.activities.RegisterActivity;
+import com.example.myrecipebook.activities.WelcomeActivity;
 import com.example.myrecipebook.ui.map.MapFragment;
 import com.google.android.material.navigation.NavigationView;
 
@@ -20,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    private Button logoutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_categories, R.id.nav_my_recipes ,R.id.nav_profile, R.id.nav_detailActivity, R.id.nav_uploadActivity, R.id.nav_map)
+                R.id.nav_home, R.id.nav_categories, R.id.nav_my_recipes, R.id.nav_profile, R.id.nav_detailActivity, R.id.nav_uploadActivity, R.id.nav_map)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -44,6 +51,15 @@ public class MainActivity extends AppCompatActivity {
 
         Fragment fragment = new MapFragment();
 
+        logoutButton = findViewById(R.id.logout_button);
+
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // logout user
+                startActivity(new Intent(MainActivity.this, WelcomeActivity.class));
+            }
+        });
     }
 
     @Override
