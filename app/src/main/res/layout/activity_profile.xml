@@ -52,6 +52,8 @@
         android:textColor="#707070"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintEnd_toEndOf="@id/titleName"
         app:layout_constraintStart_toStartOf="@id/titleName"
         app:layout_constraintTop_toBottomOf="@+id/titleName" />
