@@ -172,6 +172,7 @@ public class UploadActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "Recipe name is already taken", Toast.LENGTH_SHORT).show();
                 }
+                recipeRef.removeEventListener(this);
             }
 
             @Override
