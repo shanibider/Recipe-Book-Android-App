@@ -21,11 +21,16 @@ import android.widget.Toast;
 
 import com.example.myrecipebook.DataClass;
 import com.example.myrecipebook.R;
+import com.example.myrecipebook.models.DetailRecipeModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -38,7 +43,7 @@ import java.util.List;
 public class UploadActivity extends AppCompatActivity {
     ImageView uploadImage;
     Button saveButton;
-    EditText uploadTopic, uploadIngre, uploadLang;
+    EditText uploadName, uploadIngre, uploadLang;
     String imageURL;
     NumberPicker uploadTotalTime;
     Uri uri;
@@ -53,7 +58,7 @@ public class UploadActivity extends AppCompatActivity {
 
         uploadImage = findViewById(R.id.uploadImage);
         //uploadDesc = findViewById(R.id.uploadDesc);
-        uploadTopic = findViewById(R.id.uploadTopic);
+        uploadName = findViewById(R.id.upload_name);
         //uploadLang = findViewById(R.id.uploadLang);
         uploadIngre = findViewById(R.id.upload_ingredients);
         uploadTotalTime = findViewById(R.id.uploadTotalTime);
@@ -128,6 +133,46 @@ public class UploadActivity extends AppCompatActivity {
         if (kosherCB.isChecked()) healthLabels.add("Kosher");
         if (glutenCB.isChecked()) healthLabels.add("Gluten-Free");
         if (dairyCB.isChecked()) healthLabels.add("Dairy-Free");
+        String name = uploadName.getText().toString();
+        String ingredients = uploadIngre.getText().toString();
+        int int_totalTime = uploadTotalTime.getValue();
+        if (int_totalTime > 0) {
+            System.out.println("Total time: " + int_totalTime + " minutes");
+        } else {
+            int_totalTime = -1;
+            System.out.println("Total time not available");
+        }
+        String totalTime = Integer.toString(int_totalTime) + " min";
+        int image = 0;
+        DetailRecipeModel detailRecipeModel = new DetailRecipeModel(image, name, totalTime, ingredients, "", category, healthLabels);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference recipeRef = database.getReference("Recipes");
+        recipeRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                boolean flag = false;
+                if (snapshot.exists()) {
+                    for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                        if (childSnapshot.getKey().equals(detailRecipeModel.getName())) {
+                            flag = true;
+                            break;
+                        }
+                    }
+                }
+                if (!flag) {
+                    DatabaseReference recipeChildRef = recipeRef.child(detailRecipeModel.name);
+                    recipeChildRef.setValue(detailRecipeModel);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Recipe name is already taken", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                System.out.println(error);
+            }
+        });
     }
 
 //    public void saveData() {
