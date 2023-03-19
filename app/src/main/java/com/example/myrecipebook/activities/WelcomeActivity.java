@@ -8,14 +8,29 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.myrecipebook.MainActivity;
 import com.example.myrecipebook.R;
 import com.example.myrecipebook.models.RestApiThread;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class WelcomeActivity extends AppCompatActivity {
+
+    private FirebaseAuth auth;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+
+
+        if(user != null){
+            startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+            finish();
+        }
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
