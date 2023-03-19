@@ -73,7 +73,7 @@ public class UploadActivity extends AppCompatActivity {
 
                     @Override
                     public void onActivityResult(ActivityResult result) {
-                        if (result.getResultCode() == Activity.RESULT_OK){
+                        if (result.getResultCode() == Activity.RESULT_OK) {
                             Intent data = result.getData();
                             uri = data.getData();
                             uploadImage.setImageURI(uri);
@@ -154,17 +154,21 @@ public class UploadActivity extends AppCompatActivity {
                         }
                     }
                 }
-                if (name.equals(""))
-                    Toast.makeText(getApplicationContext(), "Please set recipe name", Toast.LENGTH_SHORT).show();
-                else if (ingredients.equals(""))
-                    Toast.makeText(getApplicationContext(), "Please set ingredients", Toast.LENGTH_SHORT).show();
-                else if (int_totalTime == 0)
-                    Toast.makeText(getApplicationContext(), "Please set total time", Toast.LENGTH_SHORT).show();
-                else if (category.size() == 0)
-                    Toast.makeText(getApplicationContext(), "Please choose at least 1 category", Toast.LENGTH_SHORT).show();
-                else if (!flag) {
-                    DatabaseReference recipeChildRef = recipeRef.child(detailRecipeModel.name);
-                    recipeChildRef.setValue(detailRecipeModel);
+                if (!flag) {
+                    if (name.equals(""))
+                        Toast.makeText(getApplicationContext(), "Please set recipe name", Toast.LENGTH_SHORT).show();
+                    else if (ingredients.equals(""))
+                        Toast.makeText(getApplicationContext(), "Please set ingredients", Toast.LENGTH_SHORT).show();
+                    else if (int_totalTime == 0)
+                        Toast.makeText(getApplicationContext(), "Please set total time", Toast.LENGTH_SHORT).show();
+                    else if (category.size() == 0)
+                        Toast.makeText(getApplicationContext(), "Please choose at least 1 category", Toast.LENGTH_SHORT).show();
+                    else {
+                        DatabaseReference recipeChildRef = recipeRef.child(detailRecipeModel.name);
+                        recipeChildRef.setValue(detailRecipeModel);
+                        Toast.makeText(getApplicationContext(), "Recipe uploaded successfully", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
                 } else {
                     Toast.makeText(getApplicationContext(), "Recipe name is already taken", Toast.LENGTH_SHORT).show();
                 }
@@ -176,7 +180,7 @@ public class UploadActivity extends AppCompatActivity {
             }
         });
     }
-
+}
 //    public void saveData() {
 //        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Android Images")
 //                .child(uri.getLastPathSegment());
@@ -236,4 +240,3 @@ public class UploadActivity extends AppCompatActivity {
 //                    }
 //                });
 //    }
-}
