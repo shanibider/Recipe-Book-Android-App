@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lightPeach"
-    tools:context=".activities.ProfileActivity">
+    tools:context=".ui.slideshow.ProfileFragment">
 
 
 
@@ -171,32 +171,6 @@
         android:layout_margin="10dp"
         android:alpha="0.5"
         android:background="@color/purple_500"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:padding="8dp"
-        android:orientation="horizontal">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/password"
-        android:layout_weight="1"
-        android:text="Password"
-        android:textStyle="bold"
-        android:textSize="18sp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/profilePassword"
-        android:text="password"
-        android:layout_weight="1"
-        android:textAlignment="viewEnd"
-        android:textSize="18sp"/>
-    </LinearLayout>
 
     </LinearLayout>
 
