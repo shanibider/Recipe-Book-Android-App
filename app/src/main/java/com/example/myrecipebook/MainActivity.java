@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.myrecipebook.activities.LoginActivity;
 import com.example.myrecipebook.activities.RegisterActivity;
 import com.example.myrecipebook.activities.WelcomeActivity;
+import com.example.myrecipebook.databinding.ActivityMainBinding;
 import com.example.myrecipebook.ui.map.MapFragment;
 import com.google.android.material.navigation.NavigationView;
 
@@ -20,7 +22,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myrecipebook.databinding.ActivityMainBinding;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // logout user
+                FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(MainActivity.this, WelcomeActivity.class));
             }
         });
