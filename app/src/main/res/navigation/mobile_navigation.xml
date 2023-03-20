@@ -19,11 +19,7 @@
         android:label="Categories"
         tools:layout="@layout/fragment_category" />
 
-    <fragment
-        android:id="@+id/nav_my_recipes"
-        android:name="com.example.myrecipebook.ui.slideshow.MyRecipeFragment"
-        android:label="My Recipes"
-        tools:layout="@layout/activity_my_recipes" />
+
     <fragment
         android:id="@+id/nav_profile"
         android:name="com.example.myrecipebook.ui.slideshow.ProfileFragment"
@@ -36,6 +32,12 @@
         android:label="@string/menu_map"
         tools:layout="@layout/activity_map">
     </fragment>
+
+    <activity
+    android:id="@+id/nav_my_recipes"
+        android:name="com.example.myrecipebook.activities.MyRecipesActivity"
+        android:label="My Recipes"
+        tools:layout="@layout/activity_my_recipes" />
 
     <activity
         android:id="@+id/nav_allRecipes"
