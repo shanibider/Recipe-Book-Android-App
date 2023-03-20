@@ -12,6 +12,9 @@ public class DetailRecipeModel implements Serializable {
     public String instruction;
     public String totalTime;
 
+
+
+
     public DetailRecipeModel(int image, String name, String totalTime, String ingredients, String instruction, List<String> category, List<String> healthLabels) {
         this.image = image;
         this.name = name;
@@ -49,4 +52,7 @@ public class DetailRecipeModel implements Serializable {
     public String getTotalTime() {
         return totalTime;
     }
+
+    public DetailRecipeModel(){}
+
 }

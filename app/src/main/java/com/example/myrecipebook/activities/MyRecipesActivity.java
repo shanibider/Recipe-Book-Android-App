@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myrecipebook.DataClass;
 import com.example.myrecipebook.R;
 import com.example.myrecipebook.adapters.MyRecipesAdapter;
+import com.example.myrecipebook.models.DetailRecipeModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,11 +24,13 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainnActivity extends AppCompatActivity {
+public class MyRecipesActivity extends AppCompatActivity {
 
     FloatingActionButton fab;
     RecyclerView recyclerView;
-    List<DataClass> dataList;
+   List<DataClass> dataList;
+   //List<DetailRecipeModel> list;
+
     DatabaseReference databaseReference;
     ValueEventListener eventListener;
 
@@ -42,24 +45,23 @@ public class MainnActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.myRecipesRecyclerView);
 
 
-
         fab = findViewById(R.id.fab1);
 
         //Upload new recipe button
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainnActivity.this, UploadActivity.class);
+                Intent intent = new Intent(MyRecipesActivity.this, UploadActivity.class);
                 startActivity(intent);
             }
         });
 
         //layout
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(MainnActivity.this, 1);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(MyRecipesActivity.this, 1);
         recyclerView.setLayoutManager(gridLayoutManager);
 
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainnActivity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(MyRecipesActivity.this);
         builder.setCancelable(false);
         builder.setView(R.layout.progress_layout);
         AlertDialog dialog = builder.create();
@@ -68,7 +70,7 @@ public class MainnActivity extends AppCompatActivity {
         dataList = new ArrayList<>();
 
         //adapter
-        MyRecipesAdapter adapter = new MyRecipesAdapter(MainnActivity.this, dataList);
+        MyRecipesAdapter adapter = new MyRecipesAdapter(MyRecipesActivity.this, dataList);
         recyclerView.setAdapter(adapter);
 
         //firebase

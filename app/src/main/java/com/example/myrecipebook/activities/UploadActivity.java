@@ -182,6 +182,10 @@ public class UploadActivity extends AppCompatActivity {
         });
     }
 }
+
+
+
+
 //    public void saveData() {
 //        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Android Images")
 //                .child(uri.getLastPathSegment());

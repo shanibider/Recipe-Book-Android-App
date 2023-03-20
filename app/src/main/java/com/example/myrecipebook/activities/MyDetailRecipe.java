@@ -1,39 +1,37 @@
 package com.example.myrecipebook.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.example.myrecipebook.MainActivity;
 import com.example.myrecipebook.R;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
+//My Detailed recipe
+public class MyDetailRecipe extends AppCompatActivity {
 
-public class DetailActivity extends AppCompatActivity {
-
-    TextView detailDesc, detailTitle, detailLang;
+    TextView detailTitle, detailIngr, detailInst;
     ImageView detailImage;
     String key = "";
-    //String imageUrl = "";
+    String imageUrl = "";
     FloatingActionButton deleteButton, editButton;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
+        setContentView(R.layout.activity_my_detaile_recipe);
 
         detailTitle = findViewById(R.id.detailTitle);
-        //detailImage = findViewById(R.id.detailImage);
-        detailDesc = findViewById(R.id.detailDesc);
-        detailLang = findViewById(R.id.detailLang);
+        detailImage = findViewById(R.id.detailImage);
+        detailIngr = findViewById(R.id.detailIngr);
+        detailInst = findViewById(R.id.detailInst);
 
         deleteButton = findViewById(R.id.deleteButton);
         editButton = findViewById(R.id.editButton);
@@ -43,14 +41,33 @@ public class DetailActivity extends AppCompatActivity {
 
         if (bundle != null){
 
-            detailDesc.setText(bundle.getString("Description"));
+            detailIngr.setText(bundle.getString("ingredients"));
             detailTitle.setText(bundle.getString("Title"));
-            detailLang.setText(bundle.getString("Language"));
+            detailInst.setText(bundle.getString("Instructions"));
+            detailInst.setText(bundle.getString("Instructions"));
             key = bundle.getString("Key");
-            //imageUrl = bundle.getString("Image");
-            //Glide.with(this).load(bundle.getString("Image")).into(detailImage);
+            imageUrl = bundle.getString("Image");
+            Glide.with(this).load(bundle.getString("Image")).into(detailImage);
 
         }
+
+
+
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MyDetailRecipe.this, MyRecipeUpdateActivity.class)
+                        .putExtra("Title", detailTitle.getText().toString())
+                        .putExtra("ingredients", detailIngr.getText().toString())
+                        .putExtra("Instructions", detailInst.getText().toString())
+                        .putExtra("Image", imageUrl)
+                        .putExtra("Key", key);
+                startActivity(intent);
+            }
+        });
+
+    }
+}
 
 
 
@@ -76,20 +93,7 @@ public class DetailActivity extends AppCompatActivity {
         });
 
 
-/*
-        editButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(DetailActivity.this, UpdateActivity.class)
-                        .putExtra("Title", detailTitle.getText().toString())
-                        .putExtra("Description", detailDesc.getText().toString())
-                        .putExtra("Language", detailLang.getText().toString())
-                        .putExtra("Image", imageUrl)
-                        .putExtra("Key", key);
-                startActivity(intent);
-            }
-        });
-        */
+*/
 
 
 
@@ -100,5 +104,4 @@ public class DetailActivity extends AppCompatActivity {
 
 
 
-    }
-}
+

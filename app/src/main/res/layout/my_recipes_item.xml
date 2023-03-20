@@ -15,16 +15,17 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="150dp">
 
 
 
 <com.google.android.material.imageview.ShapeableImageView
-    android:layout_width="60dp"
-    android:layout_height="60dp"
+    android:layout_width="120dp"
+    android:layout_height="120dp"
     android:id="@+id/recImage"
     android:layout_marginStart="20dp"
     android:padding="8dp"
+    android:scaleType="centerCrop"
     android:src="@drawable/add_photo"
     app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
   />
@@ -36,31 +37,46 @@
             android:id="@+id/recTitle"
             android:text="Title"
             android:textSize="20sp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="20dp"
             android:layout_toEndOf="@id/recImage"/>
 
         <TextView
             android:layout_width="80dp"
             android:layout_height="30dp"
-            android:id="@+id/recLang"
-            android:text="Language"
+            android:id="@+id/recTime"
+            android:text="Total time"
             android:layout_toEndOf="@id/recTitle"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="70dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="30dp"
             android:textAlignment="center"
-            android:textSize="16sp"/>
+            android:textSize="12sp"/>
         <TextView
             android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:id="@+id/recDesc"
-            android:text="desc"
-            android:textSize="14sp"
+            android:id="@+id/recIngr"
+            android:text="ingredients"
+            android:textSize="16sp"
             android:layout_toEndOf="@id/recImage"
             android:layout_below="@id/recTitle"
             android:layout_marginStart="20dp"
             android:maxLines="1"
-            android:layout_marginBottom="12dp"/>
+            android:layout_marginBottom="7dp"/>
+
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/recInst"
+            android:text="instruction"
+            android:textSize="16sp"
+            android:layout_toEndOf="@id/recImage"
+            android:layout_below="@id/recIngr"
+            android:layout_marginStart="20dp"
+            android:maxLines="1"
+            android:layout_marginBottom="5dp"/>
+
+
+
     </RelativeLayout>
 
 

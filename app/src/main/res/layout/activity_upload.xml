@@ -12,7 +12,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:layout_marginStart="20dp"
         app:cardCornerRadius="30dp"
@@ -32,11 +32,11 @@
                 android:layout_height="wrap_content"
                 android:text="Upload Recipe"
                 android:textAlignment="center"
-                android:textSize="30sp" />
+                android:textSize="28sp" />
 
             <ImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
                 android:layout_gravity="center"
                 android:src="@drawable/upload_image1"
                 android:id="@+id/uploadImage"
@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:id="@+id/upload_name"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:padding="16dp"
                 android:hint="Enter recipe name"
                 android:gravity="start|center_vertical"
