@@ -9,14 +9,15 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.myrecipebook.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 public class EditProfileActivity extends AppCompatActivity {
 
-    EditText editName, editEmail, editUsername, editPassword;
+    EditText editName, editUsername;
     Button saveButton;
-    String nameUser, emailUser, usernameUser, passwordUser;
     DatabaseReference reference;
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,19 +26,16 @@ public class EditProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
 
         reference = FirebaseDatabase.getInstance().getReference("users");
+        auth = FirebaseAuth.getInstance();
 
         editName = findViewById(R.id.editName);
-        editEmail = findViewById(R.id.editEmail);
         editUsername = findViewById(R.id.editUsername);
-        editPassword = findViewById(R.id.editPassword);
         saveButton = findViewById(R.id.saveButton);
-
-        showData();
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isNameChanged() || isPasswordChanged() || isEmailChanged()){
+                if (isDataChanged()){
                     Toast.makeText(EditProfileActivity.this, "Saved", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(EditProfileActivity.this, "No Changes Found", Toast.LENGTH_SHORT).show();
@@ -46,47 +44,16 @@ public class EditProfileActivity extends AppCompatActivity {
         });
     }
 
-    private boolean isNameChanged() {
-        if (!nameUser.equals(editName.getText().toString())){
-            reference.child(usernameUser).child("name").setValue(editName.getText().toString());
-            nameUser = editName.getText().toString();
-            return true;
-        } else {
+    private boolean isDataChanged() {
+        String newName = editName.getText().toString();
+        String newUsername = editUsername.getText().toString();
+
+        if (auth == null || auth.getUid() == null || newName.isEmpty() || newUsername.isEmpty()){
             return false;
-        }
-    }
-    private boolean isEmailChanged() {
-        if (!emailUser.equals(editEmail.getText().toString())){
-            reference.child(usernameUser).child("email").setValue(editEmail.getText().toString());
-            emailUser = editEmail.getText().toString();
-            return true;
         } else {
-            return false;
-        }
-    }
-    private boolean isPasswordChanged() {
-        if (!passwordUser.equals(editPassword.getText().toString())){
-            reference.child(usernameUser).child("password").setValue(editPassword.getText().toString());
-            passwordUser = editPassword.getText().toString();
+            reference.child(auth.getUid()).child("name").setValue(newName);
+            reference.child(auth.getUid()).child("username").setValue(newUsername);
             return true;
-        } else {
-            return false;
         }
-    }
-
-
-
-    public void showData(){
-
-        Intent intent = getIntent();
-        nameUser = intent.getStringExtra("name");
-        emailUser = intent.getStringExtra("email");
-        usernameUser = intent.getStringExtra("username");
-        passwordUser = intent.getStringExtra("password");
-
-        editName.setText(nameUser);
-        editEmail.setText(emailUser);
-        editUsername.setText(usernameUser);
-        editPassword.setText(passwordUser);
     }
 }
