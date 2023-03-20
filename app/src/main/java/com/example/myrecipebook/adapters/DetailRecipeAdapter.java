@@ -28,13 +28,12 @@ import java.util.List;
 public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapter.ViewHolder> {
 
     Context context;
-    List<DetailRecipeModel> list;
+    DetailRecipeModel detailRecipeModel;
     int position;
 
-    //CTOR
-    public DetailRecipeAdapter(Context context, List<DetailRecipeModel> list, int position) {
+    public DetailRecipeAdapter(Context context, DetailRecipeModel detailRecipeModel, int position) {
         this.context = context;
-        this.list = list;
+        this.detailRecipeModel = detailRecipeModel;
         this.position = position;
     }
 
@@ -47,13 +46,12 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        DetailRecipeModel detailRecipeModel = list.get(this.position);
-        Picasso.get().load(detailRecipeModel.getImageUrl()).into(holder.imageView);
-        holder.name.setText(detailRecipeModel.getName());
-        holder.detail.setText(detailRecipeModel.getTotalTime());
-        holder.ingredients.setText(detailRecipeModel.getIngredients());
-        holder.instruction.setText(detailRecipeModel.getInstruction());
-        List<String> health = detailRecipeModel.getHealthLabels();
+        Picasso.get().load(this.detailRecipeModel.getImageUrl()).into(holder.imageView);
+        holder.name.setText(this.detailRecipeModel.getName());
+        holder.detail.setText(this.detailRecipeModel.getTotalTime());
+        holder.ingredients.setText(this.detailRecipeModel.getIngredients());
+        holder.instruction.setText(this.detailRecipeModel.getInstruction());
+        List<String> health = this.detailRecipeModel.getHealthLabels();
         if (health.contains("Vegetarian")) holder.labelVegetarian.setBackgroundColor(Color.GREEN);
         if (health.contains("Vegan")) holder.labelVegan.setBackgroundColor(Color.GREEN);
         if (health.contains("Kosher")) holder.labelKosher.setBackgroundColor(Color.GREEN);
@@ -65,7 +63,7 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return 1;
     }
 
     //ViewHolder inner class
