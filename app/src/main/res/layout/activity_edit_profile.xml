@@ -41,17 +41,7 @@
                 android:drawableLeft="@drawable/ic_baseline_account_circle_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:id="@+id/editEmail"
-                android:background="@drawable/custom_edittext"
-                android:layout_marginTop="20dp"
-                android:padding="8dp"
-                android:hint="Email"
-                android:drawableLeft="@drawable/ic_baseline_email_24"
-                android:drawablePadding="8dp"
-                android:textColor="@color/black"/>
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -63,18 +53,7 @@
                 android:drawableLeft="@drawable/ic_baseline_account_circle_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:id="@+id/editPassword"
-                android:background="@drawable/custom_edittext"
-                android:layout_marginTop="20dp"
-                android:padding="8dp"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:drawableLeft="@drawable/ic_baseline_password_24"
-                android:drawablePadding="8dp"
-                android:textColor="@color/black"/>
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="60dp"

@@ -201,7 +201,6 @@
         android:id="@+id/food_pref"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:onClick="foodPref"
         android:text="My food prefrences"
         android:textSize="9dp"
         android:textColor="@color/darkgray"
@@ -213,7 +212,6 @@
         android:id="@+id/my_recipes"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:onClick="myRecipes"
         android:text="My Recipes"
         android:textSize="9dp"
         android:gravity="center"
@@ -222,10 +220,9 @@
         />
 
     <Button
-        android:id="@+id/my_favourites"
+        android:id="@+id/my_favorites"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:onClick="favourites"
         android:text="Favourites"
         android:textSize="9dp"
         android:gravity="center"
@@ -233,17 +230,6 @@
         android:textColor="@color/darkgray"
         />
 
-    <Button
-        android:id="@+id/find_map"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:onClick="marketsNearMe"
-        android:text="Find supermarket near me"
-        android:textSize="9dp"
-        android:gravity="center"
-        android:textColor="@color/darkgray"
-        app:cornerRadius = "10dp"
-        />
     </LinearLayout>
 
 
@@ -254,7 +240,6 @@
         android:id="@+id/edit_profile"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:onClick="editProfile"
         android:text="Edit Profile"
         android:gravity="center"
         android:textSize="10dp"
