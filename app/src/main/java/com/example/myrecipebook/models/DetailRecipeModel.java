@@ -4,22 +4,24 @@ import java.io.Serializable;
 import java.util.List;
 
 public class DetailRecipeModel implements Serializable {
-    public String name;
     public int image;
+    public String name;
     public List<String> category;
     public List<String> healthLabels;
     public String ingredients;
     public String instruction;
     public String totalTime;
+    public String imageUrl;
 
-    public DetailRecipeModel(int image, String name, String totalTime, String ingredients, String instruction, List<String> category, List<String> healthLabels) {
+    public DetailRecipeModel(int image, String name, List<String> category, List<String> healthLabels, String ingredients, String instruction, String totalTime, String imageUrl) {
         this.image = image;
         this.name = name;
-        this.totalTime = totalTime;
+        this.category = category;
+        this.healthLabels = healthLabels;
         this.ingredients = ingredients;
         this.instruction = instruction;
-        this.category=category;
-        this.healthLabels=healthLabels;
+        this.totalTime = totalTime;
+        this.imageUrl = imageUrl;
     }
 
     public String getName() {
@@ -48,5 +50,9 @@ public class DetailRecipeModel implements Serializable {
 
     public String getTotalTime() {
         return totalTime;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 }

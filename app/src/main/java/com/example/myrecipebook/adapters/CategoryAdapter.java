@@ -15,6 +15,7 @@ import com.example.myrecipebook.R;
 import com.example.myrecipebook.activities.DetailRecipeActivity;
 import com.example.myrecipebook.models.CategoryModel;
 import com.example.myrecipebook.models.DetailRecipeModel;
+import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
 import java.util.List;
@@ -43,7 +44,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     //(bind the items with each item of the oneCategoryList list which than will be shown in recycler view)
     @Override
     public void onBindViewHolder(@NonNull CategoryAdapter.ViewHolder holder, int position) {
-        holder.imageView.setImageResource(categoryList.get(position).getImage());
+        Picasso.get().load(categoryList.get(position).getImageUrl()).into(holder.imageView);
         holder.name.setText(categoryList.get(position).getName());
         holder.detail.setText(categoryList.get(position).getTotalTime());
 

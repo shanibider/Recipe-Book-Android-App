@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainnActivity extends AppCompatActivity {
+public class MyRecipesActivity extends AppCompatActivity {
 
     FloatingActionButton fab;
     RecyclerView recyclerView;
@@ -49,17 +49,17 @@ public class MainnActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainnActivity.this, UploadActivity.class);
+                Intent intent = new Intent(MyRecipesActivity.this, UploadActivity.class);
                 startActivity(intent);
             }
         });
 
         //layout
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(MainnActivity.this, 1);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(MyRecipesActivity.this, 1);
         recyclerView.setLayoutManager(gridLayoutManager);
 
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainnActivity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(MyRecipesActivity.this);
         builder.setCancelable(false);
         builder.setView(R.layout.progress_layout);
         AlertDialog dialog = builder.create();
@@ -68,7 +68,7 @@ public class MainnActivity extends AppCompatActivity {
         dataList = new ArrayList<>();
 
         //adapter
-        MyRecipesAdapter adapter = new MyRecipesAdapter(MainnActivity.this, dataList);
+        MyRecipesAdapter adapter = new MyRecipesAdapter(MyRecipesActivity.this, dataList);
         recyclerView.setAdapter(adapter);
 
         //firebase

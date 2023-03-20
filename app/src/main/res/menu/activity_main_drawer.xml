@@ -16,7 +16,7 @@
         <item
             android:id="@+id/nav_categories"
             android:icon="@drawable/ic_baseline_favorite_24"
-            android:title="Recipes (local)" />
+            android:title="Categories" />
         <item
             android:id="@+id/nav_my_recipes"
             android:icon="@drawable/ic_baseline_list_alt_24"

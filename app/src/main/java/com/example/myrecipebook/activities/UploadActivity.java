@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.example.myrecipebook.DataClass;
 import com.example.myrecipebook.R;
 import com.example.myrecipebook.models.DetailRecipeModel;
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -57,9 +58,7 @@ public class UploadActivity extends AppCompatActivity {
         setContentView(R.layout.activity_upload);
 
         uploadImage = findViewById(R.id.uploadImage);
-        //uploadDesc = findViewById(R.id.uploadDesc);
         uploadName = findViewById(R.id.upload_name);
-        //uploadLang = findViewById(R.id.uploadLang);
         uploadIngre = findViewById(R.id.upload_ingredients);
         uploadTotalTime = findViewById(R.id.uploadTotalTime);
         uploadTotalTime.setMinValue(0);
@@ -109,19 +108,11 @@ public class UploadActivity extends AppCompatActivity {
         lunchCheckBox = findViewById(R.id.lunch_checkbox);
         dinnerCheckBox = findViewById(R.id.dinner_checkbox);
         dessertCheckBox = findViewById(R.id.dessert_checkbox);
+        if (breakfastCheckBox.isChecked()) category.add("breakfast");
+        if (lunchCheckBox.isChecked()) category.add("lunch");
+        if (dinnerCheckBox.isChecked()) category.add("dinner");
+        if (dessertCheckBox.isChecked()) category.add("dessert");
 
-        if (breakfastCheckBox.isChecked()) {
-            category.add("breakfast");
-        }
-        if (lunchCheckBox.isChecked()) {
-            category.add("lunch");
-        }
-        if (dinnerCheckBox.isChecked()) {
-            category.add("dinner");
-        }
-        if (dessertCheckBox.isChecked()) {
-            category.add("dessert");
-        }
         List<String> healthLabels = new ArrayList<>();
         veganCB = findViewById(R.id.vegan_checkbox);
         vegetarianCB = findViewById(R.id.vegetarian_checkbox);
@@ -138,48 +129,83 @@ public class UploadActivity extends AppCompatActivity {
         int int_totalTime = uploadTotalTime.getValue();
         String totalTime = Integer.toString(int_totalTime) + " min";
         int image = 0;
-        DetailRecipeModel detailRecipeModel = new DetailRecipeModel(image, name, totalTime, ingredients, "", category, healthLabels);
+        DetailRecipeModel detailRecipeModel = new DetailRecipeModel(image, name, category, healthLabels, ingredients, "", totalTime, "");
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference recipeRef = database.getReference("Recipes");
-        recipeRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                boolean flag = false;
-                if (snapshot.exists()) {
-                    for (DataSnapshot childSnapshot : snapshot.getChildren()) {
-                        if (childSnapshot.getKey().equals(detailRecipeModel.getName())) {
-                            flag = true;
-                            break;
+        if (uri != null) {
+            StorageReference imageRef = FirebaseStorage.getInstance().getReference().child("recipe_images/" + name + ".jpg");
+            UploadTask uploadTask = imageRef.putFile(uri);
+
+            uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                @Override
+                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                    if (!task.isSuccessful()) {
+                        throw task.getException();
+                    }
+                    return imageRef.getDownloadUrl();
+                }
+            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                @Override
+                public void onComplete(@NonNull Task<Uri> task) {
+                    if (task.isSuccessful()) {
+                        Uri downloadUri = task.getResult();
+                        if (downloadUri != null) {
+                            String imageURL = downloadUri.toString();
+                            detailRecipeModel.imageUrl = imageURL;
+                            System.out.println("imageURL");
+                            System.out.println(imageURL);
+
+                            // Save recipe data to Firebase Realtime Database
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            DatabaseReference recipeRef = database.getReference("Recipes");
+
+                            recipeRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    boolean flag = false;
+                                    if (snapshot.exists()) {
+                                        for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                                            if (childSnapshot.getKey().equals(detailRecipeModel.getName())) {
+                                                flag = true;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    if (!flag) {
+                                        if (name.equals(""))
+                                            Toast.makeText(getApplicationContext(), "Please set recipe name", Toast.LENGTH_SHORT).show();
+                                        else if (ingredients.equals(""))
+                                            Toast.makeText(getApplicationContext(), "Please set ingredients", Toast.LENGTH_SHORT).show();
+                                        else if (int_totalTime == 0)
+                                            Toast.makeText(getApplicationContext(), "Please set total time", Toast.LENGTH_SHORT).show();
+                                        else if (category.size() == 0)
+                                            Toast.makeText(getApplicationContext(), "Please choose at least 1 category", Toast.LENGTH_SHORT).show();
+                                        else {
+                                            DatabaseReference recipeChildRef = recipeRef.child(detailRecipeModel.getName());
+                                            recipeChildRef.setValue(detailRecipeModel);
+                                            Toast.makeText(getApplicationContext(), "Recipe uploaded successfully", Toast.LENGTH_SHORT).show();
+                                            finish();
+                                        }
+                                    } else {
+                                        Toast.makeText(getApplicationContext(), "Recipe name is already taken", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+                                    System.out.println(error);
+                                }
+                            });
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Failed to get download URL", Toast.LENGTH_SHORT).show();
                         }
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Failed to upload image", Toast.LENGTH_SHORT).show();
                     }
                 }
-                if (!flag) {
-                    if (name.equals(""))
-                        Toast.makeText(getApplicationContext(), "Please set recipe name", Toast.LENGTH_SHORT).show();
-                    else if (ingredients.equals(""))
-                        Toast.makeText(getApplicationContext(), "Please set ingredients", Toast.LENGTH_SHORT).show();
-                    else if (int_totalTime == 0)
-                        Toast.makeText(getApplicationContext(), "Please set total time", Toast.LENGTH_SHORT).show();
-                    else if (category.size() == 0)
-                        Toast.makeText(getApplicationContext(), "Please choose at least 1 category", Toast.LENGTH_SHORT).show();
-                    else {
-                        DatabaseReference recipeChildRef = recipeRef.child(detailRecipeModel.name);
-                        recipeChildRef.setValue(detailRecipeModel);
-                        Toast.makeText(getApplicationContext(), "Recipe uploaded successfully", Toast.LENGTH_SHORT).show();
-                        finish();
-                    }
-                } else {
-                    Toast.makeText(getApplicationContext(), "Recipe name is already taken", Toast.LENGTH_SHORT).show();
-                }
-                recipeRef.removeEventListener(this);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                System.out.println(error);
-            }
-        });
+            });
+        } else {
+            Toast.makeText(UploadActivity.this, "No Image Selected", Toast.LENGTH_SHORT).show();
+        }
     }
 }
 //    public void saveData() {
