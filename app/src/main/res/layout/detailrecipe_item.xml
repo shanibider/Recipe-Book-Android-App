@@ -18,7 +18,7 @@
         app:cardCornerRadius="30dp"
         app:cardElevation="20dp">
 
-        <LinearLayout
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -39,93 +39,166 @@
             app:layout_constraintVertical_bias="0.0" />
 
 
-    <TextView
-        android:id="@+id/recipe_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp"
-        android:text="Recipe name"
-        android:textColor="@color/darkgray"
-        android:textSize="23sp"
-        android:textStyle="bold"
+        <TextView
+            android:id="@+id/recipe_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:text="Recipe name"
+            android:textColor="@color/darkgray"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/recipe_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="duration"
+            android:textColor="@color/darkgray"
+            android:textSize="9sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/recipe_name" />
+
+        <TextView
+            android:id="@+id/recipe_ingredientsHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ingredients"
+            android:textColor="@color/darkgray"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recipe_detail" />
+
+       <TextView
+            android:id="@+id/recipe_ingredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="The ingredients"
+            android:textColor="@color/darkgray"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
         />
 
-    <TextView
-        android:id="@+id/recipe_detail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="duration"
-        android:textColor="@color/darkgray"
-        android:textSize="9sp"
-        android:textStyle="bold"
-        android:layout_marginLeft="30dp"
-        app:layout_constraintTop_toBottomOf="@+id/recipe_name" />
 
-    <TextView
-        android:id="@+id/recipe_ingredientsHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ingredients"
-        android:textColor="@color/darkgray"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recipe_detail" />
+        <TextView
+            android:id="@+id/recipe_instructionHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Instruction"
+            android:textColor="@color/darkgray"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recipe_ingredients" />
 
-   <TextView
-        android:id="@+id/recipe_ingredients"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="The ingredients"
-        android:textColor="@color/darkgray"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"
-    />
+        <TextView
+            android:id="@+id/recipe_instruction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="The instruction"
+            android:textColor="@color/darkgray"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recipe_instructionHeader" />
 
+        <LinearLayout
+            android:id="@+id/healthLabels_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
 
-    <TextView
-        android:id="@+id/recipe_instructionHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Instruction"
-        android:textColor="@color/darkgray"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recipe_ingredients" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="16dp">
 
-    <TextView
-        android:id="@+id/recipe_instruction"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="The instruction"
-        android:textColor="@color/darkgray"
-        android:textSize="13sp"
-        android:textStyle="bold"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recipe_instructionHeader" />
+            <TextView
+                android:id="@+id/label_vegetarian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vegetarian"
+                android:textColor="@color/black"
+                android:background="@color/white"
+                android:padding="4dp"
+                android:layout_marginEnd="16dp"/>
 
+            <TextView
+                android:id="@+id/label_vegan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vegan"
+                android:textColor="@color/black"
+                android:background="@color/white"
+                android:padding="4dp"
+                android:layout_marginEnd="16dp"/>
 
+            <TextView
+                android:id="@+id/label_kosher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kosher"
+                android:textColor="@color/black"
+                android:background="@color/white"
+                android:padding="4dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="16dp">
+                <TextView
+                    android:id="@+id/label_gluten_free"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gluten-Free"
+                    android:textColor="@color/black"
+                    android:background="@color/white"
+                    android:padding="4dp"
+                    android:layout_marginEnd="16dp"/>
+
+                <TextView
+                    android:id="@+id/label_dairy_free"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dairy-Free"
+                    android:textColor="@color/black"
+                    android:background="@color/white"
+                    android:padding="4dp" />
+            </LinearLayout>
         </LinearLayout>
+
+    </LinearLayout>
     </androidx.cardview.widget.CardView>
 
 </ScrollView>

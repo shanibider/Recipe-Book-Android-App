@@ -4,6 +4,7 @@ package com.example.myrecipebook.adapters;
 //ADAPTER + VIEWHOLDER
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.core.content.ContextCompat;
 
 import com.example.myrecipebook.R;
 import com.example.myrecipebook.models.CategoryModel;
@@ -44,15 +47,19 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        System.out.println(this.position);
-        System.out.println("Picasso");
-        System.out.println(list.get(this.position).getImageUrl());
-        Picasso.get().load(list.get(this.position).getImageUrl()).into(holder.imageView);
-//        holder.imageView.setImageResource(list.get(this.position).getImage());
-        holder.name.setText(list.get(this.position).getName());
-        holder.detail.setText(list.get(this.position).getTotalTime());
-        holder.ingredients.setText(list.get(this.position).getIngredients());
-        holder.instruction.setText(list.get(this.position).getInstruction());
+        DetailRecipeModel detailRecipeModel = list.get(this.position);
+        Picasso.get().load(detailRecipeModel.getImageUrl()).into(holder.imageView);
+        holder.name.setText(detailRecipeModel.getName());
+        holder.detail.setText(detailRecipeModel.getTotalTime());
+        holder.ingredients.setText(detailRecipeModel.getIngredients());
+        holder.instruction.setText(detailRecipeModel.getInstruction());
+        List<String> health = detailRecipeModel.getHealthLabels();
+        if (health.contains("Vegetarian")) holder.labelVegetarian.setBackgroundColor(Color.GREEN);
+        if (health.contains("Vegan")) holder.labelVegan.setBackgroundColor(Color.GREEN);
+        if (health.contains("Kosher")) holder.labelKosher.setBackgroundColor(Color.GREEN);
+        if (health.contains("Gluten-Free")) holder.labelGlutenFree.setBackgroundColor(Color.GREEN);
+        if (health.contains("Dairy-Free")) holder.labelDairyFree.setBackgroundColor(Color.GREEN);
+
 
     }
 
@@ -69,6 +76,7 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
         // ImageView imageView;
         TextView name, detail, ingredients, instruction;
         ImageView imageView;
+        TextView labelVegetarian, labelVegan, labelKosher, labelGlutenFree, labelDairyFree;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -79,6 +87,11 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
             detail =  itemView.findViewById(R.id.recipe_detail);
             ingredients =  itemView.findViewById(R.id.recipe_ingredients);
             instruction = itemView.findViewById(R.id.recipe_instruction);
+            labelVegetarian = itemView.findViewById(R.id.label_vegetarian);
+            labelVegan = itemView.findViewById(R.id.label_vegan);
+            labelKosher = itemView.findViewById(R.id.label_kosher);
+            labelGlutenFree = itemView.findViewById(R.id.label_gluten_free);
+            labelDairyFree = itemView.findViewById(R.id.label_dairy_free);
         }
     }
 }
