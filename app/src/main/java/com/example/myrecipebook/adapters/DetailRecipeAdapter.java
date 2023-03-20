@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myrecipebook.R;
 import com.example.myrecipebook.models.CategoryModel;
 import com.example.myrecipebook.models.DetailRecipeModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -44,8 +45,10 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         System.out.println(this.position);
-
-        holder.imageView.setImageResource(list.get(this.position).getImage());
+        System.out.println("Picasso");
+        System.out.println(list.get(this.position).getImageUrl());
+        Picasso.get().load(list.get(this.position).getImageUrl()).into(holder.imageView);
+//        holder.imageView.setImageResource(list.get(this.position).getImage());
         holder.name.setText(list.get(this.position).getName());
         holder.detail.setText(list.get(this.position).getTotalTime());
         holder.ingredients.setText(list.get(this.position).getIngredients());

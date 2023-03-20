@@ -73,7 +73,8 @@ public class CategoryFragment extends Fragment implements AdapterView.OnItemSele
                     String recipeInstruction = recipeSnapshot.child("instruction").getValue(String.class);
                     List<String> recipeCategory = recipeSnapshot.child("category").getValue(new GenericTypeIndicator<List<String>>() {});
                     List<String> recipeHealthLabels = recipeSnapshot.child("healthLabels").getValue(new GenericTypeIndicator<List<String>>() {});
-                    DetailRecipeModel recipeModel = new DetailRecipeModel(recipeImage, recipeName, recipeTotalTime, recipeIngredients, recipeInstruction, recipeCategory, recipeHealthLabels);
+                    String imageUrl = recipeSnapshot.child("imageUrl").getValue(String.class);
+                    DetailRecipeModel recipeModel = new DetailRecipeModel(recipeImage, recipeName, recipeCategory, recipeHealthLabels, recipeIngredients, recipeInstruction, recipeTotalTime, imageUrl);
                     dataRecipeList.add(recipeModel);
                 }
                 filterList(spinner.getSelectedItem().toString());

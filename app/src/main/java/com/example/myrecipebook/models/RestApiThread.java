@@ -1,22 +1,19 @@
 package com.example.myrecipebook.models;
 
-import static android.content.ContentValues.TAG;
-
-import android.util.Log;
+import android.net.Uri;
 
 import androidx.annotation.NonNull;
 
 import com.example.myrecipebook.R;
-import com.example.myrecipebook.databinding.DetailrecipeItemBinding;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -26,9 +23,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class RestApiThread extends Thread {
@@ -38,11 +33,12 @@ public class RestApiThread extends Thread {
     public String API_KEY = "e1fb0aa48ef28311b465ca5ff535a63d";
     public int[] images;
     public List<String> mealCategories;
+    String my_imageUrl;
 
 
     public RestApiThread() {
-        foods = new String[]{"pancakes","toast","granola","omelette","waffles","chicken", "hummus","curry","quinoa","hamburger","steak","salmon","bolognese","kebab","cake","pie","ice-cream"};
-        images = new int[] {R.drawable.pancakes,R.drawable.toast,R.drawable.granola,R.drawable.omlette,R.drawable.waffles,R.drawable.chicken,R.drawable.hummus,R.drawable.curry,R.drawable.quinoa,R.drawable.hamburger,R.drawable.steak,R.drawable.salmon,R.drawable.bolognese,R.drawable.kebab,R.drawable.cake,R.drawable.pie,R.drawable.icecream};
+        foods = new String[]{"pancakes","toast","granola","omelette","waffles","chicken", "hummus","curry","quinoa","hamburger","steak","salmon","bolognese","kebab","cake","pie","muffin"};
+        images = new int[] {R.drawable.pancakes,R.drawable.toast,R.drawable.granola,R.drawable.omelette,R.drawable.waffles,R.drawable.chicken,R.drawable.hummus,R.drawable.curry,R.drawable.quinoa,R.drawable.hamburger,R.drawable.steak,R.drawable.salmon,R.drawable.bolognese,R.drawable.kebab,R.drawable.cake,R.drawable.pie,R.drawable.icecream};
         mealCategories = new ArrayList<>();
         mealCategories.add("Vegetarian");
         mealCategories.add("Vegan");
@@ -84,11 +80,6 @@ public class RestApiThread extends Thread {
                 DetailRecipeModel detailRecipeModel = generateRecipeModel(i);
                 DatabaseReference recipeChildRef = recipeRef.child(detailRecipeModel.name);
                 recipeChildRef.setValue(detailRecipeModel);
-                try {
-                    sleep(10000); // Sleep for 10 seconds
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
             }
             System.out.println("finished uploading to firebase db");
         }
@@ -124,6 +115,25 @@ public class RestApiThread extends Thread {
                 int my_image = images[i];
                 System.out.println(my_image);
 
+                FirebaseStorage storage = FirebaseStorage.getInstance();
+                StorageReference storageRef = storage.getReference().child("recipe_images/" + my_q +".jpg");
+                storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        my_imageUrl = uri.toString();
+                        System.out.println("my_imageUrl : " + my_imageUrl);
+                        // Use the imageUrl to display the image in your ImageView
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        // Handle any errors that occur while getting the download URL
+                        System.out.println("Problem with "+ my_q);
+                        System.out.println(exception);
+                    }
+                });
+
+                sleep(10000);
                 List<String> my_healthLabels = new ArrayList<>();
                 JSONArray healthLabels = recipe.getJSONArray("healthLabels");
                 for(int j=0;j<healthLabels.length();j++) {
@@ -173,7 +183,7 @@ public class RestApiThread extends Thread {
                 } else {
                     System.out.println("Recipe URL not available");
                 }
-                DetailRecipeModel drm = new DetailRecipeModel(my_image,my_q,my_totalTime,my_ingredientLines,my_recipeUrl,my_mealType,my_healthLabels);
+                DetailRecipeModel drm = new DetailRecipeModel(my_image,my_q, my_mealType, my_healthLabels, my_ingredientLines, my_recipeUrl, my_totalTime, my_imageUrl);
                 return drm;
             } else {
                 System.out.println("Error: " + responseCode);
@@ -183,4 +193,6 @@ public class RestApiThread extends Thread {
         }
         return null;
     }
+
+
 }

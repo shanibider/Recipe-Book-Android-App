@@ -30,6 +30,7 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
+
         </activity>
         <activity
             android:name=".activities.RegisterActivity"
@@ -84,7 +85,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".activities.MainnActivity"
+            android:name=".activities.MyRecipesActivity"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
