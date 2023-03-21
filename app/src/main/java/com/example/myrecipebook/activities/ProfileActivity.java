@@ -22,11 +22,9 @@ import com.google.firebase.database.ValueEventListener;
 //not working well
 
 public class ProfileActivity extends AppCompatActivity {
-
     TextView profileName, profileUsername ,profileEmail, profilePassword;
     TextView titleHello;
     Button editProfile, foodPref, myRecipes, myFavourites, findMap;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

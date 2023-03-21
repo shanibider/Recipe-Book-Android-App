@@ -27,6 +27,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -128,8 +129,8 @@ public class UploadActivity extends AppCompatActivity {
         String ingredients = uploadIngre.getText().toString();
         int int_totalTime = uploadTotalTime.getValue();
         String totalTime = Integer.toString(int_totalTime) + " min";
-        int image = 0;
-        DetailRecipeModel detailRecipeModel = new DetailRecipeModel(image, name, category, healthLabels, ingredients, "", totalTime, "");
+        String curUser = FirebaseAuth.getInstance().getUid();
+        DetailRecipeModel detailRecipeModel = new DetailRecipeModel(curUser, name, category, healthLabels, ingredients, "", totalTime, "");
 
         if (uri != null) {
             StorageReference imageRef = FirebaseStorage.getInstance().getReference().child("recipe_images/" + name + ".jpg");

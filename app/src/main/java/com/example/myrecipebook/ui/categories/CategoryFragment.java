@@ -65,7 +65,8 @@ public class CategoryFragment extends Fragment implements AdapterView.OnItemSele
                 System.out.println("children count "+dataSnapshot.getChildrenCount());
                 for (DataSnapshot recipeSnapshot : dataSnapshot.getChildren()) {
                     String recipeName = recipeSnapshot.child("name").getValue(String.class);
-                    int recipeImage = recipeSnapshot.child("image").getValue(Integer.class);
+                    String recipeUser = recipeSnapshot.child("user").getValue(String.class);
+                    String user = recipeSnapshot.child("user").getValue(String.class);
                     String recipeTotalTime = "";
                     if (recipeSnapshot.child("totalTime").getValue(String.class).charAt(0) != '-')
                         recipeTotalTime = recipeSnapshot.child("totalTime").getValue(String.class);
@@ -74,7 +75,7 @@ public class CategoryFragment extends Fragment implements AdapterView.OnItemSele
                     List<String> recipeCategory = recipeSnapshot.child("category").getValue(new GenericTypeIndicator<List<String>>() {});
                     List<String> recipeHealthLabels = recipeSnapshot.child("healthLabels").getValue(new GenericTypeIndicator<List<String>>() {});
                     String imageUrl = recipeSnapshot.child("imageUrl").getValue(String.class);
-                    DetailRecipeModel recipeModel = new DetailRecipeModel(recipeImage, recipeName, recipeCategory, recipeHealthLabels, recipeIngredients, recipeInstruction, recipeTotalTime, imageUrl);
+                    DetailRecipeModel recipeModel = new DetailRecipeModel(user, recipeName, recipeCategory, recipeHealthLabels, recipeIngredients, recipeInstruction, recipeTotalTime, imageUrl);
                     dataRecipeList.add(recipeModel);
                 }
                 filterList(spinner.getSelectedItem().toString());
