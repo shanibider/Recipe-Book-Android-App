@@ -183,7 +183,7 @@ public class RestApiThread extends Thread {
                 } else {
                     System.out.println("Recipe URL not available");
                 }
-                DetailRecipeModel drm = new DetailRecipeModel(my_image,my_q, my_mealType, my_healthLabels, my_ingredientLines, my_recipeUrl, my_totalTime, my_imageUrl);
+                DetailRecipeModel drm = new DetailRecipeModel("GeneratedFromRestApi",my_q, my_mealType, my_healthLabels, my_ingredientLines, my_recipeUrl, my_totalTime, my_imageUrl);
                 return drm;
             } else {
                 System.out.println("Error: " + responseCode);

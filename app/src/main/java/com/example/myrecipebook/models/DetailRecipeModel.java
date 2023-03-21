@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 public class DetailRecipeModel implements Serializable {
-    public int image;
+    String user;
     public String name;
     public List<String> category;
     public List<String> healthLabels;
@@ -13,8 +13,9 @@ public class DetailRecipeModel implements Serializable {
     public String totalTime;
     public String imageUrl;
 
-    public DetailRecipeModel(int image, String name, List<String> category, List<String> healthLabels, String ingredients, String instruction, String totalTime, String imageUrl) {
-        this.image = image;
+
+    public DetailRecipeModel(String user, String name, List<String> category, List<String> healthLabels, String ingredients, String instruction, String totalTime, String imageUrl) {
+        this.user = user;
         this.name = name;
         this.category = category;
         this.healthLabels = healthLabels;
@@ -28,8 +29,8 @@ public class DetailRecipeModel implements Serializable {
         return name;
     }
 
-    public int getImage() {
-        return image;
+    public String getUser() {
+        return user;
     }
 
     public List<String> getCategory() {
