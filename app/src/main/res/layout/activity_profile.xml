@@ -15,8 +15,8 @@
 
     <ImageView
         android:id="@+id/user_image"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:contentDescription="@string/nav_header_desc"
         android:paddingTop="8dp"
         android:layout_marginTop="10dp"
