@@ -136,6 +136,7 @@ public class EditProfileActivity extends AppCompatActivity {
                     if (downloadUri != null) {
                         String imageURL = downloadUri.toString();
                         reference.child(auth.getUid()).child("profileImage").setValue(imageURL);
+                        returnActivity();
                     }
                 }
             }

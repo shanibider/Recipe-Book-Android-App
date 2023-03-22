@@ -47,7 +47,6 @@ public class LoginActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         loginButton.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 String email = loginEmail.getText().toString();

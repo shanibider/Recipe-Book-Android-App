@@ -45,7 +45,7 @@ import java.util.List;
 public class UploadActivity extends AppCompatActivity {
     ImageView uploadImage;
     Button saveButton;
-    EditText uploadName, uploadIngre, uploadLang;
+    EditText uploadName, uploadIngre;
     String imageURL;
     NumberPicker uploadTotalTime;
     Uri uri;
