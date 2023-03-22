@@ -1,13 +1,6 @@
 package com.example.myrecipebook.activities;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,15 +10,20 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myrecipebook.DataClass;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.myrecipebook.R;
 import com.example.myrecipebook.models.DetailRecipeModel;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -36,19 +34,20 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import java.text.DateFormat;
+
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 //work well
-public class UploadActivity extends AppCompatActivity {
-    ImageView uploadImage;
-    Button saveButton;
-    EditText uploadName, uploadIngre, uploadLang;
+public class UpdateActivity extends AppCompatActivity {
+    ImageView updateImage;
+    Button updatesaveButton;
+    TextView updateName;
+    EditText updateIngre, uploadLang;
     String imageURL;
-    NumberPicker uploadTotalTime;
+    NumberPicker updateTotalTime;
     Uri uri;
+    DetailRecipeModel detailRecipeModel;
     private CheckBox breakfastCheckBox, lunchCheckBox, dinnerCheckBox, dessertCheckBox;
     private CheckBox veganCB, vegetarianCB, kosherCB, glutenCB, dairyCB;
 
@@ -56,16 +55,51 @@ public class UploadActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_upload);
+        setContentView(R.layout.activity_update);
 
-        uploadImage = findViewById(R.id.uploadImage);
-        uploadName = findViewById(R.id.upload_name);
-        uploadIngre = findViewById(R.id.upload_ingredients);
-        uploadTotalTime = findViewById(R.id.uploadTotalTime);
-        uploadTotalTime.setMinValue(0);
-        uploadTotalTime.setMaxValue(200);
-        saveButton = findViewById(R.id.saveButton);
+        Bundle extras = getIntent().getExtras();
+        if (extras!=null) {
+            detailRecipeModel = (DetailRecipeModel) extras.getSerializable("detailRecipeModel");
+        }
+        if (detailRecipeModel == null) {
+            finish();
+        }
+        updateImage = findViewById(R.id.updateImage);
+        updateName = findViewById(R.id.update_name);
+        updateIngre = findViewById(R.id.update_ingredients);
+        updateTotalTime = findViewById(R.id.updateTotalTime);
+        updateTotalTime.setMinValue(0);
+        updateTotalTime.setMaxValue(200);
+        updatesaveButton = findViewById(R.id.update_saveButton);
 
+        updateName.setText(detailRecipeModel.getName());
+        updateIngre.setText(detailRecipeModel.getIngredients());
+        if (Character.isDigit(detailRecipeModel.getTotalTime().charAt(0))){
+            updateTotalTime.setValue(detailRecipeModel.getTotalTime().charAt(0));
+        }
+
+        breakfastCheckBox = findViewById(R.id.update_breakfast);
+        lunchCheckBox = findViewById(R.id.update_lunch);
+        dinnerCheckBox = findViewById(R.id.update_dinner);
+        dessertCheckBox = findViewById(R.id.update_dessert);
+        List<String> category = detailRecipeModel.getCategory();
+        if (category.contains("breakfast")) breakfastCheckBox.setChecked(true);
+        if (category.contains("lunch")) lunchCheckBox.setChecked(true);
+        if (category.contains("dinner")) dinnerCheckBox.setChecked(true);
+        if (category.contains("dessert")) dessertCheckBox.setChecked(true);
+
+        veganCB = findViewById(R.id.update_vegan);
+        vegetarianCB = findViewById(R.id.update_vegetarian);
+        kosherCB = findViewById(R.id.update_kosher);
+        glutenCB = findViewById(R.id.update_gluten);
+        dairyCB = findViewById(R.id.update_dairy);
+
+        List<String> healthLabels = detailRecipeModel.getHealthLabels();
+        if (healthLabels.contains("Vegetarian")) vegetarianCB.setChecked(true);
+        if (healthLabels.contains("Vegan")) veganCB.setChecked(true);
+        if (healthLabels.contains("Kosher")) kosherCB.setChecked(true);
+        if (healthLabels.contains("Gluten-Free")) glutenCB.setChecked(true);
+        if (healthLabels.contains("Dairy-Free")) dairyCB.setChecked(true);
 
         ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -76,16 +110,16 @@ public class UploadActivity extends AppCompatActivity {
                         if (result.getResultCode() == Activity.RESULT_OK) {
                             Intent data = result.getData();
                             uri = data.getData();
-                            uploadImage.setImageURI(uri);
+                            updateImage.setImageURI(uri);
                         } else {
-                            Toast.makeText(UploadActivity.this, "No Image Selected", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UpdateActivity.this, "No Image Selected", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
         );
 
         //Upload recipe image button
-        uploadImage.setOnClickListener(new View.OnClickListener() {
+        updateImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent photoPicker = new Intent(Intent.ACTION_PICK);
@@ -95,7 +129,7 @@ public class UploadActivity extends AppCompatActivity {
         });
 
         //Save data button
-        saveButton.setOnClickListener(new View.OnClickListener() {
+        updatesaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 saveData();
@@ -105,30 +139,21 @@ public class UploadActivity extends AppCompatActivity {
 
     public void saveData() {
         List<String> category = new ArrayList<>();
-        breakfastCheckBox = findViewById(R.id.breakfast_checkbox);
-        lunchCheckBox = findViewById(R.id.lunch_checkbox);
-        dinnerCheckBox = findViewById(R.id.dinner_checkbox);
-        dessertCheckBox = findViewById(R.id.dessert_checkbox);
         if (breakfastCheckBox.isChecked()) category.add("breakfast");
         if (lunchCheckBox.isChecked()) category.add("lunch");
         if (dinnerCheckBox.isChecked()) category.add("dinner");
         if (dessertCheckBox.isChecked()) category.add("dessert");
 
         List<String> healthLabels = new ArrayList<>();
-        veganCB = findViewById(R.id.vegan_checkbox);
-        vegetarianCB = findViewById(R.id.vegetarian_checkbox);
-        kosherCB = findViewById(R.id.kosher_checkbox);
-        glutenCB = findViewById(R.id.gluten_checkbox);
-        dairyCB = findViewById(R.id.dairy_checkbox);
         healthLabels.add("healthLabels");
         if (vegetarianCB.isChecked()) healthLabels.add("Vegetarian");
         if (veganCB.isChecked()) healthLabels.add("Vegan");
         if (kosherCB.isChecked()) healthLabels.add("Kosher");
         if (glutenCB.isChecked()) healthLabels.add("Gluten-Free");
         if (dairyCB.isChecked()) healthLabels.add("Dairy-Free");
-        String name = uploadName.getText().toString();
-        String ingredients = uploadIngre.getText().toString();
-        int int_totalTime = uploadTotalTime.getValue();
+        String name = updateName.getText().toString();
+        String ingredients = updateIngre.getText().toString();
+        int int_totalTime = updateTotalTime.getValue();
         String totalTime = Integer.toString(int_totalTime) + " min";
         String curUser = FirebaseAuth.getInstance().getUid();
         DetailRecipeModel detailRecipeModel = new DetailRecipeModel(curUser, name, category, healthLabels, ingredients, "", totalTime, "");
@@ -206,7 +231,8 @@ public class UploadActivity extends AppCompatActivity {
                 }
             });
         } else {
-            Toast.makeText(UploadActivity.this, "No Image Selected", Toast.LENGTH_SHORT).show();
+            Toast.makeText(UpdateActivity.this, "No Image Selected", Toast.LENGTH_SHORT).show();
         }
     }
+
 }
