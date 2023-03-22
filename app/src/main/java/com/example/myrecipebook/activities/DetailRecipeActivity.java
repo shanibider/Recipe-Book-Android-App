@@ -43,8 +43,6 @@ public class DetailRecipeActivity extends AppCompatActivity {
 
             recyclerView.setLayoutManager(new LinearLayoutManager(DetailRecipeActivity.this));
 
-            System.out.println("list size " +detailModelList.size());
-
             detailRecipeAdapter = new DetailRecipeAdapter(DetailRecipeActivity.this, detailModelList.get(position), position);
             recyclerView.setAdapter(detailRecipeAdapter);
             detailRecipeAdapter.notifyDataSetChanged();

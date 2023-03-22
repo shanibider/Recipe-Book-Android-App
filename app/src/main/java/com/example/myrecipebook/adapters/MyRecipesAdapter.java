@@ -15,7 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myrecipebook.DataClass;
 import com.example.myrecipebook.R;
 import com.example.myrecipebook.activities.DetailActivity;
+import com.example.myrecipebook.activities.DetailRecipeActivity;
+import com.example.myrecipebook.models.DetailRecipeModel;
+import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,72 +27,71 @@ import java.util.List;
 public class MyRecipesAdapter extends RecyclerView.Adapter<MyRecipesAdapter.ViewHolder> {
 
     Context context;
-    List<DataClass> dataList;
+    List<DetailRecipeModel> categoryList;
 
-    public MyRecipesAdapter(Context context, List<DataClass> dataList) {
+    //CTOR
+    public MyRecipesAdapter(Context context, List<DetailRecipeModel> categoryList) {
         this.context = context;
-        this.dataList = dataList;
+        this.categoryList = categoryList;
     }
 
-    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item, parent, false);
-        return new ViewHolder(view);    }
+    //return viewHolder that contain view *object*, that create from match xml file, using inflater
+    public MyRecipesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new MyRecipesAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.category_item, parent, false ));
+    }
 
+    //Bind data to line
+    //(bind the items with each item of the oneCategoryList list which than will be shown in recycler view)
     @Override
     public void onBindViewHolder(@NonNull MyRecipesAdapter.ViewHolder holder, int position) {
-        //img-?
-        holder.recTitle.setText(dataList.get(position).getDataTitle());
-        holder.recDesc.setText(dataList.get(position).getDataDesc());
-        holder.recLang.setText(dataList.get(position).getDataLang());
-        holder.recCard.setOnClickListener(new View.OnClickListener() {
+        Picasso.get().load(categoryList.get(position).getImageUrl()).into(holder.imageView);
+        holder.name.setText(categoryList.get(position).getName());
+        holder.detail.setText(categoryList.get(position).getTotalTime());
+
+
+//this connect between recipe card (in category) and his own recipe detail
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, DetailActivity.class);
-                intent.putExtra("Image", dataList.get(holder.getAdapterPosition()).getDataImage());
-                intent.putExtra("Description", dataList.get(holder.getAdapterPosition()).getDataDesc());
-                intent.putExtra("Title", dataList.get(holder.getAdapterPosition()).getDataTitle());
-                intent.putExtra("Key",dataList.get(holder.getAdapterPosition()).getKey());
-                intent.putExtra("Language", dataList.get(holder.getAdapterPosition()).getDataLang());
+
+                Intent intent = new Intent(context, DetailRecipeActivity.class);
+                intent.putExtra("number", holder.getAdapterPosition());
+                intent.putExtra("recipeList", (Serializable) categoryList);
                 context.startActivity(intent);
+
             }
         });
     }
 
-
     @Override
     public int getItemCount() {
-        return dataList.size();
+        return categoryList.size();
     }
 
-
-
-    public void searchDataList(ArrayList<DataClass> searchList){
-        dataList = searchList;
+    public void updateList(List<DetailRecipeModel> newList) {
+        categoryList = newList;
         notifyDataSetChanged();
     }
 
+    //ViewHolder inner class
+//hold object of view of one line and save references to his elements
+    public class ViewHolder extends RecyclerView.ViewHolder {
+
+        //references to the views for each data item (from xml file)
+        // ImageView imageView;
+        TextView name, detail;
+        ImageView imageView;
+        CardView cardView;
 
 
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
 
-
-class ViewHolder extends RecyclerView.ViewHolder{
-
-    ImageView recImage;
-    TextView recTitle, recDesc, recLang;
-    CardView recCard;
-
-    public ViewHolder(@NonNull View itemView) {
-        super(itemView);
-
-        recImage = itemView.findViewById(R.id.recImage);
-        recCard = itemView.findViewById(R.id.recCard);
-        recDesc = itemView.findViewById(R.id.recDesc);
-        recLang = itemView.findViewById(R.id.recLang);
-        recTitle = itemView.findViewById(R.id.recTitle);
-
+            imageView = itemView.findViewById(R.id.category_recipe_img);
+            name = itemView.findViewById(R.id.category_recipe_name);
+            detail =  itemView.findViewById(R.id.category_recipe_detail);
+            cardView = itemView.findViewById(R.id.myCardView);
+        }
     }
-}
-
 }

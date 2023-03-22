@@ -20,6 +20,8 @@ import androidx.core.content.ContextCompat;
 import com.example.myrecipebook.R;
 import com.example.myrecipebook.models.CategoryModel;
 import com.example.myrecipebook.models.DetailRecipeModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -58,7 +60,14 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
         if (health.contains("Gluten-Free")) holder.labelGlutenFree.setBackgroundColor(Color.GREEN);
         if (health.contains("Dairy-Free")) holder.labelDairyFree.setBackgroundColor(Color.GREEN);
 
+        if (FirebaseAuth.getInstance().getUid().equals(detailRecipeModel.getUser())){
+            holder.deleteButton.setVisibility(View.VISIBLE);
+            holder.editButton.setVisibility(View.VISIBLE);
+        } else {
+            holder.deleteButton.setVisibility(View.GONE);
+            holder.editButton.setVisibility(View.GONE);
 
+        }
     }
 
     @Override
@@ -75,6 +84,7 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
         TextView name, detail, ingredients, instruction;
         ImageView imageView;
         TextView labelVegetarian, labelVegan, labelKosher, labelGlutenFree, labelDairyFree;
+        FloatingActionButton editButton, deleteButton;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -90,6 +100,8 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
             labelKosher = itemView.findViewById(R.id.label_kosher);
             labelGlutenFree = itemView.findViewById(R.id.label_gluten_free);
             labelDairyFree = itemView.findViewById(R.id.label_dairy_free);
+            editButton = itemView.findViewById(R.id.editButton);
+            deleteButton = itemView.findViewById(R.id.deleteButton);
         }
     }
 }

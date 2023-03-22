@@ -58,7 +58,6 @@ public class HomeFragment extends Fragment {
         HomeModelList.add(new HomeItemModel(R.drawable.lunch, "Lunch"));
         HomeModelList.add(new HomeItemModel(R.drawable.dinner, "Dinner"));
         HomeModelList.add(new HomeItemModel(R.drawable.dessert, "Dessert"));
-        HomeModelList.add(new HomeItemModel(R.drawable.snacks, "Snacks"));
 
         homeItemAdapter = new HomeItemAdapter(getActivity(),HomeModelList);
         homeItemRecList.setAdapter(homeItemAdapter);
