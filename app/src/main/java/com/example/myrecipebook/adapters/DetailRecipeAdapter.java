@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,6 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.core.content.ContextCompat;
 
 import com.example.myrecipebook.R;
+import com.example.myrecipebook.activities.UpdateActivity;
 import com.example.myrecipebook.models.CategoryModel;
 import com.example.myrecipebook.models.DetailRecipeModel;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -34,6 +36,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.util.List;
 
 //5.ADAPTER class (manage all the viewHolders)
@@ -105,6 +108,13 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
                 }
             });
             holder.editButton.setVisibility(View.VISIBLE);
+            holder.editButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, UpdateActivity.class);
+                    intent.putExtra("detailRecipeModel",(Serializable) detailRecipeModel);
+                    context.startActivity(intent);                }
+            });
         } else {
             holder.deleteButton.setVisibility(View.GONE);
             holder.deleteButton.setClickable(false);
