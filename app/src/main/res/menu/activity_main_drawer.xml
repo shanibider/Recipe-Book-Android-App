@@ -16,14 +16,14 @@
         <item
             android:id="@+id/nav_categories"
             android:icon="@drawable/ic_baseline_favorite_24"
-            android:title="Categories" />
+            android:title="All Recipes" />
         <item
             android:id="@+id/nav_my_recipes"
             android:icon="@drawable/ic_baseline_list_alt_24"
             android:title="My Recipes" />
 
         <item
-            android:id="@+id/nav_uploadActivity"
+            android:id="@+id/nav_uploadRecipe"
             android:icon="@drawable/ic_baseline_account_circle_24"
             android:title="Upload Recipe" />
 

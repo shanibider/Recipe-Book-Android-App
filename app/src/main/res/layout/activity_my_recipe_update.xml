@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.MyRecipeUpdateActivity">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="20dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:padding="15dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Update Data"
+                android:textSize="30sp"
+                android:textAlignment="center"
+               />
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/upload_image1"
+                android:id="@+id/updateImage"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:id="@+id/updateTitle"
+                android:layout_marginTop="15dp"
+                android:padding="16dp"
+                android:hint="Enter recipe name"
+                android:gravity="start|center_vertical"
+             />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/updateTime"
+                android:layout_marginTop="5dp"
+                android:padding="16dp"
+                android:hint="Enter recipe Total time"
+                android:textSize="15dp"
+                android:gravity="start|center_vertical"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:id="@+id/updateIngr"
+                android:layout_marginTop="10dp"
+                android:padding="16dp"
+                android:hint="Enter Ingredients"
+                android:gravity="start|center_vertical"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:id="@+id/updateInst"
+                android:layout_marginTop="10dp"
+                android:padding="16dp"
+                android:hint="Enter Instructions"
+                android:gravity="start|center_vertical"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Update"
+                android:id="@+id/updateButton"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                app:cornerRadius = "20dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</ScrollView>
