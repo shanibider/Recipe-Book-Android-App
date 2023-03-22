@@ -10,14 +10,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
-import com.example.myrecipebook.MainActivity;
 import com.example.myrecipebook.R;
 import com.example.myrecipebook.activities.EditProfileActivity;
-import com.example.myrecipebook.activities.WelcomeActivity;
 import com.example.myrecipebook.models.UserData;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -105,7 +100,7 @@ public class ProfileFragment extends Fragment {
                         profileEmail.setText(profileData.getEmail());
                         profileName.setText(profileData.getName());
                         profileUsername.setText(profileData.getUsername());
-                        if(profileData.getProfileImage() != "")
+                        if(!profileData.getProfileImage().isEmpty())
                         {
                             Picasso.get().load(profileData.getProfileImage()).into(userImage);
                         }

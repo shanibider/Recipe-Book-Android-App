@@ -1,5 +1,7 @@
 package com.example.myrecipebook.activities;
 
+import static android.app.PendingIntent.getActivity;
+
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -15,10 +17,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.NumberPicker;
+import androidx.fragment.app.Fragment;
 import android.widget.Toast;
 
+import com.example.myrecipebook.MainActivity;
 import com.example.myrecipebook.R;
+import com.example.myrecipebook.ui.slideshow.ProfileFragment;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -39,7 +43,6 @@ public class EditProfileActivity extends AppCompatActivity {
     DatabaseReference reference;
     FirebaseAuth auth;
     ImageView imageSelectButton;
-
     Uri uri;
 
     @Override
@@ -61,7 +64,7 @@ public class EditProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (isDataChanged()){
                     Toast.makeText(EditProfileActivity.this, "Saved", Toast.LENGTH_SHORT).show();
-                } else {
+                    } else {
                     Toast.makeText(EditProfileActivity.this, "No Changes Found", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -96,9 +99,21 @@ public class EditProfileActivity extends AppCompatActivity {
 
     }
 
+    void returnActivity()
+    {
+        finish();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        reference = FirebaseDatabase.getInstance().getReference("users");
+        auth = FirebaseAuth.getInstance();
+    }
+
     private void uploadImage()
     {
-
         if(reference == null || uri == null)
         {
             return;
@@ -106,6 +121,8 @@ public class EditProfileActivity extends AppCompatActivity {
 
         StorageReference imageRef = FirebaseStorage.getInstance().getReference().child("profile_images/" + auth.getUid() + ".jpg");
         UploadTask uploadTask = imageRef.putFile(uri);
+
+
 
         uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
             @Override
@@ -123,6 +140,7 @@ public class EditProfileActivity extends AppCompatActivity {
                     if (downloadUri != null) {
                         String imageURL = downloadUri.toString();
                         reference.child(auth.getUid()).child("profileImage").setValue(imageURL);
+                        returnActivity();
                     }
                 }
             }
