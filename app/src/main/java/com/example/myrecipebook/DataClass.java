@@ -2,6 +2,8 @@ package com.example.myrecipebook;
 
 public class DataClass {
 
+
+
     //for upload data
     private String dataTitle;
     private String dataDesc;

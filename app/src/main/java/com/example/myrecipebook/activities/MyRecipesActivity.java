@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myrecipebook.DataClass;
 import com.example.myrecipebook.R;
 import com.example.myrecipebook.adapters.MyRecipesAdapter;
+import com.example.myrecipebook.models.DetailRecipeModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,7 +28,9 @@ public class MyRecipesActivity extends AppCompatActivity {
 
     FloatingActionButton fab;
     RecyclerView recyclerView;
-    List<DataClass> dataList;
+   List<DataClass> dataList;
+   //List<DetailRecipeModel> list;
+
     DatabaseReference databaseReference;
     ValueEventListener eventListener;
 
@@ -40,7 +43,6 @@ public class MyRecipesActivity extends AppCompatActivity {
 
         //References
         recyclerView = findViewById(R.id.myRecipesRecyclerView);
-
 
 
         fab = findViewById(R.id.fab1);

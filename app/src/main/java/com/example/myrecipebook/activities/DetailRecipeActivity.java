@@ -30,7 +30,6 @@ public class DetailRecipeActivity extends AppCompatActivity {
     DetailRecipeAdapter detailRecipeAdapter;
 
 
-        @SuppressLint("MissingInflatedId")
         protected void onCreate (Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
 
