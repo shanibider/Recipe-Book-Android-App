@@ -27,7 +27,7 @@
         android:id="@+id/hello_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello user"
+        android:text="Welcome Back"
         android:textSize="17sp"
         android:textColor="@color/black"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -35,15 +35,4 @@
         android:layout_marginLeft="11dp"
    />
 
-    <TextView
-        android:id="@+id/email"
-        android:textColor="@color/black"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="mypersonalrecipebook@gmail.com"
-        android:textStyle="bold"
-
-
-
-        />
 </LinearLayout>
