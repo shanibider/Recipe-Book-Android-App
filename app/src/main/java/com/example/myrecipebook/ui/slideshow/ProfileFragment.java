@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,6 +24,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 
 public class ProfileFragment extends Fragment {
@@ -30,6 +32,7 @@ public class ProfileFragment extends Fragment {
     FirebaseAuth auth;
     TextView profileName, profileUsername ,profileEmail;
     Button myFood, myRecipes, favorites, editProfile;
+    ImageView userImage;
 
     @Override
     public void onResume() {
@@ -47,6 +50,7 @@ public class ProfileFragment extends Fragment {
         profileEmail = root.findViewById(R.id.profileEmail);
         profileName = root.findViewById(R.id.profileName);
         profileUsername = root.findViewById(R.id.profileUsername);
+        userImage = root.findViewById(R.id.user_image);
 
         myFood = root.findViewById(R.id.food_pref);
         myRecipes = root.findViewById(R.id.my_recipes);
@@ -86,7 +90,6 @@ public class ProfileFragment extends Fragment {
 
     void UpdateUserData()
     {
-
         auth = FirebaseAuth.getInstance();
         if(auth.getUid() != null)
         {
@@ -102,6 +105,11 @@ public class ProfileFragment extends Fragment {
                         profileEmail.setText(profileData.getEmail());
                         profileName.setText(profileData.getName());
                         profileUsername.setText(profileData.getUsername());
+                        if(profileData.getProfileImage() != "")
+                        {
+                            Picasso.get().load(profileData.getProfileImage()).into(userImage);
+                        }
+
                     }
                 }
 
