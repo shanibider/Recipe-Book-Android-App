@@ -73,7 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 //Save to Firebase Realtime Database
                                 database = FirebaseDatabase.getInstance();
                                 reference = database.getReference("users");
-                                UserData helperClass = new UserData(name, email, username);
+                                UserData helperClass = new UserData(name, email, username, "");
                                 reference.child(auth.getUid()).setValue(helperClass);
 
                                 Toast.makeText(RegisterActivity.this, "SignUp Successful", Toast.LENGTH_SHORT).show();

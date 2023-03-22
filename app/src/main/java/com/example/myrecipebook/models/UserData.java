@@ -3,7 +3,7 @@ package com.example.myrecipebook.models;
 
 public class UserData {
 
-    String name, email, username;
+    String name, email, username, profileImage;
 
     public String getName() {
         return name;
@@ -29,10 +29,19 @@ public class UserData {
         this.username = username;
     }
 
-    public UserData(String name, String email, String username) {
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
+    }
+
+    public UserData(String name, String email, String username, String profileImage) {
         this.name = name;
         this.email = email;
         this.username = username;
+        this.profileImage = profileImage;
     }
 
     public UserData() {
