@@ -19,16 +19,16 @@
         android:label="Categories"
         tools:layout="@layout/fragment_category" />
 
-
+    <fragment
+        android:id="@+id/nav_my_recipes"
+        android:name="com.example.myrecipebook.ui.slideshow.MyRecipeFragment"
+        android:label="My Recipes"
+        tools:layout="@layout/activity_my_recipes" />
     <fragment
         android:id="@+id/nav_profile"
         android:name="com.example.myrecipebook.ui.slideshow.ProfileFragment"
         android:label="@string/profile"
-        tools:layout="@layout/activity_profile" >
-        <action
-            android:id="@+id/action_nav_profile_to_nav_map"
-            app:destination="@id/nav_map" />
-    </fragment>
+        tools:layout="@layout/activity_profile" />
 
     <fragment
         android:id="@+id/nav_map"
