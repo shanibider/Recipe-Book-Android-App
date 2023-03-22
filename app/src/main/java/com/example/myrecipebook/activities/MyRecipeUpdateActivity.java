@@ -105,8 +105,8 @@ public class MyRecipeUpdateActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 saveData();
-                Intent intent = new Intent(MyRecipeUpdateActivity.this, MyRecipesActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(MyRecipeUpdateActivity.this, MyRecipesActivity.class);
+//                startActivity(intent);
             }
         });
     }

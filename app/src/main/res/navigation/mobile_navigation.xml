@@ -38,12 +38,6 @@
     </fragment>
 
     <activity
-    android:id="@+id/nav_my_recipes"
-        android:name="com.example.myrecipebook.activities.MyRecipesActivity"
-        android:label="My Recipes"
-        tools:layout="@layout/activity_my_recipes" />
-
-    <activity
         android:id="@+id/nav_allRecipes"
         android:name="com.example.myrecipebook.activities.DetailRecipeActivity"
         android:label="fragment_detailrecipe"

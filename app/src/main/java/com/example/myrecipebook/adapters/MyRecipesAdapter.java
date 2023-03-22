@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myrecipebook.DataClass;
 import com.example.myrecipebook.R;
-import com.example.myrecipebook.activities.DetailActivity;
 import com.example.myrecipebook.activities.DetailRecipeActivity;
 import com.example.myrecipebook.models.DetailRecipeModel;
 import com.squareup.picasso.Picasso;
