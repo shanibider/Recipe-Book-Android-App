@@ -120,6 +120,7 @@ public class UploadActivity extends AppCompatActivity {
         kosherCB = findViewById(R.id.kosher_checkbox);
         glutenCB = findViewById(R.id.gluten_checkbox);
         dairyCB = findViewById(R.id.dairy_checkbox);
+        healthLabels.add("healthLabels");
         if (vegetarianCB.isChecked()) healthLabels.add("Vegetarian");
         if (veganCB.isChecked()) healthLabels.add("Vegan");
         if (kosherCB.isChecked()) healthLabels.add("Kosher");

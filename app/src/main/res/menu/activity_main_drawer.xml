@@ -25,12 +25,8 @@
         <item
             android:id="@+id/nav_uploadActivity"
             android:icon="@drawable/ic_baseline_account_circle_24"
-            android:title="Upload Activity" />
+            android:title="Upload Recipe" />
 
-        <item
-            android:id="@+id/nav_detailActivity"
-            android:icon="@drawable/ic_baseline_account_circle_24"
-            android:title="detail Activity" />
 
         <item
             android:id="@+id/nav_map"

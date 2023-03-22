@@ -92,35 +92,6 @@
                 app:layout_constraintTop_toBottomOf="parent" />
 
 
-            <TextView
-                android:id="@+id/recipe_instructionHeader"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="40dp"
-                android:text="Instruction"
-                android:textColor="@color/darkgray"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recipe_ingredients" />
-
-            <TextView
-                android:id="@+id/recipe_instruction"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="10dp"
-                android:text="The instruction"
-                android:textColor="@color/darkgray"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recipe_instructionHeader" />
 
             <LinearLayout
                 android:id="@+id/healthLabels_layout"

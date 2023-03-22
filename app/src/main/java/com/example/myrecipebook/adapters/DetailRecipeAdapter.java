@@ -3,8 +3,12 @@ package com.example.myrecipebook.adapters;
 
 //ADAPTER + VIEWHOLDER
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,14 +18,20 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.core.content.ContextCompat;
 
 import com.example.myrecipebook.R;
 import com.example.myrecipebook.models.CategoryModel;
 import com.example.myrecipebook.models.DetailRecipeModel;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -52,7 +62,6 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
         holder.name.setText(this.detailRecipeModel.getName());
         holder.detail.setText(this.detailRecipeModel.getTotalTime());
         holder.ingredients.setText(this.detailRecipeModel.getIngredients());
-        holder.instruction.setText(this.detailRecipeModel.getInstruction());
         List<String> health = this.detailRecipeModel.getHealthLabels();
         if (health.contains("Vegetarian")) holder.labelVegetarian.setBackgroundColor(Color.GREEN);
         if (health.contains("Vegan")) holder.labelVegan.setBackgroundColor(Color.GREEN);
@@ -62,13 +71,47 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
 
         if (FirebaseAuth.getInstance().getUid().equals(detailRecipeModel.getUser())){
             holder.deleteButton.setVisibility(View.VISIBLE);
+            holder.deleteButton.setClickable(true);
+            holder.deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setMessage("Are you sure you want to delete this recipe?")
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference();
+                                    DatabaseReference recipesRef = databaseRef.child("Recipes");
+                                    recipesRef.child(detailRecipeModel.getName()).removeValue()
+                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+                                                    System.out.println("Successfully Deleted Recipe");
+                                                    ((Activity) context).finish();
+                                                }
+                                            })
+                                            .addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    // Handle failed removal
+                                                    Log.e("TAG", "Error removing child: " + e.getMessage());
+                                                }
+                                            });
+
+                                }
+                            })
+                            .setNegativeButton("No", null)
+                            .show();
+                }
+            });
             holder.editButton.setVisibility(View.VISIBLE);
         } else {
             holder.deleteButton.setVisibility(View.GONE);
+            holder.deleteButton.setClickable(false);
             holder.editButton.setVisibility(View.GONE);
-
         }
     }
+
 
     @Override
     public int getItemCount() {
@@ -81,7 +124,7 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
 
         //references to the views for each data item (from xml file)
         // ImageView imageView;
-        TextView name, detail, ingredients, instruction;
+        TextView name, detail, ingredients;
         ImageView imageView;
         TextView labelVegetarian, labelVegan, labelKosher, labelGlutenFree, labelDairyFree;
         FloatingActionButton editButton, deleteButton;
@@ -94,7 +137,6 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
             name = itemView.findViewById(R.id.recipe_name);
             detail =  itemView.findViewById(R.id.recipe_detail);
             ingredients =  itemView.findViewById(R.id.recipe_ingredients);
-            instruction = itemView.findViewById(R.id.recipe_instruction);
             labelVegetarian = itemView.findViewById(R.id.label_vegetarian);
             labelVegan = itemView.findViewById(R.id.label_vegan);
             labelKosher = itemView.findViewById(R.id.label_kosher);

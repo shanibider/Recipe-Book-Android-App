@@ -14,7 +14,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:text="All Recipes"
+        android:text="Choose your meal category"
         android:textColor="@color/darkgray"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
