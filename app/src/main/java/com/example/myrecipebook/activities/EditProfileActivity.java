@@ -56,6 +56,7 @@ public class EditProfileActivity extends AppCompatActivity {
         saveButton = findViewById(R.id.saveButton);
         imageSelectButton = findViewById(R.id.btnChooseImage);
 
+
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,6 +67,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 }
             }
         });
+
 
 
         ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
@@ -93,8 +95,8 @@ public class EditProfileActivity extends AppCompatActivity {
                 activityResultLauncher.launch(photoPicker);
             }
         });
-
     }
+
 
     private void uploadImage()
     {

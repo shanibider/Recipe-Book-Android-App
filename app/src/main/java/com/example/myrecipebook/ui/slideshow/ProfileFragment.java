@@ -10,12 +10,15 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.example.myrecipebook.MainActivity;
 import com.example.myrecipebook.R;
 import com.example.myrecipebook.activities.EditProfileActivity;
+import com.example.myrecipebook.activities.MyRecipesActivity;
 import com.example.myrecipebook.activities.WelcomeActivity;
 import com.example.myrecipebook.models.UserData;
+import com.example.myrecipebook.ui.map.MapFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,7 +34,7 @@ public class ProfileFragment extends Fragment {
 
     FirebaseAuth auth;
     TextView profileName, profileUsername ,profileEmail;
-    Button myFood, myRecipes, favorites, editProfile;
+    Button myRecipes, stroerBtn, editProfile;
     ImageView userImage;
 
     @Override
@@ -52,29 +55,25 @@ public class ProfileFragment extends Fragment {
         profileUsername = root.findViewById(R.id.profileUsername);
         userImage = root.findViewById(R.id.user_image);
 
-        myFood = root.findViewById(R.id.food_pref);
-        myRecipes = root.findViewById(R.id.my_recipes);
-        favorites = root.findViewById(R.id.my_favorites);
+        myRecipes = root.findViewById(R.id.profile_my_recipes_btn);
+        stroerBtn = root.findViewById(R.id.find_store_btn);
         editProfile = root.findViewById(R.id.edit_profile);
 
-
-        myFood.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
 
         myRecipes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(getActivity(), MyRecipesActivity.class));
             }
         });
 
-        favorites.setOnClickListener(new View.OnClickListener() {
+        stroerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.action_nav_profile_to_nav_map);
             }
         });
+
 
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
