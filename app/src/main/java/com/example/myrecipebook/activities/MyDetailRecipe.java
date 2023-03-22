@@ -50,9 +50,6 @@ public class MyDetailRecipe extends AppCompatActivity {
             Glide.with(this).load(bundle.getString("Image")).into(detailImage);
 
         }
-
-
-
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

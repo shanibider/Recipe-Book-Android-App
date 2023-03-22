@@ -10,7 +10,6 @@
         android:id="@+id/recipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Recipe Name"
         android:textColor="@color/darkgray"
         android:textSize="25sp"
         android:textStyle="bold"

@@ -37,8 +37,6 @@ public class RegisterActivity extends AppCompatActivity {
     ImageView imageSelectButton;
     Uri uri;
 
-
-
     private FirebaseAuth auth;
     private EditText signupEmail, signupPassword;
     private EditText signupName, signupUsername;

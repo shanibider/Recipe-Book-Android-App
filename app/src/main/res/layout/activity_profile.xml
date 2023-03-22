@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,9 +8,18 @@
     tools:context=".ui.slideshow.ProfileFragment">
 
 
-
-
-    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout0"
+        android:orientation="vertical"
+        android:padding="6dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        >
 
     <ImageView
         android:id="@+id/user_image"
@@ -20,18 +28,18 @@
         android:contentDescription="@string/nav_header_desc"
         android:paddingTop="8dp"
         android:layout_marginTop="10dp"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/titleName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/user1" />
 
-
     <TextView
         android:id="@+id/titleName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="13dp"
         android:fontFamily="monospace"
         android:text="Profile"
         android:textAlignment="center"
@@ -50,15 +58,16 @@
         android:layout_height="wrap_content"
         android:text="Hello"
         android:textColor="#707070"
-        android:textSize="20sp"
+        android:textSize="19sp"
+        android:layout_marginTop="3dp"
         android:textStyle="bold"
+        android:layout_gravity="center"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintEnd_toEndOf="@id/titleName"
         app:layout_constraintStart_toStartOf="@id/titleName"
         app:layout_constraintTop_toBottomOf="@+id/titleName" />
-
-
+    </LinearLayout>
 
 
     <LinearLayout
@@ -73,7 +82,7 @@
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titleHello">
+        app:layout_constraintTop_toBottomOf="@id/linearLayout0">
 
 
     <LinearLayout
@@ -105,6 +114,14 @@
             android:textSize="18sp"/>
     </LinearLayout>
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="2dp"
+            android:alpha="0.5"
+            android:background="@color/purple_500"/>
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -134,6 +151,14 @@
                 android:textSize="18sp"/>
         </LinearLayout>
 
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="2dp"
+            android:alpha="0.5"
+            android:background="@color/purple_500"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -162,80 +187,33 @@
                 android:textAlignment="viewEnd"
                 android:textSize="18sp"/>
         </LinearLayout>
-
-
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_margin="10dp"
-        android:alpha="0.5"
-        android:background="@color/purple_500"/>
-
     </LinearLayout>
-
-
 
 
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayout2"
+        android:id="@+id/linearLayout1"
         android:orientation="vertical"
-        android:padding="10dp"
-        android:background="@drawable/background_white"
-        android:layout_marginStart="14dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginTop="40dp"
+        android:padding="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout">
-
-
-    <Button
-        android:id="@+id/profile_my_recipes_btn"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:text="My Recipes"
-        android:textSize="9dp"
-        android:gravity="center"
-        app:cornerRadius = "10dp"
-        android:textColor="@color/darkgray"
-        />
-
-        <Button
-            android:id="@+id/find_store_btn"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:onClick="findMap"
-            android:text="Find supermarket near me"
-            android:textSize="9dp"
-            android:gravity="center"
-            android:textColor="@color/darkgray"
-            app:cornerRadius = "10dp"
-            />
-    </LinearLayout>
-
-
+        app:layout_constraintTop_toBottomOf="@id/linearLayout"
+        android:layout_marginTop="120dp"
+        >
     <Button
         android:id="@+id/edit_profile"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
+        android:layout_width="220dp"
+        android:layout_height="70dp"
         android:text="Edit Profile"
         android:gravity="center"
         android:textSize="10dp"
         app:cornerRadius = "10dp"
         android:textColor="@color/darkgray"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/linearLayout2"
-        app:layout_constraintStart_toStartOf="@id/linearLayout2"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        android:backgroundTint="@color/purple_700"
+       android:layout_below="@+id/linearLayout"
         />
-
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
