@@ -31,11 +31,16 @@
         </activity>
         <activity
             android:name=".activities.WelcomeActivity"
-            android:exported="true" >
-            <meta-data
+            android:exported="true"
+            android:launchMode="standard">
+        <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activities.RegisterActivity"
@@ -85,13 +90,8 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAP8Fp-6ZuODfpmYc2eWwg08ZLHQ9hZKIM" />

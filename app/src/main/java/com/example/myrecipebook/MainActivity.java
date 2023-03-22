@@ -1,5 +1,7 @@
 package com.example.myrecipebook;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -50,6 +52,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        logout();
+        //super.onBackPressed();
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         checkLogin();
@@ -96,10 +104,39 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // logout user
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(MainActivity.this, WelcomeActivity.class));
+                logout();
             }
         });
+    }
+
+    public void logout () {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Logout");
+        builder.setMessage("Are you sure you want to logout?");
+
+        // Add the "Yes" button
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // logout user
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+
+            // Add the "No" button
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Do nothing
+            }
+        });
+
+        // Create and show the dialog box
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     @Override
