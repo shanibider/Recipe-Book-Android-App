@@ -70,7 +70,7 @@ public class ProfileFragment extends Fragment {
         stroerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(v).navigate(R.id.action_nav_profile_to_nav_map);
+//                Navigation.findNavController(v).navigate(R.id.action_nav_profile_to_nav_map);
             }
         });
 
@@ -104,7 +104,7 @@ public class ProfileFragment extends Fragment {
                         profileEmail.setText(profileData.getEmail());
                         profileName.setText(profileData.getName());
                         profileUsername.setText(profileData.getUsername());
-                        if(profileData.getProfileImage() != "")
+                        if(!profileData.getProfileImage().isEmpty())
                         {
                             Picasso.get().load(profileData.getProfileImage()).into(userImage);
                         }
