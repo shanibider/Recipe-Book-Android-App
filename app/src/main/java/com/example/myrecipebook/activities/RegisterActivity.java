@@ -11,17 +11,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myrecipebook.R;
-import com.example.myrecipebook.models.HelperClass;
-import com.example.myrecipebook.ui.home.HomeFragment;
+import com.example.myrecipebook.models.UserData;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.HashMap;
 
 
 public class RegisterActivity extends AppCompatActivity {
@@ -77,8 +73,8 @@ public class RegisterActivity extends AppCompatActivity {
                                 //Save to Firebase Realtime Database
                                 database = FirebaseDatabase.getInstance();
                                 reference = database.getReference("users");
-                                HelperClass helperClass = new HelperClass(name, email, username, password);
-                                reference.child(username).setValue(helperClass);
+                                UserData helperClass = new UserData(name, email, username, "");
+                                reference.child(auth.getUid()).setValue(helperClass);
 
                                 Toast.makeText(RegisterActivity.this, "SignUp Successful", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(RegisterActivity.this, LoginActivity.class));

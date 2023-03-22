@@ -57,8 +57,6 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
         if (health.contains("Kosher")) holder.labelKosher.setBackgroundColor(Color.GREEN);
         if (health.contains("Gluten-Free")) holder.labelGlutenFree.setBackgroundColor(Color.GREEN);
         if (health.contains("Dairy-Free")) holder.labelDairyFree.setBackgroundColor(Color.GREEN);
-
-
     }
 
     @Override

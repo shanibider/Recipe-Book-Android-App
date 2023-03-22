@@ -1,9 +1,9 @@
 package com.example.myrecipebook.models;
 
 
-public class HelperClass {
+public class UserData {
 
-    String name, email, username, password;
+    String name, email, username, profileImage;
 
     public String getName() {
         return name;
@@ -29,21 +29,21 @@ public class HelperClass {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getProfileImage() {
+        return profileImage;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
     }
 
-    public HelperClass(String name, String email, String username, String password) {
+    public UserData(String name, String email, String username, String profileImage) {
         this.name = name;
         this.email = email;
         this.username = username;
-        this.password = password;
+        this.profileImage = profileImage;
     }
 
-    public HelperClass() {
+    public UserData() {
     }
 }
