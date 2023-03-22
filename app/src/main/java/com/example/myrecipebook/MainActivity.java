@@ -40,9 +40,32 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageView profileImage;
 
+    void checkLogin()
+    {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        if(auth == null || auth.getUid() == null)
+        {
+            finish();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkLogin();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        checkLogin();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        checkLogin();
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -110,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
 //                        profileEmail.setText(profileData.getEmail());
 //                        profileName.setText(profileData.getName());
 //                        profileUsername.setText(profileData.getUsername());
-                        if(profileData.getProfileImage() != "")
+                        if(!profileData.getProfileImage().isEmpty())
                         {
                             Picasso.get().load(profileData.getProfileImage()).into(profileImage);
                         }

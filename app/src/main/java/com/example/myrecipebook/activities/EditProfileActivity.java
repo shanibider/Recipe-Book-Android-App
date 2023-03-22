@@ -56,7 +56,6 @@ public class EditProfileActivity extends AppCompatActivity {
         saveButton = findViewById(R.id.saveButton);
         imageSelectButton = findViewById(R.id.btnChooseImage);
 
-
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,7 +66,6 @@ public class EditProfileActivity extends AppCompatActivity {
                 }
             }
         });
-
 
 
         ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
@@ -95,8 +93,21 @@ public class EditProfileActivity extends AppCompatActivity {
                 activityResultLauncher.launch(photoPicker);
             }
         });
+
     }
 
+    void returnActivity()
+    {
+        finish();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        reference = FirebaseDatabase.getInstance().getReference("users");
+        auth = FirebaseAuth.getInstance();
+    }
 
     private void uploadImage()
     {
