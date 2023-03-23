@@ -41,8 +41,11 @@ public class MyRecipeFragment extends Fragment implements AdapterView.OnItemSele
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_my_category, container, false);
+
         Bundle bundle = getArguments();
+
         String categoryName = "All";
+
         if (bundle != null) {
             categoryName = bundle.getString("categoryName");
         }
@@ -53,15 +56,24 @@ public class MyRecipeFragment extends Fragment implements AdapterView.OnItemSele
         spinner.setOnItemSelectedListener(this);
 
         recyclerView = root.findViewById(R.id.my_category_recipes_recList);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
         dataRecipeList = new ArrayList<>();
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
+
         DatabaseReference recipeRef = database.getReference("Recipes");
+
+        //listener to "Recipes" node that listens for changes to the data at this node
         recipeRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 dataRecipeList.clear();
                 System.out.println("children count "+dataSnapshot.getChildrenCount());
+
+                //iterate through each child node of "Recipes" using DataSnapshot.getChildren()
+                //For each child node, the code retrieves the values of the child
                 for (DataSnapshot recipeSnapshot : dataSnapshot.getChildren()) {
                     String recipeName = recipeSnapshot.child("name").getValue(String.class);
                     String recipeUser = recipeSnapshot.child("user").getValue(String.class);
@@ -74,6 +86,7 @@ public class MyRecipeFragment extends Fragment implements AdapterView.OnItemSele
                     List<String> recipeCategory = recipeSnapshot.child("category").getValue(new GenericTypeIndicator<List<String>>() {});
                     List<String> recipeHealthLabels = recipeSnapshot.child("healthLabels").getValue(new GenericTypeIndicator<List<String>>() {});
                     String imageUrl = recipeSnapshot.child("imageUrl").getValue(String.class);
+                    //The retrieved values are then used to create a new DetailRecipeModel object and added to the dataRecipeList ArrayList.
                     DetailRecipeModel recipeModel = new DetailRecipeModel(user, recipeName, recipeCategory, recipeHealthLabels, recipeIngredients, recipeInstruction, recipeTotalTime, imageUrl);
                     dataRecipeList.add(recipeModel);
                 }
@@ -87,9 +100,14 @@ public class MyRecipeFragment extends Fragment implements AdapterView.OnItemSele
                 System.out.println(databaseError);
             }
         });
+
+        // creates a new instance of a custom adapter, passing the Context object and a list of recipe data
         myRecipesAdapter= new MyRecipesAdapter(getContext(), dataRecipeList);
         recyclerView.setAdapter(myRecipesAdapter);
+        //retrieves the index position of a particular item in a spinner widget's list of items
+        //getPosition() method is called on a separate adapter instance (called adapter) which is associated with spinner widget
         int index = adapter.getPosition(categoryName);
+        //This line sets the selection of the spinner widget to the item at the retrieved index position. (display the item at this position as its selected item)
         spinner.setSelection(index);
         myRecipesAdapter.notifyDataSetChanged();
         return root;
