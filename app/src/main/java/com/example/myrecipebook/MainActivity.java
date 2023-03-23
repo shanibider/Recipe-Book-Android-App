@@ -19,6 +19,7 @@ import com.example.myrecipebook.ui.map.MapFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -49,12 +50,6 @@ public class MainActivity extends AppCompatActivity {
         {
             finish();
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        logout();
-        //super.onBackPressed();
     }
 
     @Override

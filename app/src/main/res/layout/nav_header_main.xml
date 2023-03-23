@@ -27,12 +27,22 @@
         android:id="@+id/hello_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome Back"
-        android:textSize="17sp"
-        android:textColor="@color/black"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textStyle="bold"
         android:layout_marginLeft="11dp"
-   />
+        android:text="Welcome"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MyCookBook"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginLeft="12dp"
+
+
+        />
 </LinearLayout>

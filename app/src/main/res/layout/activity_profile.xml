@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/lightPeach"
-    tools:context=".ui.slideshow.ProfileFragment">
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".ui.slideshow.ProfileFragment">
 
 
     <LinearLayout
@@ -21,52 +27,52 @@
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         >
 
-    <ImageView
-        android:id="@+id/user_image"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:contentDescription="@string/nav_header_desc"
-        android:paddingTop="8dp"
-        android:layout_marginTop="10dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/titleName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/user1" />
+        <ImageView
+            android:id="@+id/user_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:contentDescription="@string/nav_header_desc"
+            android:paddingTop="8dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@+id/titleName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/user1" />
 
-    <TextView
-        android:id="@+id/titleName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
-        android:fontFamily="monospace"
-        android:text="Profile"
-        android:textAlignment="center"
-        android:textColor="#2c2c2c"
-        android:textSize="27sp"
-        app:layout_constraintTop_toBottomOf="@+id/user_image"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/user_image"
-        app:layout_constraintStart_toStartOf="@id/user_image"
-         />
+        <TextView
+            android:id="@+id/titleName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:fontFamily="monospace"
+            android:text="Profile"
+            android:textAlignment="center"
+            android:textColor="#2c2c2c"
+            android:textSize="27sp"
+            app:layout_constraintTop_toBottomOf="@+id/user_image"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/user_image"
+            app:layout_constraintStart_toStartOf="@id/user_image"
+            />
 
-    <TextView
-        android:id="@+id/titleHello"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello"
-        android:textColor="#707070"
-        android:textSize="19sp"
-        android:layout_marginTop="3dp"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/titleName"
-        app:layout_constraintStart_toStartOf="@id/titleName"
-        app:layout_constraintTop_toBottomOf="@+id/titleName" />
+        <TextView
+            android:id="@+id/titleHello"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello"
+            android:textColor="#707070"
+            android:textSize="19sp"
+            android:layout_marginTop="3dp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/titleName"
+            app:layout_constraintStart_toStartOf="@id/titleName"
+            app:layout_constraintTop_toBottomOf="@+id/titleName" />
     </LinearLayout>
 
 
@@ -85,34 +91,34 @@
         app:layout_constraintTop_toBottomOf="@id/linearLayout0">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="8dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/name"
-            android:layout_weight="1"
-            android:text="Name"
-            android:textStyle="bold"
-            android:textSize="18sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/name"
+                android:layout_weight="1"
+                android:text="Name"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/profileName"
-            android:text="name"
-            android:layout_weight="1"
-            android:textAlignment="viewEnd"
-            android:textSize="18sp"/>
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/profileName"
+                android:text="name"
+                android:layout_weight="1"
+                android:textAlignment="viewEnd"
+                android:textSize="18sp"/>
+        </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="match_parent"
@@ -202,18 +208,19 @@
         app:layout_constraintTop_toBottomOf="@id/linearLayout"
         android:layout_marginTop="120dp"
         >
-    <Button
-        android:id="@+id/edit_profile"
-        android:layout_width="220dp"
-        android:layout_height="70dp"
-        android:text="Edit Profile"
-        android:gravity="center"
-        android:textSize="10dp"
-        app:cornerRadius = "10dp"
-        android:textColor="@color/darkgray"
-       android:layout_below="@+id/linearLayout"
-        />
+        <Button
+            android:id="@+id/edit_profile"
+            android:layout_width="220dp"
+            android:layout_height="70dp"
+            android:text="Edit Profile"
+            android:gravity="center"
+            android:textSize="10dp"
+            app:cornerRadius = "10dp"
+            android:textColor="@color/darkgray"
+            android:layout_below="@+id/linearLayout"
+            />
     </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
