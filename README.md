@@ -11,7 +11,9 @@
 
 <p>
 <img src="https://user-images.githubusercontent.com/72359805/229114392-cf10f0ee-c5bf-44ac-b5ca-5b29931f1cef.mp4" alt="feed example" width="200">
+</p>
 
+<p>
 <img src="https://user-images.githubusercontent.com/72359805/229116270-359d64aa-28fb-41f9-930d-9989be7ae93b.PNG" alt="welcome" width="200">
   
 <img src="https://user-images.githubusercontent.com/72359805/229117341-a4fcd92f-33dd-46ab-a8dc-36174f26f0a6.PNG" width="200">
