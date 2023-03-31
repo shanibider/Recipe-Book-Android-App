@@ -1,16 +1,16 @@
-# My Recipe book App
-### Android App Final Project - 
+## My Recipe book Android App
 
+"My Recipe Book" is a user-friendly app that allows users to save their favorite recipes in one place. Users can easily add recipes, categorize them by meal type and food preferences.
 <p>
-<h3 "My Recipe Book" is a user-friendly app that allows users to save their favorite recipes in one place. Users can easily add recipes, categorize them by meal type and food preferences.> </h3>
-- The app also offers a social aspect to recipe sharing. Each user has their own profile where they can upload and share their own recipes with the community. When a recipe is uploaded, it is immediately visible to other users, allowing them to try it out. 
-</p>
-<p>
-- Overall, the app combines organization, convenience, and social interaction to enhance the cooking experience for users of all skill levels.
+The app also offers a social aspect to recipe sharing. Each user has their own profile where they can upload and share their own recipes with the community. When a recipe is uploaded, it is immediately visible to other users, allowing them to try it out. 
+
+Overall, the app combines organization, convenience, and social interaction to enhance the cooking experience for users of all skill levels.
 </p>
 
+
+### Our screens:
 <p>
-<img src="https://user-images.githubusercontent.com/72359805/229114392-cf10f0ee-c5bf-44ac-b5ca-5b29931f1cef.mp4" alt="feed example" width="200">
+<img src="https://user-images.githubusercontent.com/72359805/229114392-cf10f0ee-c5bf-44ac-b5ca-5b29931f1cef.mp4" alt=" Click here for feed example" width="300">
 </p>
 
 <p>
@@ -22,7 +22,11 @@
 
 <img src="https://user-images.githubusercontent.com/72359805/229117416-9030f0ca-22ec-4d4c-a7f6-bdd2ebb8b295.PNG" width="200">
 
+<img src="https://user-images.githubusercontent.com/72359805/229124931-71857cfc-c3be-4642-9c7f-debb9691209d.PNG" width="200">
+  
 <img src="https://user-images.githubusercontent.com/72359805/229117460-f125d3a7-3988-4a3c-9254-79925b48af43.PNG" width="200">
+  
+<img src="https://user-images.githubusercontent.com/72359805/229124885-b043b7d6-7e17-4ba0-867a-fccc6fbcc85c.PNG" width="200">
 
 <img src="https://user-images.githubusercontent.com/72359805/229117428-945dfdb5-8764-4305-8e6b-95793c020716.PNG" width="200">
 
@@ -33,7 +37,3 @@
 <img src="https://user-images.githubusercontent.com/72359805/229117507-ab13ca7a-71a3-44cd-a544-cf612366d53a.PNG" width="200">
   
 </p>
-
-
-
-
