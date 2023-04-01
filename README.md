@@ -22,15 +22,17 @@ Overall, the app combines organization, convenience, and social interaction to e
 
 <img src="https://user-images.githubusercontent.com/72359805/229117416-9030f0ca-22ec-4d4c-a7f6-bdd2ebb8b295.PNG" width="200">
 
+<img src="https://user-images.githubusercontent.com/72359805/229289866-499590e6-e61d-4107-983a-09364a00e2a6.PNG" width="200">
+
 <img src="https://user-images.githubusercontent.com/72359805/229124931-71857cfc-c3be-4642-9c7f-debb9691209d.PNG" width="200">
-  
-<img src="https://user-images.githubusercontent.com/72359805/229117460-f125d3a7-3988-4a3c-9254-79925b48af43.PNG" width="200">
-  
+
 <img src="https://user-images.githubusercontent.com/72359805/229124885-b043b7d6-7e17-4ba0-867a-fccc6fbcc85c.PNG" width="200">
 
-<img src="https://user-images.githubusercontent.com/72359805/229117428-945dfdb5-8764-4305-8e6b-95793c020716.PNG" width="200">
+<img src="https://user-images.githubusercontent.com/72359805/229289884-df7a01e1-d911-4467-8f24-4af8425af356.PNG" width="200">
 
-<img src="https://user-images.githubusercontent.com/72359805/229117481-5c5f5c06-43dc-456b-aee1-8998e4084b51.PNG" width="200">
+<img src="https://user-images.githubusercontent.com/72359805/229289901-258d5aa4-efcd-4be9-ad07-4685a39f9a5b.PNG" width="200">
+
+<img src="https://user-images.githubusercontent.com/72359805/229289917-02096243-540d-4622-9f0c-f459a345a7f9.PNG" width="200">
 
 <img src="https://user-images.githubusercontent.com/72359805/229117491-56a36859-1787-44c7-b742-db693b317dd3.PNG" width="200">
 
