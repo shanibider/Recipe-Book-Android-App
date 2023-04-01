@@ -8,7 +8,6 @@
     android:orientation="vertical"
     tools:context=".activities.UploadActivity">
 
-
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,8 +22,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center_horizontal"
-            android:padding="20dp"
-            >
+            android:padding="20dp" >
 
             <TextView
                 android:id="@+id/upload_title"
@@ -40,57 +38,69 @@
                 android:layout_gravity="center"
                 android:src="@drawable/upload_image1"
                 android:id="@+id/uploadImage"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:scaleType="centerCrop"
                 />
 
+
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="50dp"
                 android:id="@+id/upload_name"
-                android:layout_marginTop="10dp"
-                android:padding="16dp"
+                android:padding="8dp"
                 android:hint="Enter recipe name"
+                android:layout_marginTop="8dp"
+                android:textSize="15dp"
                 android:gravity="start|center_vertical"
                 />
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="50dp"
                 android:id="@+id/upload_ingredients"
-                android:layout_marginTop="20dp"
-                android:padding="16dp"
+                android:padding="8dp"
+                android:inputType="textMultiLine"
                 android:hint="Enter Ingredients"
+                android:textSize="15dp"
                 android:gravity="start|center_vertical"
                 />
 
+
             <LinearLayout
+                android:id="@+id/total_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_margin="10dp"
+                android:padding="8dp"
                 android:orientation="horizontal"
                 android:gravity="center_horizontal">
 
-                <TextView
+            <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Total Time"
-                    android:textSize="16sp"
-                    android:padding="16dp"
+                    android:text="Total Time:"
+                    android:textSize="13sp"
+                    android:padding="10dp"
                     android:layout_gravity="center_vertical"/>
 
-                <NumberPicker
+            <NumberPicker
                     android:id="@+id/uploadTotalTime"
                     android:layout_width="wrap_content"
-                    android:layout_height="66dp"
-                    android:layout_gravity="center_horizontal" />
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+            />
             </LinearLayout>
 
+
             <LinearLayout
-                android:layout_width="match_parent"
+                android:id="@+id/rl"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:layout_marginBottom="8dp"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -99,58 +109,63 @@
                     android:textSize="18sp"
                     android:textStyle="bold"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                <RelativeLayout
+                    android:id="@+id/rl1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
                     android:layout_marginTop="10dp"
-                    android:gravity="center_horizontal">
-
+                    >
                     <CheckBox
                         android:id="@+id/breakfast_checkbox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Breakfast"/>
+                        android:text="Breakfast"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        />
 
                     <CheckBox
                         android:id="@+id/lunch_checkbox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Lunch"
-                        android:layout_marginStart="20dp"/>
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginEnd="11dp"
+                        android:text="Lunch" />
+                </RelativeLayout>
 
-                </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center_horizontal">
+                <RelativeLayout
+                    android:id="@+id/rl2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp">
+                <CheckBox
+                   android:id="@+id/dinner_checkbox"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Dinner"
+                />
 
-                    <CheckBox
-                        android:id="@+id/dinner_checkbox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Dinner"/>
+             <CheckBox
+                   android:id="@+id/dessert_checkbox"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Dessert"
+                   android:layout_alignParentEnd="true"/>
 
-                    <CheckBox
-                        android:id="@+id/dessert_checkbox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Dessert"
-                        android:layout_marginStart="20dp"/>
-
-                </LinearLayout>
-
+                </RelativeLayout>
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -163,57 +178,72 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:gravity="center_horizontal"
                     android:layout_marginTop="10dp"
-                    android:gravity="center_horizontal">
+                    >
 
                     <CheckBox
                         android:id="@+id/vegetarian_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Vegetarian"/>
+                        android:layout_height="30dp"
+                        android:text="Vegetarian"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="20dp"
+
+                        />
 
                     <CheckBox
                         android:id="@+id/vegan_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
                         android:text="Vegan"
-                        android:layout_marginStart="5dp"/>
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="20dp"
+
+                        />
 
                     <CheckBox
                         android:id="@+id/kosher_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
                         android:text="Kosher"
-                        android:layout_marginStart="5dp"/>
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="20dp"
+
+                        />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    >
 
                     <CheckBox
                         android:id="@+id/gluten_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Gluten-Free"/>
+                        android:layout_height="30dp"
+                        android:text="Gluten-Free"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="20dp"
+                        />
 
                     <CheckBox
                         android:id="@+id/dairy_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
                         android:text="Dairy-Free"
-                        android:layout_marginStart="20dp"/>
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="20dp"/>
 
                 </LinearLayout>
-
             </LinearLayout>
 
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="55dp"
                 android:text="Save"
                 android:id="@+id/saveButton"
                 android:textSize="18sp"
@@ -223,5 +253,4 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
-
 </ScrollView>

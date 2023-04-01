@@ -52,6 +52,17 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+
+    @Override
+    public void onBackPressed() {
+        logout();
+        //super.onBackPressed();
+    }
+
+
+
+
     @Override
     protected void onResume() {
         super.onResume();

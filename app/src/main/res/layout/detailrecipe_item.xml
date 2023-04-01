@@ -7,22 +7,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="10dp"
     tools:context=".activities.DetailRecipeActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        app:cardCornerRadius="30dp"
-        app:cardElevation="20dp">
+        app:cardCornerRadius="10dp"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_gravity="center_horizontal"
             android:padding="20dp">
@@ -31,35 +26,36 @@
                 android:id="@+id/recipe_img"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:scaleType="centerCrop"
                 android:src="@drawable/oatpancake"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
-
+                app:layout_constraintVertical_bias="0.0"
+                android:scaleType="centerCrop"
+                />
 
             <TextView
                 android:id="@+id/recipe_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="25dp"
                 android:text="Recipe name"
                 android:textColor="@color/darkgray"
-                android:textSize="23sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/recipe_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="3dp"
                 android:text="Total time"
                 android:textColor="@color/darkgray"
-                android:textSize="11sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintTop_toBottomOf="@+id/recipe_name" />
 
@@ -67,11 +63,11 @@
                 android:id="@+id/recipe_ingredientsHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:text="Ingredients"
                 android:textColor="@color/darkgray"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -82,12 +78,11 @@
                 android:id="@+id/recipe_ingredients"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="7dp"
                 android:text="The ingredients"
                 android:textColor="@color/darkgray"
-                android:textSize="12sp"
-                android:textStyle="bold"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -97,9 +92,8 @@
             <LinearLayout
                 android:id="@+id/healthLabels_layout"
                 android:layout_width="match_parent"
-                android:layout_height="143dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="100dp"
                 android:orientation="vertical"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp">
@@ -120,6 +114,7 @@
                         android:background="@color/white"
                         android:padding="4dp"
                         android:text="Vegetarian"
+                        android:textSize="13sp"
                         android:textColor="@color/black" />
 
                     <TextView
@@ -130,6 +125,7 @@
                         android:background="@color/white"
                         android:padding="4dp"
                         android:text="Vegan"
+                        android:textSize="13sp"
                         android:textColor="@color/black" />
 
                     <TextView
@@ -139,6 +135,7 @@
                         android:background="@color/white"
                         android:padding="4dp"
                         android:text="Kosher"
+                        android:textSize="13sp"
                         android:textColor="@color/black" />
                 </LinearLayout>
 
@@ -147,6 +144,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:gravity="center_horizontal"
+                    android:textSize="13sp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -157,6 +155,7 @@
                         android:background="@color/white"
                         android:padding="4dp"
                         android:text="Gluten-Free"
+                        android:textSize="13sp"
                         android:textColor="@color/black" />
 
                     <TextView
@@ -166,11 +165,11 @@
                         android:background="@color/white"
                         android:padding="4dp"
                         android:text="Dairy-Free"
+                        android:textSize="13sp"
                         android:textColor="@color/black" />
                 </LinearLayout>
 
             </LinearLayout>
-
         </LinearLayout>
 
 
@@ -180,7 +179,7 @@
             android:layout_height="match_parent"
             >
             <androidx.appcompat.widget.ActionMenuView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
@@ -194,7 +193,7 @@
                 android:id="@+id/editButton"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@drawable/ic_baseline_list_alt_24"
+                android:src="@drawable/ic_baseline_edit"
                 android:layout_marginLeft="30dp"
                 android:layout_marginBottom="10dp"
                 android:layout_alignParentBottom="true"
@@ -205,7 +204,7 @@
                 android:id="@+id/deleteButton"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@drawable/ic_baseline_clear_24"
+                android:src="@drawable/ic_baseline_delete"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="10dp"
                 android:layout_alignParentBottom="true"

@@ -1,8 +1,5 @@
 package com.example.myrecipebook.adapters;
 
-
-//ADAPTER + VIEWHOLDER
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -39,7 +36,8 @@ import com.squareup.picasso.Picasso;
 import java.io.Serializable;
 import java.util.List;
 
-//5.ADAPTER class (manage all the viewHolders)
+//ADAPTER + VIEWHOLDER
+//ADAPTER class (manage all the viewHolders)
 public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapter.ViewHolder> {
 
     Context context;
@@ -59,28 +57,40 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.detailrecipe_item, parent, false ));
     }
 
+    //called for each item in the list to bind data to its view.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        //loads the image using Picasso
         Picasso.get().load(this.detailRecipeModel.getImageUrl()).into(holder.imageView);
         holder.name.setText(this.detailRecipeModel.getName());
         holder.detail.setText(this.detailRecipeModel.getTotalTime());
         holder.ingredients.setText(this.detailRecipeModel.getIngredients());
-        List<String> health = this.detailRecipeModel.getHealthLabels();
-        if (health.contains("Vegetarian")) holder.labelVegetarian.setBackgroundColor(Color.GREEN);
-        if (health.contains("Vegan")) holder.labelVegan.setBackgroundColor(Color.GREEN);
-        if (health.contains("Kosher")) holder.labelKosher.setBackgroundColor(Color.GREEN);
-        if (health.contains("Gluten-Free")) holder.labelGlutenFree.setBackgroundColor(Color.GREEN);
-        if (health.contains("Dairy-Free")) holder.labelDairyFree.setBackgroundColor(Color.GREEN);
 
+        //list for health labels
+        List<String> health = this.detailRecipeModel.getHealthLabels();
+        //if health labels of recipe contain certain strings we set background color
+        if (health.contains("Vegetarian")) holder.labelVegetarian.setBackgroundColor(Color.LTGRAY);
+        if (health.contains("Vegan")) holder.labelVegan.setBackgroundColor(Color.LTGRAY);
+        if (health.contains("Kosher")) holder.labelKosher.setBackgroundColor(Color.LTGRAY);
+        if (health.contains("Gluten-Free")) holder.labelGlutenFree.setBackgroundColor(Color.LTGRAY);
+        if (health.contains("Dairy-Free")) holder.labelDairyFree.setBackgroundColor(Color.LTGRAY);
+
+
+        //checks if the currently logged in user is the same as the user who created the recipe. If so, it makes the delete and edit buttons visible and clickable
         if (FirebaseAuth.getInstance().getUid().equals(detailRecipeModel.getUser())){
+
             holder.deleteButton.setVisibility(View.VISIBLE);
             holder.deleteButton.setClickable(true);
+
+
+            //delete button listener
             holder.deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
                     builder.setMessage("Are you sure you want to delete this recipe?")
                             .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                //deletes the recipe from the Firebase Realtime Database
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference();
@@ -90,6 +100,7 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
                                                 @Override
                                                 public void onSuccess(Void aVoid) {
                                                     System.out.println("Successfully Deleted Recipe");
+                                                    //finish the current activity
                                                     ((Activity) context).finish();
                                                 }
                                             })
@@ -107,13 +118,18 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
                             .show();
                 }
             });
+
+            //edit button listener
+            //if the edit button is clicked, it creates an intent to start the UpdateActivity
             holder.editButton.setVisibility(View.VISIBLE);
             holder.editButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, UpdateActivity.class);
+                    //passes the DetailRecipeModel object as an extra
                     intent.putExtra("detailRecipeModel",(Serializable) detailRecipeModel);
-                    context.startActivity(intent);                }
+                    context.startActivity(intent);
+                }
             });
         } else {
             holder.deleteButton.setVisibility(View.GONE);
@@ -122,17 +138,20 @@ public class DetailRecipeAdapter extends RecyclerView.Adapter<DetailRecipeAdapte
         }
     }
 
-
+    //show one item from 'detailrecipe_item' in 'fragment_detailrecipe'
     @Override
     public int getItemCount() {
         return 1;
     }
 
+
+
+
+
     //ViewHolder inner class
-//hold object of view of one line and save references to his elements
+    //holds references to views in the inflated layout resource
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        //references to the views for each data item (from xml file)
         // ImageView imageView;
         TextView name, detail, ingredients;
         ImageView imageView;

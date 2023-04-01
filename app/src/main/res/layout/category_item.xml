@@ -22,6 +22,7 @@
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_marginTop="15dp"
+                android:layout_marginBottom="8dp"
                 android:foregroundGravity="center"
                 android:scaleType="centerCrop"
                 android:src="@drawable/oatpancake"
@@ -31,30 +32,32 @@
 
         <TextView
             android:id="@+id/category_recipe_name"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
+            android:layout_marginBottom="15dp"
             android:text="oat pancakes"
             android:textColor="@color/darkgray"
             android:textSize="16sp"
             android:textStyle="bold"
             android:layout_below="@id/category_recipe_img"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="20dp"
             />
 
         <TextView
             android:id="@+id/category_recipe_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_margin="25dp"
             android:text="10 min"
+            android:textAlignment="textEnd"
             android:textColor="@color/darkgray"
-            android:textSize="13sp"
+            android:textSize="14sp"
             android:layout_below="@id/category_recipe_name"
-            android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@id/category_recipe_name"
+            android:layout_alignParentTop="true"
+
             />
     </RelativeLayout>
     </androidx.cardview.widget.CardView>
