@@ -10,8 +10,7 @@ Overall, the app combines organization, convenience, and social interaction to e
 
 ### Feed example:
 <p>
-<img src="
-https://user-images.githubusercontent.com/72359805/229290681-4597337a-e790-4252-947e-0a1a7467d189.mp4" alt=" Click here for feed example" width="300">
+<img src="https://user-images.githubusercontent.com/72359805/229290681-4597337a-e790-4252-947e-0a1a7467d189.mp4" alt=" Click here for feed example" width="300">
 </p>
 
 ### Our screens:
