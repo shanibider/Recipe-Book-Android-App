@@ -1,17 +1,25 @@
-## My Recipe book Android App
+<img align="left" src="https://user-images.githubusercontent.com/72359805/232760912-a8da8d37-c0aa-4829-ae19-46adc8d64106.png" width="50">
 
-"My Recipe Book" is a user-friendly app that allows users to save their favorite recipes in one place. Users can easily add recipes, categorize them by meal type and food preferences.
-<p>
-The app also offers a social aspect to recipe sharing. Each user has their own profile where they can upload and share their own recipes with the community. When a recipe is uploaded, it is immediately visible to other users, allowing them to try it out. 
+#  My Recipe book Android App
 
-Overall, the app combines organization, convenience, and social interaction to enhance the cooking experience for users of all skill levels.
-</p>
+<h3 align="left">Languages and Tools used in this project:</h3>
+
+[![My Skills](https://skillicons.dev/icons?i=java,androidstudio)](https://skillicons.dev)
+
+- Java in Android studio
 
 
-### Feed example:
-<p>
-<img src="https://user-images.githubusercontent.com/72359805/229290681-4597337a-e790-4252-947e-0a1a7467d189.mp4" alt=" Click here for feed example" width="300">
-</p>
+- [x] "My Recipe Book" is a user-friendly app that allows users to save their favorite recipes in one place. Users can easily add recipes and categorize them.
+
+- [x] The app also offers a social aspect to recipe sharing. Each user has their own profile where they can upload and share their own recipes with the community. When a recipe is uploaded, it is immediately visible to other users, allowing them to try it out. 
+
+- [x] Overall, the app combines organization, convenience, and social interaction to enhance the cooking experience for users of all skill levels.
+
+
+### 👉 Feed example:
+
+https://user-images.githubusercontent.com/72359805/229290681-4597337a-e790-4252-947e-0a1a7467d189.mp4
+
 
 ### Our screens:
 <p>
