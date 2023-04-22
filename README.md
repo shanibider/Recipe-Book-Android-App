@@ -1,4 +1,4 @@
-<img align="left" src="https://user-images.githubusercontent.com/72359805/232760912-a8da8d37-c0aa-4829-ae19-46adc8d64106.png" width="50">
+<img align="left" src="https://user-images.githubusercontent.com/72359805/233739648-e9ffca89-035b-4117-817f-0bf66a34bdd6.png" width="50">
 
 #  My Recipe book Android App
 
@@ -24,27 +24,9 @@ https://user-images.githubusercontent.com/72359805/229290681-4597337a-e790-4252-
 ### Our screens:
 <p>
   
-<img src="https://user-images.githubusercontent.com/72359805/229290267-947155af-d787-41cb-8670-a8a6e63da78a.PNG" width="200">
-          
-<img src="https://user-images.githubusercontent.com/72359805/229290275-8af613c1-ef56-4796-8067-9769dda320be.PNG" width="200">
-
-<img src="https://user-images.githubusercontent.com/72359805/229290278-3b6e9022-1755-4f54-9d91-c462b52831c1.PNG" width="200">
-
-<img src="https://user-images.githubusercontent.com/72359805/229290293-afb7dad4-36aa-4413-bd83-221fae831993.PNG" width="200">
-  
-<img src="https://user-images.githubusercontent.com/72359805/229290607-adaa4998-be83-4492-a876-7bb17200805c.PNG" width="200">
-
-<img src="https://user-images.githubusercontent.com/72359805/229290614-69f6aed4-621f-4d44-a49c-97cf593291c9.PNG" width="200">
-
-<img src="https://user-images.githubusercontent.com/72359805/229290620-8e7476f1-bef8-4728-9eed-6017d65386ca.PNG" width="200">
-
-
-<img src="https://user-images.githubusercontent.com/72359805/229290327-64814c6e-fe9d-4f19-83fb-34990748cf18.PNG" width="200">
-  
-<img src="https://user-images.githubusercontent.com/72359805/229290330-7ef59511-7011-4777-aa09-beb14941da5e.PNG" width="200">
-
-<img src="https://user-images.githubusercontent.com/72359805/229290333-ccdf1794-712c-4724-9f80-ef081dacb6f6.PNG" width="200">
-
-<img src="https://user-images.githubusercontent.com/72359805/229290337-a019aeae-1479-4d65-b35e-182044b587e8.PNG" width="200">
+![1](https://user-images.githubusercontent.com/72359805/233804688-403a27d3-b84d-491e-83ea-6707dccc44db.png)
+![2](https://user-images.githubusercontent.com/72359805/233804692-6e1d8674-b79b-46e3-8dd5-9a9bfde14f18.png)
+![3](https://user-images.githubusercontent.com/72359805/233804695-68fcbf69-d338-4416-817e-916d64f4fa8e.png)
+![4](https://user-images.githubusercontent.com/72359805/233804700-6cb1d6f0-d17f-4ddc-8d50-82a6a578013f.png)
   
 </p>
