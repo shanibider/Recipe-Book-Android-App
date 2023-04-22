@@ -6,8 +6,7 @@
 
 [![My Skills](https://skillicons.dev/icons?i=java,androidstudio)](https://skillicons.dev)
 
-- Java in Android studio
-
+- Built using Java, Android Studio, Firebase Database
 
 - [x] "My Recipe Book" is a user-friendly app that allows users to save their favorite recipes in one place. Users can easily add recipes and categorize them.
 
@@ -18,7 +17,7 @@
 
 ### 👉 Feed example:
 
-https://user-images.githubusercontent.com/72359805/229290681-4597337a-e790-4252-947e-0a1a7467d189.mp4
+<img src="https://user-images.githubusercontent.com/72359805/229290681-4597337a-e790-4252-947e-0a1a7467d189.mp4" alt=" Click here for Demo" width="300">
 
 
 ### Our screens:
