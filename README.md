@@ -6,13 +6,25 @@
 
 [![My Skills](https://skillicons.dev/icons?i=java,androidstudio)](https://skillicons.dev)
 
-- Built using Java, Android Studio, Firebase Database
 
-- [x] "My Recipe Book" is a user-friendly app that allows users to save their favorite recipes in one place. Users can easily add recipes and categorize them.
+### Development Languages
+- Java, Android Studio, Firebase Database.
 
-- [x] The app also offers a social aspect to recipe sharing. Each user has their own profile where they can upload and share their own recipes with the community. When a recipe is uploaded, it is immediately visible to other users, allowing them to try it out. 
+## Tech Highlights
 
-- [x] Overall, the app combines organization, convenience, and social interaction to enhance the cooking experience for users of all skill levels.
+- [x] Implemented real-time data storage and retrieval using Firebase, for efficient data storage and retrieval.
+- [x] Ensured secure Firebase authentication.
+- [x] Employed MVVM architecture in Android development.
+- [x] Utilized external API
+
+
+## Key Features:
+- [ ]  Effortless Recipe Management: Users can easily add, organize, and categorize their favorite recipes, providing a convenient way to access cooking instructions and ingredient lists.
+
+- [ ] Social Recipe Sharing: The app introduces a social aspect to cooking by allowing users to create profiles and share their own recipes with the community. When a user uploads a recipe, it becomes immediately visible to others, fostering a vibrant community of recipe enthusiasts.
+
+- [ ]  Community Interaction: Users can explore and try recipes shared by others, creating an interactive and engaging cooking community. The platform encourages users of all skill levels to participate and discover new culinary creations.
+
 
 
 ### 👉 Feed example:
@@ -28,4 +40,12 @@
 ![3](https://user-images.githubusercontent.com/72359805/233804695-68fcbf69-d338-4416-817e-916d64f4fa8e.png)
 ![4](https://user-images.githubusercontent.com/72359805/233804700-6cb1d6f0-d17f-4ddc-8d50-82a6a578013f.png)
   
+</p>
+
+<br>
+
+## 🔗 Connect with me 👩‍💻😊
+<p align="left">
+<a href="https://linkedin.com/in/shanibider" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="shanibider" height="30" width="40" /></a>
+<a style="margin-left: 145x;" href="mailto:shanibider@gmail.com"><img align="center" src="https://img.icons8.com/ios-glyphs/30/000000/new-post.png" alt="shanibider@gmail.com" height="40" width="40" /></a>
 </p>
