@@ -1,8 +1,11 @@
 <img align="left" src="https://user-images.githubusercontent.com/72359805/233739648-e9ffca89-035b-4117-817f-0bf66a34bdd6.png" width="50">
 
-#  My Recipe book Android App
+#  My Recipe Book Android App
 
-<h3 align="left">Languages and Tools used in this project:</h3>
+Java-based Android app developed in Android Studio, leveraging the Firebase Database for seamless data management. This user-friendly application serves as a centralized hub for users to store and categorize their favorite recipes, provides a practical solution for personal recipe organization, and creates a social space for culinary enthusiasts to connect and share their passion for cooking.
+
+
+### Languages and Tools used in this project:
 
 [![My Skills](https://skillicons.dev/icons?i=java,androidstudio)](https://skillicons.dev)
 
@@ -42,6 +45,7 @@
   
 </p>
 
+
 <br>
 
 ## 🔗 Connect with me 👩‍💻😊
@@ -49,3 +53,11 @@
 <a href="https://linkedin.com/in/shanibider" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="shanibider" height="30" width="40" /></a>
 <a style="margin-left: 145x;" href="mailto:shanibider@gmail.com"><img align="center" src="https://img.icons8.com/ios-glyphs/30/000000/new-post.png" alt="shanibider@gmail.com" height="40" width="40" /></a>
 </p>
+
+<br>
+
+<footer>
+<p style="float:left; width: 20%;">
+Copyright © Shani Bider, 2023
+</p>
+</footer>
